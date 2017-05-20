@@ -3,7 +3,9 @@ package com.example.dell2.e_transport;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -12,16 +14,21 @@ import android.support.v4.app.FragmentManager;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import adapt.CarouselPagerAdapt;
 import collector.BaseActivity;
 import fragment.HomePageFragment;
 import fragment.OrderFragment;
 import fragment.UserFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
-    private TextView title_name;
     private HomePageFragment homePageFragment;
     private OrderFragment orderFragment;
     private UserFragment userFragment;
+    private ViewPager homepage_carousel;
+    private TextView title_name;
     private TextView homeTV;
     private TextView orderTV;
     private TextView userTV;
@@ -31,7 +38,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private RelativeLayout homeRelativeLayout;
     private RelativeLayout orderRelativeLayout;
     private RelativeLayout userRelativeLayout;
+
     private FragmentManager fragmentManager;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +66,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         homeRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_home);
         orderRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_order);
         userRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_user);
+
         fragmentManager=getSupportFragmentManager();
         /*响应式事件添加*/
         homeRelativeLayout.setOnClickListener(this);
@@ -65,8 +75,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         /*初始化碎片*/
         setTopFragment(0);
         setTitleName(0);
+
     }
 
+    /**
+     * 初始化轮播图
+     */
+    private void setCarousel(){
+//        View view=fragmentManager.findFragmentById(R.id.content);
+//        homePageFragment=(ViewPager)view.findViewById(R.id.homepage_carousel);
+        LayoutInflater inflater=LayoutInflater.from(this);
+        View view1=inflater.inflate(R.layout.carousel_1,null);
+        View view2=inflater.inflate(R.layout.carousel_2,null);
+        View view3=inflater.inflate(R.layout.carousel_3,null);
+        View view4=inflater.inflate(R.layout.carousel_4,null);
+        ArrayList<View> viewList=new ArrayList<View>();
+        viewList.add(view1);
+        viewList.add(view2);
+        viewList.add(view3);
+        viewList.add(view4);
+        homepage_carousel.setAdapter(new CarouselPagerAdapt(viewList));
+    }
     /**
      * 设置主页面顶部的标题栏
      * @param index 底部button的序号
@@ -123,6 +152,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                     fragmentTransaction.show(homePageFragment);
                 setButtonActive(0);
                 setTitleName(0);
+                /*轮播图*/
+//                setCarousel();
                 break;
             case 1:
                 if(orderFragment==null) {

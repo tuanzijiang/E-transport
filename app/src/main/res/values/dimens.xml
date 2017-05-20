@@ -1,10 +1,17 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_title_font">20sp</dimen>
-    <dimen name="activity_bottom_font">18sp</dimen>
-    <dimen name="activity_top">56dp</dimen>
-    <dimen name="activity_bottom">60dp</dimen>
-    <dimen name="activity_bottom_icon">35dp</dimen>
+    /*主页*/
+    <dimen name="activity_title_font">20sp</dimen>/*主页title字体大小*/
+    <dimen name="activity_bottom_font">18sp</dimen>/*主页底部字体大小*/
+    <dimen name="activity_top">56dp</dimen>/*主页title的高度*/
+    <dimen name="activity_bottom">60dp</dimen>/*主页底部的高度*/
+    <dimen name="activity_bottom_icon">35dp</dimen>/*主页底部icon的高度与长度*/
+    /*轮播图*/
+    <dimen name="carousel_height">170dp</dimen>/*轮播图大小*/
+    <dimen name="carousel_image">120dp</dimen>/*轮播图image*/
+    <dimen name="carousel_head1">18sp</dimen>/*轮播图主标题*/
+    <dimen name="carousel_head2">10sp</dimen>/*轮播图副标题*/
+    /*其他*/
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

@@ -1,7 +1,18 @@
 <resources>
+    /*主页面*/
     <string name="app_name">E-transport</string>
     <string name="title_home">主页</string>
     <string name="title_order">订单</string>
     <string name="title_user">我的</string>
+    /*轮播图*/
+    <string name="carousel1_head1">顺丰速送，方便快捷</string>
+    <string name="carousel1_head2">送文件、送礼物、拿快递...便捷你的生活</string>
+    <string name="carousel2_head1">寻找顺路人，解决燃眉之急</string>
+    <string name="carousel2_head2">分享出行资源，让物品搭上顺风车</string>
+    <string name="carousel3_head1">资源在线共享，合作互赢</string>
+    <string name="carousel3_head2">出行路上，顺便接单</string>
+    <string name="carousel4_head1">实名认证，保证安全</string>
+    <string name="carousel4_head2">用户实名认真，缴纳押金，保证交易安全</string>
+    /*其他*/
     <string name="title_notifications">Notifications</string>
 </resources>
