@@ -7,31 +7,93 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.dell2.e_transport.MainActivity">
-
+    <include
+        android:id="@+id/main_page_title"
+        layout="@layout/title_layout_xox"/>
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/theme_background"
         android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_home" />
-
     </FrameLayout>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+        android:layout_height="@dimen/activity_bottom"
+        android:background="@color/theme">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="@dimen/activity_bottom_icon"
+                    android:layout_height="@dimen/activity_bottom_icon"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/homepage_active"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/activity_title_font"
+                    android:text="@string/title_home"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="@dimen/activity_bottom_icon"
+                    android:layout_height="@dimen/activity_bottom_icon"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/order_inactive"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/activity_title_font"
+                    android:text="@string/title_order"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="@dimen/activity_bottom_icon"
+                    android:layout_height="@dimen/activity_bottom_icon"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/user_inactive"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/activity_title_font"
+                    android:text="@string/title_user"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
 
 </LinearLayout>
