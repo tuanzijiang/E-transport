@@ -10,12 +10,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v4.app.FragmentManager;
 
+import org.w3c.dom.Text;
+
 import collector.BaseActivity;
 import fragment.HomePageFragment;
 import fragment.OrderFragment;
 import fragment.UserFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
+    private TextView title_name;
     private HomePageFragment homePageFragment;
     private OrderFragment orderFragment;
     private UserFragment userFragment;
@@ -40,10 +43,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     /**
-     * 对页面进行初始化：加载响应事件、给私有属性链接实例、初始化碎片等
+     * 对页面进行初始化：加载响应事件、给私有属性链接实例、初始化碎片、初始化title等
      */
     private void init(){
         /*私有属性实例化*/
+        title_name=(TextView)findViewById(R.id.title_name);
         homeTV=(TextView)findViewById(R.id.main_bottom_home_text);
         homeIV=(ImageView)findViewById(R.id.main_bottom_home_image);
         orderTV=(TextView)findViewById(R.id.main_bottom_order_text);
@@ -60,8 +64,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         userRelativeLayout.setOnClickListener(this);
         /*初始化碎片*/
         setTopFragment(0);
+        setTitleName(0);
     }
 
+    /**
+     * 设置主页面顶部的标题栏
+     * @param index 底部button的序号
+     */
+    private void setTitleName(int index){
+        switch (index){
+            case 0:
+                title_name.setText(R.string.title_home);
+                break;
+            case 1:
+                title_name.setText(R.string.title_order);
+                break;
+            case 2:
+                title_name.setText(R.string.title_user);
+                break;
+            default:
+                break;
+        }
+    }
     /**
      *
      * @param v 触发click的view
@@ -81,7 +105,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
         }
     }
-
     /**
      *设置显示在顶部的碎片
      * @param index 底部button的序号
@@ -99,6 +122,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 else
                     fragmentTransaction.show(homePageFragment);
                 setButtonActive(0);
+                setTitleName(0);
                 break;
             case 1:
                 if(orderFragment==null) {
@@ -108,6 +132,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 else
                     fragmentTransaction.show(orderFragment);
                 setButtonActive(1);
+                setTitleName(1);
                 break;
             case 2:
                 if(userFragment==null) {
@@ -117,6 +142,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 else
                     fragmentTransaction.show(userFragment);
                 setButtonActive(2);
+                setTitleName(2);
                 break;
             default:
                 break;
