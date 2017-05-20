@@ -22,6 +22,7 @@
         android:layout_height="@dimen/activity_bottom"
         android:background="@color/white">
         <RelativeLayout
+            android:id="@+id/main_bottom_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -31,11 +32,13 @@
                 android:layout_centerVertical="true"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/main_bottom_home_image"
                     android:layout_width="@dimen/activity_bottom_icon"
                     android:layout_height="@dimen/activity_bottom_icon"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/homepage_active"/>
                 <TextView
+                    android:id="@+id/main_bottom_home_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/theme"
@@ -45,6 +48,7 @@
             </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/main_bottom_order"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -54,11 +58,13 @@
                 android:layout_centerVertical="true"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/main_bottom_order_image"
                     android:layout_width="@dimen/activity_bottom_icon"
                     android:layout_height="@dimen/activity_bottom_icon"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/order_inactive"/>
                 <TextView
+                    android:id="@+id/main_bottom_order_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/font_standard"
@@ -68,6 +74,7 @@
             </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/main_bottom_user"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -77,11 +84,13 @@
                 android:layout_centerVertical="true"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/main_bottom_user_image"
                     android:layout_width="@dimen/activity_bottom_icon"
                     android:layout_height="@dimen/activity_bottom_icon"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/user_inactive"/>
                 <TextView
+                    android:id="@+id/main_bottom_user_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/font_standard"
