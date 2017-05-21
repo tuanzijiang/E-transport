@@ -24,6 +24,7 @@ import fragment.OrderFragment;
 import fragment.UserFragment;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
+    final String HOMEPAGETAG="homePageFragmentTag";
     private HomePageFragment homePageFragment;
     private OrderFragment orderFragment;
     private UserFragment userFragment;
@@ -78,24 +79,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     /**
-     * 初始化轮播图
-     */
-    private void setCarousel(){
-//        HomePageFragment fragment=(HomePageFragment)fragmentManager.findFragmentById(R.id.content);
-//        homePageFragment=(ViewPager)view.findViewById(R.id.homepage_carousel);
-        LayoutInflater inflater=LayoutInflater.from(this);
-        View view1=inflater.inflate(R.layout.carousel_1,null);
-        View view2=inflater.inflate(R.layout.carousel_2,null);
-        View view3=inflater.inflate(R.layout.carousel_3,null);
-        View view4=inflater.inflate(R.layout.carousel_4,null);
-        ArrayList<View> viewList=new ArrayList<View>();
-        viewList.add(view1);
-        viewList.add(view2);
-        viewList.add(view3);
-        viewList.add(view4);
-        homepage_carousel.setAdapter(new CarouselPagerAdapt(viewList));
-    }
-    /**
      * 设置主页面顶部的标题栏
      * @param index 底部button的序号
      */
@@ -145,19 +128,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case 0:
                 if(homePageFragment==null) {
                     homePageFragment=new HomePageFragment();
-                    fragmentTransaction.add(R.id.content, homePageFragment);
+                    fragmentTransaction.add(R.id.content, homePageFragment,HOMEPAGETAG);
                 }
-                else
+                else {
                     fragmentTransaction.show(homePageFragment);
+                }
                 setButtonActive(0);
                 setTitleName(0);
-                /*轮播图*/
-//                setCarousel();
                 break;
             case 1:
                 if(orderFragment==null) {
                     orderFragment=new OrderFragment();
-                    fragmentTransaction.add(R.id.content, orderFragment);
+                    fragmentTransaction.add(R.id.content, orderFragment,"orderFragmentTag");
                 }
                 else
                     fragmentTransaction.show(orderFragment);
@@ -167,7 +149,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case 2:
                 if(userFragment==null) {
                     userFragment=new UserFragment();
-                    fragmentTransaction.add(R.id.content, userFragment);
+                    fragmentTransaction.add(R.id.content, userFragment,"userFragmentTag");
                 }
                 else
                     fragmentTransaction.show(userFragment);
