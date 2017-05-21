@@ -75,14 +75,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         /*初始化碎片*/
         setTopFragment(0);
         setTitleName(0);
-
     }
 
     /**
      * 初始化轮播图
      */
     private void setCarousel(){
-//        View view=fragmentManager.findFragmentById(R.id.content);
+//        HomePageFragment fragment=(HomePageFragment)fragmentManager.findFragmentById(R.id.content);
 //        homePageFragment=(ViewPager)view.findViewById(R.id.homepage_carousel);
         LayoutInflater inflater=LayoutInflater.from(this);
         View view1=inflater.inflate(R.layout.carousel_1,null);
