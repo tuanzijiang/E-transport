@@ -2,8 +2,10 @@ package fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +60,7 @@ public class HomePageFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
+                carouselHandler.sendMessage(Message.obtain(carouselHandler,carouselHandler.MSG_PAGE_CHANGED,position,0));
             }
 
             @Override
