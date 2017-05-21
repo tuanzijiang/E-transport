@@ -3,32 +3,26 @@ package com.example.dell2.e_transport;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v4.app.FragmentManager;
 
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import adapt.CarouselPagerAdapt;
 import collector.BaseActivity;
 import fragment.HomePageFragment;
 import fragment.OrderFragment;
 import fragment.UserFragment;
 
+
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     final String HOMEPAGETAG="homePageFragmentTag";
+    final String ORDERTAG="orderFragmentTag";
+    final String USERTAG="userFragmentTag";
     private HomePageFragment homePageFragment;
     private OrderFragment orderFragment;
     private UserFragment userFragment;
-    private ViewPager homepage_carousel;
     private TextView title_name;
     private TextView homeTV;
     private TextView orderTV;
@@ -39,9 +33,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private RelativeLayout homeRelativeLayout;
     private RelativeLayout orderRelativeLayout;
     private RelativeLayout userRelativeLayout;
-
     private FragmentManager fragmentManager;
-    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +43,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_main);
         init();
     }
-
     /**
      * 对页面进行初始化：加载响应事件、给私有属性链接实例、初始化碎片、初始化title等
      */
@@ -77,7 +68,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setTopFragment(0);
         setTitleName(0);
     }
-
     /**
      * 设置主页面顶部的标题栏
      * @param index 底部button的序号
@@ -139,7 +129,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case 1:
                 if(orderFragment==null) {
                     orderFragment=new OrderFragment();
-                    fragmentTransaction.add(R.id.content, orderFragment,"orderFragmentTag");
+                    fragmentTransaction.add(R.id.content, orderFragment,ORDERTAG);
                 }
                 else
                     fragmentTransaction.show(orderFragment);
@@ -149,7 +139,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case 2:
                 if(userFragment==null) {
                     userFragment=new UserFragment();
-                    fragmentTransaction.add(R.id.content, userFragment,"userFragmentTag");
+                    fragmentTransaction.add(R.id.content, userFragment,USERTAG);
                 }
                 else
                     fragmentTransaction.show(userFragment);
