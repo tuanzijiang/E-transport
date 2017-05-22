@@ -20,6 +20,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     final String HOMEPAGETAG="homePageFragmentTag";
     final String ORDERTAG="orderFragmentTag";
     final String USERTAG="userFragmentTag";
+    private ImageView alarm;
+    private ImageView setting;
     private HomePageFragment homePageFragment;
     private OrderFragment orderFragment;
     private UserFragment userFragment;
@@ -58,6 +60,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         homeRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_home);
         orderRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_order);
         userRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_user);
+        alarm=(ImageView)findViewById(R.id.header_front_1);
+        setting=(ImageView)findViewById(R.id.header_back_1);
 
         fragmentManager=getSupportFragmentManager();
         /*响应式事件添加*/
@@ -75,12 +79,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private void setTitleName(int index){
         switch (index){
             case 0:
+                alarm.setVisibility(View.GONE);
+                setting.setVisibility(View.GONE);
                 title_name.setText(R.string.title_home);
                 break;
             case 1:
+                alarm.setVisibility(View.GONE);
+                setting.setVisibility(View.GONE);
                 title_name.setText(R.string.title_order);
                 break;
             case 2:
+                alarm.setVisibility(View.VISIBLE);
+                setting.setVisibility(View.VISIBLE);
                 title_name.setText(R.string.title_user);
                 break;
             default:

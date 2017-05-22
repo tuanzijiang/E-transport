@@ -9,7 +9,7 @@
     tools:context="com.example.dell2.e_transport.MainActivity">
     <include
         android:id="@+id/main_page_title"
-        layout="@layout/title_layout_xox"/>
+        layout="@layout/title_layout_ooo"/>
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -20,7 +20,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_bottom"
-        android:background="@color/white">
+        android:paddingTop="3dp"
+        android:background="@drawable/top_border_standard">
         <RelativeLayout
             android:id="@+id/main_bottom_home"
             android:layout_width="0dp"
@@ -100,6 +101,4 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
-
 </LinearLayout>

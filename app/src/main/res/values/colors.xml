@@ -6,6 +6,7 @@
     /*常用色*/
     <color name="font_standard">#666</color>
     <color name="font_weight">#333</color>
+    <color name="font_light">#ccc</color>
     <color name="white">#ffffff</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
