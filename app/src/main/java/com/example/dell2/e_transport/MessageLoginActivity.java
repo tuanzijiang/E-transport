@@ -14,7 +14,11 @@ public class MessageLoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+        if (getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_messagelogin);
+        init();
     }
     /**
      * 启动本activity
@@ -22,5 +26,11 @@ public class MessageLoginActivity extends BaseActivity {
     public static void actionStart(Context context){
         Intent intent=new Intent(context,MessageLoginActivity.class);
         context.startActivity(intent);
+    }
+    /**
+     * 初始化加载title
+     */
+    public void init(){
+
     }
 }
