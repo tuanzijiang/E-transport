@@ -20,7 +20,7 @@
         android:textSize="@dimen/activity_title_font"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:text="@string/title_user" />
+        android:text="登录" />
     <TextView
         android:id="@+id/header_back_1"
         android:layout_width="wrap_content"
