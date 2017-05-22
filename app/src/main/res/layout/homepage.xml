@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/theme_background">
     <android.support.v4.view.ViewPager
         android:id="@+id/homepage_carousel"
         android:layout_width="match_parent"
@@ -14,32 +15,73 @@
         android:background="@color/white"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp">
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="65dp"
+            android:paddingRight="25dp"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="center_horizontal"
                 android:src="@drawable/want2order"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/font_weight"
                 android:text="我要下单"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingRight="65dp"
+            android:paddingLeft="25dp">
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/want2order"/>
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/want2receive"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我要下单"/>
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/font_weight"
+                android:text="我要接单"/>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:src="@drawable/carousel_4" />
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/font_weight"
+                android:text="在线交易，实名认证"/>
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
