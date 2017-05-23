@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import collector.BaseActivity;
 public class MessageLoginActivity extends BaseActivity implements View.OnClickListener{
     public static final String BACK_STATE_NOLOGIN="NOLOGIN";
     public static final String BACK_STATE_LOGIN="LOGIN";
+    private EditText message_login_et;
     private ImageView header_front_1;
     private TextView header_back_1;
     @Override
@@ -40,10 +42,12 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
      * 初始化加载title
      */
     public void init(){
+        message_login_et=(EditText)findViewById(R.id.message_login_et);
         header_front_1=(ImageView)findViewById(R.id.header_front_1);
         header_back_1=(TextView)findViewById(R.id.header_back_1);
         header_front_1.setOnClickListener(this);
         header_back_1.setOnClickListener(this);
+        message_login_et.setHorizontallyScrolling(true);
     }
     @Override
     public void onClick(View view){

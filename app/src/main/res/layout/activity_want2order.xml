@@ -11,7 +11,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -27,7 +31,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_standard_input"
-                    android:background="@drawable/bottom_border_standard">
+                    android:background="@drawable/bottom_border_standard"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" >
                     <EditText
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -37,7 +43,6 @@
                         android:hint="请输入取货地址"
                         android:textSize="@dimen/font_input"
                         android:background="@null"
-                        android:maxLines="1"
                         android:textColorHint="@color/font_light"/>
                 </LinearLayout>
                 <LinearLayout
@@ -48,14 +53,270 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
                         android:background="@drawable/right_border_standard">
-
+                        <ImageView
+                            android:layout_width="@dimen/line_standard_item_pic"
+                            android:layout_height="@dimen/line_standard_item_pic"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/name"/>
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="姓名"
+                            android:textColorHint="@color/font_light"
+                            android:layout_gravity="center_vertical"
+                            android:textCursorDrawable="@null"
+                            android:background="@null"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2">
-
+                        <ImageView
+                            android:layout_width="@dimen/line_standard_item_pic"
+                            android:layout_height="@dimen/line_standard_item_pic"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/tel"/>
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="电话"
+                            android:textColorHint="@color/font_light"
+                            android:layout_gravity="center_vertical"
+                            android:textCursorDrawable="@null"
+                            android:background="@null"/>
                     </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="20dp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/receive1"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_standard_input"
+                        android:background="@drawable/bottom_border_standard">
+                        <EditText
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:hint="请输入送货地址"
+                            android:textSize="@dimen/font_input"
+                            android:background="@null"
+                            android:textColorHint="@color/font_light"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_standard_input">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/right_border_standard">
+                            <ImageView
+                                android:layout_width="@dimen/line_standard_item_pic"
+                                android:layout_height="@dimen/line_standard_item_pic"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:src="@drawable/name"/>
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="姓名"
+                                android:textColorHint="@color/font_light"
+                                android:layout_gravity="center_vertical"
+                                android:textCursorDrawable="@null"
+                                android:background="@null"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2">
+                            <ImageView
+                                android:layout_width="@dimen/line_standard_item_pic"
+                                android:layout_height="@dimen/line_standard_item_pic"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:src="@drawable/tel"/>
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="电话"
+                                android:textColorHint="@color/font_light"
+                                android:layout_gravity="center_vertical"
+                                android:textCursorDrawable="@null"
+                                android:background="@null"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_standard_item">
+                    <ImageView
+                        android:layout_width="@dimen/line_standard_item_pic"
+                        android:layout_height="@dimen/line_standard_item_pic"
+                        android:src="@drawable/kinds"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"/>
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:hint="物品种类"
+                        android:background="@drawable/bottom_border_standard"
+                        android:textColorHint="@color/font_light"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_standard_item">
+                    <ImageView
+                        android:layout_width="@dimen/line_standard_item_pic"
+                        android:layout_height="@dimen/line_standard_item_pic"
+                        android:src="@drawable/pic"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"/>
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:hint="物品图片"
+                        android:background="@drawable/bottom_border_standard"
+                        android:textColorHint="@color/font_light"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_standard_item">
+                    <ImageView
+                        android:layout_width="@dimen/line_standard_item_pic"
+                        android:layout_height="@dimen/line_standard_item_pic"
+                        android:src="@drawable/weight"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"/>
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:hint="物品重量(单位:kg)"
+                        android:background="@drawable/bottom_border_standard"
+                        android:textColorHint="@color/font_light"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_standard_item">
+                    <ImageView
+                        android:layout_width="@dimen/line_standard_item_pic"
+                        android:layout_height="@dimen/line_standard_item_pic"
+                        android:src="@drawable/time"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"/>
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:hint="请选择服务时间"
+                        android:background="@null"
+                        android:textColorHint="@color/font_light"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_standard_item">
+                    <ImageView
+                        android:layout_width="@dimen/line_standard_item_pic"
+                        android:layout_height="@dimen/line_standard_item_pic"
+                        android:src="@drawable/expensive"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="是否贵重或易碎物品"
+                        android:textSize="@dimen/font_input"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/font_weight"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="@dimen/line_standard_item_pic"
+                        android:layout_height="@dimen/line_standard_item_pic"
+                        android:src="@null"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/line_standard_item_pic"
+                        android:layout_weight="1"
+                        android:text="贵重或易碎物品，额外收取保价金额的5%为保价费用。当物品丢失，将赔偿保价金额。"
+                        android:textSize="@dimen/font_smaller"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="20dp"
+                        android:background="@drawable/bottom_border_standard"
+                        android:textColor="@color/font_light"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_standard_item">
+                    <ImageView
+                        android:layout_width="@dimen/line_standard_item_pic"
+                        android:layout_height="@dimen/line_standard_item_pic"
+                        android:src="@null"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"/>
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/line_standard_item_pic"
+                        android:layout_weight="1"
+                        android:hint="预估商品价值(单位:元)"
+                        android:textSize="@dimen/font_input"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/font_light"
+                        android:background="@null"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

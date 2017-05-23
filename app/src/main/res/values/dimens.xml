@@ -14,10 +14,14 @@
     /*行*/
     <dimen name="line_standard_input">50dp</dimen>
     <dimen name="line_standard_item">50dp</dimen>
+    <dimen name="line_standard_item_pic">30dp</dimen>
     /*常规字*/
     <dimen name="font_smallest">12sp</dimen>
     <dimen name="font_smaller">14sp</dimen>
     <dimen name="font_input">16sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_larger">20sp</dimen>
+    <dimen name="font_largest">22sp</dimen>
     /*按钮*/
     <dimen name="button_standard">18sp</dimen>
     /*其他*/
