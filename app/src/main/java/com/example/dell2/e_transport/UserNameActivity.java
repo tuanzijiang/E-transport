@@ -21,7 +21,7 @@ public class UserNameActivity extends BaseActivity {
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_username);
         init();
     }
     public void init(){
