@@ -6,6 +6,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -19,6 +20,7 @@ public class SettingActivity extends BaseActivity{
     private ImageView header_front_1;
     private ImageView header_back_1;
     private TextView title_name;
+    private LinearLayout go_account;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -37,6 +39,14 @@ public class SettingActivity extends BaseActivity{
         header_back_1.setVisibility(View.GONE);
         title_name=(TextView)findViewById(R.id.title_name);
         title_name.setText("设置");
+        go_account=(LinearLayout)findViewById(R.id.go_account);
+        go_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SettingActivity.this,AccountActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
     public static void actionStart(Context context){
