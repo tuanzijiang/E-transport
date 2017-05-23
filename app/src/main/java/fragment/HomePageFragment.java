@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.view.ViewPager;
+import android.widget.LinearLayout;
 
 import com.example.dell2.e_transport.R;
+import com.example.dell2.e_transport.Want2OrderActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -23,11 +25,12 @@ import handler.CarouselHandler;
  * Created by dell2 on 2017/5/20.
  */
 
-public class HomePageFragment extends Fragment {
+public class HomePageFragment extends Fragment implements View.OnClickListener{
     private  View view;
     private CarouselHandler carouselHandler=new CarouselHandler(new WeakReference<HomePageFragment>(this));
     private LayoutInflater inflate;
     private ViewPager homepage_carousel;
+    private LinearLayout want2order_button;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
         this.inflate=inflater;
         view=inflater.inflate(R.layout.homepage,container,false);
@@ -37,6 +40,11 @@ public class HomePageFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setCarousel();
+        init();
+    }
+    public void init(){
+        want2order_button=(LinearLayout)getView().findViewById(R.id.want2order_button);
+        want2order_button.setOnClickListener(this);
     }
     /**
      * 初始化轮播图
@@ -87,5 +95,12 @@ public class HomePageFragment extends Fragment {
     }
     public ViewPager getHomepage_carousel(){
         return homepage_carousel;
+    }
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.want2order_button:
+                Want2OrderActivity.actionStart(this.getActivity());
+                break;
+        }
     }
 }
