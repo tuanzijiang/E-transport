@@ -70,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/font_standard"
                     android:layout_gravity="center_horizontal"
+                    android:typeface="normal"
                     android:textSize="@dimen/activity_bottom_font"
                     android:text="@string/title_order"/>
             </LinearLayout>
