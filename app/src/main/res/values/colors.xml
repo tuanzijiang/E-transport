@@ -5,6 +5,7 @@
     <color name="theme_background">#f0f0f2</color>
     /*常用色*/
     <color name="button_verify">#56D176</color>
+    <color name="button_quit">#f6163c</color>
     <color name="font_standard">#666</color>
     <color name="font_weight">#333</color>
     <color name="font_light">#ccc</color>
