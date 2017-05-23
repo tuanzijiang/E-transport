@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     final String ORDERTAG="orderFragmentTag";
     final String USERTAG="userFragmentTag";
     private ImageView alarm;
+    private ImageView header_back_1;
     private ImageView setting;
     private HomePageFragment homePageFragment;
     private OrderFragment orderFragment;
@@ -86,12 +87,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         userRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_user);
         alarm=(ImageView)findViewById(R.id.header_front_1);
         setting=(ImageView)findViewById(R.id.header_back_1);
+        header_back_1=(ImageView)findViewById(R.id.header_back_1);
         assetManager=getAssets();
         fragmentManager=getSupportFragmentManager();
         /*响应式事件添加*/
         homeRelativeLayout.setOnClickListener(this);
         orderRelativeLayout.setOnClickListener(this);
         userRelativeLayout.setOnClickListener(this);
+        header_back_1.setOnClickListener(this);
         /*初始化碎片*/
         setTopFragment(0);
         setTitleName(0);
@@ -145,6 +148,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.main_bottom_user:
                 setTopFragment(2);
+                break;
+            case R.id.header_back_1:
+                SettingActivity.actionStart(this);
                 break;
             default:
                 break;
