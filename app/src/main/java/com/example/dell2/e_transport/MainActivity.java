@@ -66,6 +66,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                     userFragment.setLogin(returnDate);
                 }
                 break;
+            case 2:
+                break;
             default:
                 break;
         }

@@ -1,5 +1,7 @@
 package com.example.dell2.e_transport;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import collector.BaseActivity;
@@ -21,5 +23,10 @@ public class Want2OrderActivity extends BaseActivity {
     public void init()
     {
 
+    }
+    public static void actionStart(Context context){
+        Intent intent=new Intent(context,Want2OrderActivity.class);
+        MainActivity mainActivity=(MainActivity)context;
+        mainActivity.startActivityForResult(intent,2);
     }
 }
