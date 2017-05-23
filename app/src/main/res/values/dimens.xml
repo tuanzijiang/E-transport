@@ -16,6 +16,8 @@
     <dimen name="line_standard_item">60dp</dimen>
     /*常规字*/
     <dimen name="font_smallest">12sp</dimen>
+    /*按钮*/
+    <dimen name="button_standard">18sp</dimen>
     /*其他*/
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>

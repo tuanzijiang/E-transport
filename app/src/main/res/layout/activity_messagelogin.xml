@@ -67,6 +67,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:textSize="@dimen/button_standard"
             android:text="登录"/>
     </LinearLayout>
 </LinearLayout>
