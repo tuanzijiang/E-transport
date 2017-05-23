@@ -33,6 +33,9 @@
         <activity android:name=".Want2OrderActivity">
 
         </activity>
+        <activity android:name=".UserNameActivity">
+
+        </activity>
     </application>
 
 </manifest>
