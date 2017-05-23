@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="头像"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight"
                 android:layout_weight="1"/>
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="名字"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
@@ -60,7 +60,7 @@
             </TextView>
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/next_gray">
             </ImageView>
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="性别"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
@@ -92,7 +92,7 @@
             </TextView>
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/next_gray">
             </ImageView>
@@ -110,13 +110,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="手机"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/next_gray">
             </ImageView>
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="地区"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
@@ -148,7 +148,7 @@
             </TextView>
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/next_gray">
             </ImageView>
@@ -159,15 +159,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="安全设置"
-        android:textSize="@dimen/font_smallest"
+        android:textSize="14dp"
         android:textColor="@color/font_light"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="15dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
@@ -180,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="登陆密码"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
@@ -194,7 +194,7 @@
             </TextView>
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/next_gray">
             </ImageView>
@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="支付密码"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
@@ -225,7 +225,7 @@
             </TextView>
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/next_gray">
             </ImageView>
