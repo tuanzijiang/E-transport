@@ -24,6 +24,10 @@
             android:name=".PasswordLoginActivity">
 
         </activity>
+        <activity
+            android:name=".SettingActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -13,7 +13,7 @@
     <dimen name="carousel_head2">10sp</dimen>/*轮播图副标题*/
     /*行*/
     <dimen name="line_standard_input">50dp</dimen>
-    <dimen name="line_standard_item">60dp</dimen>
+    <dimen name="line_standard_item">50dp</dimen>
     /*常规字*/
     <dimen name="font_smallest">12sp</dimen>
     <dimen name="font_input">16sp</dimen>
