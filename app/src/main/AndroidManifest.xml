@@ -17,7 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MessageLoginActivity">
+        <activity
+            android:name=".MessageLoginActivity">
+        </activity>
+        <activity
+            android:name=".PasswordLoginActivity">
+
         </activity>
     </application>
 

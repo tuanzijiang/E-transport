@@ -36,6 +36,7 @@ public class CarouselPagerAdapt extends PagerAdapter {
         if(position<0){
             position+=viewList.size();
         }
+
         View view=viewList.get(position);
 
         ViewParent vp=view.getParent();

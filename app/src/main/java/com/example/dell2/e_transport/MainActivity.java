@@ -49,10 +49,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_main);
         init();
     }
+    /**
+     * 处理从其他activity返回的结果
+     */
     @Override
     public void onActivityResult(int requestCode,int resultCode,Intent intent){
         switch (requestCode){
-            case 1:
+            case 1:/*登录返还后的处理*/
                 if(resultCode==RESULT_OK){
                     String returnDate=intent.getStringExtra("result");
                     UserFragment userFragment=(UserFragment)fragmentManager.findFragmentByTag(USERTAG);

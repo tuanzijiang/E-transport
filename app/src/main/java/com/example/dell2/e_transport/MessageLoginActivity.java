@@ -3,6 +3,7 @@ package com.example.dell2.e_transport;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,15 +47,28 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
     }
     @Override
     public void onClick(View view){
+        Intent intent=new Intent();
         switch (view.getId()){
             case R.id.header_front_1:
-                Intent intent=new Intent();
                 intent.putExtra("result",BACK_STATE_NOLOGIN);
                 setResult(RESULT_OK,intent);
                 finish();
                 break;
+            case R.id.header_back_1:
+                PasswordLoginActivity.actionStart(this);
+                break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent intent){
+        switch (requestCode){
+            case 1:/*密码登录返还后的处理*/
+                if(resultCode==RESULT_OK){
+                    String returnData=intent.getDataString();
+                }
         }
     }
 }
