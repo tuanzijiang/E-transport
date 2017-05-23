@@ -44,7 +44,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
     }
     public void init(){
         want2order_button=(LinearLayout)getView().findViewById(R.id.want2order_button);
-
+        want2order_button.setOnClickListener(this);
     }
     /**
      * 初始化轮播图
