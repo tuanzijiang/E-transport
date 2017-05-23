@@ -30,6 +30,9 @@
         <activity android:name=".AccountActivity">
 
         </activity>
+        <activity android:name=".Want2OrderActivity">
+
+        </activity>
     </application>
 
 </manifest>
