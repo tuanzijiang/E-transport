@@ -5,7 +5,7 @@
     android:orientation="vertical">
     <include layout="@layout/title_layout_ooo"/>
     <LinearLayout
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -16,16 +16,24 @@
             android:background="@color/white"
             android:orientation="horizontal">
             <TextView
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="账户与安全">
+                android:layout_weight="1"
+                android:text="账户与安全"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/font_input">
             </TextView>
             <TextView
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="开启小额免密支付">
+                android:text="开启小额免密支付"
+                android:textSize="@dimen/font_smallest"
+                android:textColor="@color/font_light">
             </TextView>
             <ImageView
+                android:layout_gravity="center_vertical"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/next_gray">
@@ -36,7 +44,24 @@
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/line_standard_item"
-            android:background="@color/theme">
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="通用"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/font_input">
+            </TextView>
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/next_gray">
+            </ImageView>
 
         </LinearLayout>
     </LinearLayout>
