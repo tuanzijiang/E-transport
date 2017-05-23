@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/line_standard_item"
-            android:background="@color/white"
+            android:background="@drawable/bottom_border_standard"
             android:orientation="horizontal">
             <TextView
                 android:layout_gravity="center_vertical"
@@ -95,6 +95,7 @@
             </ImageView>
 
         </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
