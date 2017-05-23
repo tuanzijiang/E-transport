@@ -22,7 +22,8 @@
                 android:layout_weight="1"
                 android:text="账户与安全"
                 android:layout_marginLeft="10dp"
-                android:textSize="@dimen/font_input">
+                android:textSize="@dimen/font_input"
+                android:textColor="@color/font_weight">
             </TextView>
             <TextView
                 android:layout_gravity="center_vertical"
@@ -53,7 +54,8 @@
                 android:layout_weight="1"
                 android:text="通用"
                 android:layout_marginLeft="10dp"
-                android:textSize="@dimen/font_input">
+                android:textSize="@dimen/font_input"
+                android:textColor="@color/font_weight">
             </TextView>
 
             <ImageView
@@ -65,6 +67,34 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/line_standard_item"
+            android:background="@color/white"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="关于货急送"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/font_input"
+                android:textColor="@color/font_weight">
+            </TextView>
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/next_gray">
+            </ImageView>
+
+        </LinearLayout>
+
 
 
 </LinearLayout>

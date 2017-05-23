@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/theme"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/activity_bottom_font"
+                    android:textSize="@dimen/font_smaller"
                     android:text="@string/title_home"/>
             </LinearLayout>
         </RelativeLayout>
@@ -71,7 +71,7 @@
                     android:textColor="@color/font_standard"
                     android:layout_gravity="center_horizontal"
                     android:typeface="normal"
-                    android:textSize="@dimen/activity_bottom_font"
+                    android:textSize="@dimen/font_smaller"
                     android:text="@string/title_order"/>
             </LinearLayout>
         </RelativeLayout>
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/font_standard"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/activity_bottom_font"
+                    android:textSize="@dimen/font_smaller"
                     android:text="@string/title_user"/>
             </LinearLayout>
         </RelativeLayout>
