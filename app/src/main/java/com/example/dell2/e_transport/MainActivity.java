@@ -1,13 +1,17 @@
 package com.example.dell2.e_transport;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v4.app.FragmentManager;
+import android.widget.Toast;
 
 
 import collector.BaseActivity;
@@ -44,6 +48,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         }
         setContentView(R.layout.activity_main);
         init();
+    }
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent intent){
+        switch (requestCode){
+            case 1:
+                if(resultCode==RESULT_OK){
+                    String returnDate=intent.getStringExtra("result");
+                    UserFragment userFragment=(UserFragment)fragmentManager.findFragmentByTag(USERTAG);
+                    userFragment.setLogin(returnDate);
+                }
+                break;
+            default:
+                break;
+        }
     }
     /**
      * 对页面进行初始化：加载响应事件、给私有属性链接实例、初始化碎片、初始化title等
@@ -123,7 +141,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private void setTopFragment(int index){
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         clearButtonActive();
-        clearFraments(fragmentTransaction);
+        clearFragments(fragmentTransaction);
         switch (index){
             case 0:
                 if(homePageFragment==null) {
@@ -200,7 +218,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
      *清空主页的碎片激活状态
      * @param fragmentTransaction 调用该函数的函数所声明的碎片事务
      */
-    private void clearFraments(FragmentTransaction fragmentTransaction){
+    private void clearFragments(FragmentTransaction fragmentTransaction){
         if(homePageFragment!=null)
             fragmentTransaction.hide(homePageFragment);
         if(orderFragment!=null)

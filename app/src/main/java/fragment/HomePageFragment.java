@@ -30,7 +30,7 @@ public class HomePageFragment extends Fragment {
     private ViewPager homepage_carousel;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
         this.inflate=inflater;
-        View view=inflater.inflate(R.layout.homepage,container,false);
+        view=inflater.inflate(R.layout.homepage,container,false);
         return view;
     }
     @Override
