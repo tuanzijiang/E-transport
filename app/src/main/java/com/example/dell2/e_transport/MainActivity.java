@@ -1,5 +1,7 @@
 package com.example.dell2.e_transport;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -40,6 +42,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private RelativeLayout orderRelativeLayout;
     private RelativeLayout userRelativeLayout;
     private FragmentManager fragmentManager;
+    private AssetManager assetManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +86,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         userRelativeLayout=(RelativeLayout)findViewById(R.id.main_bottom_user);
         alarm=(ImageView)findViewById(R.id.header_front_1);
         setting=(ImageView)findViewById(R.id.header_back_1);
-
+        assetManager=getAssets();
         fragmentManager=getSupportFragmentManager();
         /*响应式事件添加*/
         homeRelativeLayout.setOnClickListener(this);
@@ -92,6 +95,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         /*初始化碎片*/
         setTopFragment(0);
         setTitleName(0);
+        setTypeFace();
+    }
+    /**
+     *
+     */
+    private void setTypeFace(){
+        Typeface tf= Typeface.createFromAsset(assetManager, "fonts/msyh.ttf");
+        userTV.setTypeface(tf);
+        orderTV.setTypeface(tf);
+        homeTV.setTypeface(tf);
     }
     /**
      * 设置主页面顶部的标题栏
