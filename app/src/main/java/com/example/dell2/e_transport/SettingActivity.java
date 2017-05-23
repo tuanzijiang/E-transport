@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import collector.BaseActivity;
 
 /**
@@ -24,6 +25,7 @@ public class SettingActivity extends BaseActivity{
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
+
         setContentView(R.layout.activity_setting);
         init();
     }
