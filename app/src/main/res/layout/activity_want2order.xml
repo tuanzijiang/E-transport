@@ -11,7 +11,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,9 +33,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_standard_input"
-                    android:background="@drawable/bottom_border_standard"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true" >
+                    android:background="@drawable/bottom_border_standard">
                     <EditText
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -295,7 +295,7 @@
                         android:layout_gravity="center_vertical"
                         android:paddingBottom="20dp"
                         android:background="@drawable/bottom_border_standard"
-                        android:textColor="@color/font_light"/>
+                        android:textColor="@color/font_standard"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -315,9 +315,31 @@
                         android:hint="预估商品价值(单位:元)"
                         android:textSize="@dimen/font_input"
                         android:layout_gravity="center_vertical"
-                        android:textColor="@color/font_light"
+                        android:textColorHint="@color/font_light"
                         android:background="@null"/>
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="@dimen/line_standard_item"
+                android:background="@color/white">
+                <ImageView
+                    android:layout_width="@dimen/line_standard_item_pic"
+                    android:layout_height="@dimen/line_standard_item_pic"
+                    android:src="@drawable/price"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"/>
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="服务费(单位:元)"
+                    android:textSize="@dimen/font_input"
+                    android:layout_gravity="center_vertical"
+                    android:textColorHint="@color/font_light"
+                    android:background="@null"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
