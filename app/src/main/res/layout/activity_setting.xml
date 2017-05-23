@@ -34,12 +34,12 @@
                 android:textSize="@dimen/font_smallest"
                 android:textColor="@color/font_light">
             </TextView>
+
             <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/next_gray">
-            </ImageView>
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/next_gray"></ImageView>
 
         </LinearLayout>
         <LinearLayout
@@ -60,11 +60,10 @@
             </TextView>
 
             <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/next_gray">
-            </ImageView>
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/next_gray"></ImageView>
 
         </LinearLayout>
     </LinearLayout>
@@ -87,12 +86,11 @@
                 android:textColor="@color/font_weight">
             </TextView>
 
-            <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/next_gray">
-            </ImageView>
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/next_gray"></ImageView>
 
         </LinearLayout>
 
