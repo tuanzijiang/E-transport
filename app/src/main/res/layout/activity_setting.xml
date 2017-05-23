@@ -94,7 +94,20 @@
             </ImageView>
 
         </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_standard_item"
+            android:gravity="center"
+            android:text="退出登陆"
+            android:textColor="@color/button_quit"
+            android:textSize="@dimen/font_input"/>
+    </LinearLayout>
 
 
 </LinearLayout>
