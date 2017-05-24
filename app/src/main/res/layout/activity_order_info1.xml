@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <include layout="@layout/title_layout_ooo"/>
+    <!--蓝色的上部头-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,11 +37,13 @@
             android:src="@drawable/car"/>
     </LinearLayout>
 
+    <!--配送信息-->
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <!--配送信息-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
@@ -59,6 +62,7 @@
                 >
             </TextView>
         </LinearLayout>
+        <!--发起用户-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
@@ -84,6 +88,7 @@
                 android:textColor="@color/font_light">
             </TextView>
         </LinearLayout>
+        <!--配送员-->
         <LinearLayout
 
             android:layout_width="match_parent"
@@ -91,6 +96,7 @@
             android:layout_height="@dimen/line_standard_details"
             android:background="@drawable/bottom_border_standard"
             android:orientation="horizontal">
+            <!--文字信息-->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/line_standard_details"
@@ -115,19 +121,24 @@
                     android:textColor="@color/font_light">
                 </TextView>
             </LinearLayout>
+            <!--联系配送人按钮-->
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="40dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/border_radius_verify"
                 android:gravity="center">
                 <ImageView
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_gravity="center"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:src="@drawable/tel_white"/>
                 <TextView
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -136,6 +147,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
 
     </LinearLayout>
 
