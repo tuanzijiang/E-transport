@@ -18,6 +18,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private ImageView header_back_1;
     private TextView title_name;
     private LinearLayout setUserName;
+    private LinearLayout setUserSex;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -46,6 +47,9 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 intent=new Intent(AccountActivity.this,UserNameActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.setUserSex:
+                intent=new Intent(AccountActivity.this,UserSexActivity.class);
+                startActivity(intent);
             default:
                 break;
         }

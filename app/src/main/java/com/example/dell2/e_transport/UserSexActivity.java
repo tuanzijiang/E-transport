@@ -1,17 +1,17 @@
 package com.example.dell2.e_transport;
 
+import collector.BaseActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import collector.BaseActivity;
-
 /**
- * Created by wangyan on 2017/5/23.
+ * Created by dell2 on 2017/5/24.
  */
 
-public class UserNameActivity extends BaseActivity {
+public class UserSexActivity extends BaseActivity implements View.OnClickListener {
     private ImageView header_front_1;
     private ImageView header_back_1;
     private TextView title_name;
@@ -21,15 +21,25 @@ public class UserNameActivity extends BaseActivity {
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
-        setContentView(R.layout.activity_username);
+        setContentView(R.layout.activity_usersex);
         init();
     }
-    public void init(){
-        header_front_1=(ImageView) findViewById(R.id.header_front_1);
+    private void init(){
+        header_front_1=(ImageView)findViewById(R.id.header_front_1);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
         title_name=(TextView)findViewById(R.id.title_name);
-        header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
-        title_name.setText("用户名");
+        header_front_1.setImageResource(R.drawable.last_white);
+        header_front_1.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.header_front_1:
+                finish();
+                break;
+            default:
+                break;
+        }
     }
 }
