@@ -170,9 +170,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp">
+                >
                 <LinearLayout
+                    android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/line_standard_item_pic"
                     android:orientation="horizontal">
@@ -187,13 +187,30 @@
                         android:layout_marginLeft="20dp"
                         android:layout_gravity="center"
                         android:text="13162311111"/>
+                    <!--电话按钮-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/border_radius_verify"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_gravity="center"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/tel_white"/>
+                    </LinearLayout>
                 </LinearLayout>
-                <TextView
 
+                <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/line_standard_item_pic"
-                    android:layout_gravity="center"
-                    android:text="华东师范大学（中北校区）"/>
+                    android:layout_marginLeft="20dp"
+                    android:text="华东师范大学（中北校区）" />
             </LinearLayout>
         </LinearLayout>
         <!--收货信息-->
@@ -215,12 +232,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp">
+                android:layout_gravity="center">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/line_standard_item_pic"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -232,12 +249,27 @@
                         android:layout_marginLeft="20dp"
                         android:layout_gravity="center"
                         android:text="1316232222"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/border_radius_verify"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_gravity="center"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/tel_white"/>
+                    </LinearLayout>
                 </LinearLayout>
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/line_standard_item_pic"
-                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
                     android:text="华东师范大学（中北校区）"/>
             </LinearLayout>
         </LinearLayout>
