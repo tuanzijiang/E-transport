@@ -52,6 +52,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <TextView
+                android:id="@+id/userName"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,6 +86,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <TextView
+                android:id="@+id/userGender"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,6 +118,14 @@
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13367935363"
+                android:textSize="@dimen/font_input"
+                android:textColor="@color/font_light">
+            </TextView>
             <ImageView
                 android:layout_gravity="center_vertical"
                 android:layout_width="25dp"
@@ -141,6 +151,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <TextView
+                android:id="@+id/userAddress"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

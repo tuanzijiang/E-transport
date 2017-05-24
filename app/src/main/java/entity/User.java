@@ -5,11 +5,48 @@ package entity;
  */
 
 public class User {
+    /**
+     * int userGender --------------用户性别，0--男，1--女
+     */
     private String userName;
+    private String userTel;
+    private String userAddress;
+    private int userGender;
+    public void setUserTel(String userTel){
+        this.userTel=userTel;
+    }
+    public void setUserGender(int userGender){
+        this.userGender=userGender;
+    }
     public void setUserName(String userName){
         this.userName=userName;
     }
+    public void setUserAddress(String userAddress){
+        this.userAddress=userAddress;
+    }
     public String getUserName(){
         return this.userName;
+    }
+    public int getUserGender(){
+        return this.userGender;
+    }
+    public String getUserTel(){
+        return this.userTel;
+    }
+    public String getUserAddress(){
+        return this.userAddress;
+    }
+
+    public String getUserGenderString(){
+        String result;
+        switch (this.userGender){
+            case 0:
+                result="男";
+                break;
+            default:
+                result="女";
+                break;
+        }
+        return result;
     }
 }
