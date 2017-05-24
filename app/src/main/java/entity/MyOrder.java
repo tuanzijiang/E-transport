@@ -1,5 +1,7 @@
 package entity;
 
+import com.example.dell2.e_transport.R;
+
 /**
  * Created by dell2 on 2017/5/24.
  */
@@ -27,6 +29,7 @@ public class MyOrder {
         this.orderSend=orderSend;
         this.price=price;
     }
+
     public String getOrderSendString(){
         String result="";
         switch (this.orderState){
@@ -64,18 +67,18 @@ public class MyOrder {
         String result=String.valueOf(price);
         return result;
     }
-    public String getKindImageString(){
-        String result;
+    public int getKindImageString(){
+        int result;
         String random=String.valueOf(Math.round(Math.random()));
         switch (random){
             case "0":
-                result="@drawable/cloth";
+                result= R.drawable.cloth;
                 break;
             case "1":
-                result="@drawable/gift";
+                result=R.drawable.gift;
                 break;
             default:
-                result="@drawable/gift";
+                result=R.drawable.cloth;
                 break;
         }
         return result;

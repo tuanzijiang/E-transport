@@ -41,6 +41,12 @@ public class MyOrderAdapt extends ArrayAdapter<MyOrder> {
         TextView sendAddress=(TextView)view.findViewById(R.id.sendAddress);
         TextView receiveAddress=(TextView)view.findViewById(R.id.receiveAddress);
         TextView price=(TextView)view.findViewById(R.id.price);
+        TextView orderSend=(TextView)view.findViewById(R.id.orderSend);
+        kindImage.setImageResource(myOrder.getKindImageString());
+        sendAddress.setText(myOrder.getSendAddress());
+        receiveAddress.setText(myOrder.getReceiveAddress());
+        price.setText(myOrder.getPriceString());
+        orderSend.setText(myOrder.getOrderSendString());
         return view;
     }
 }
