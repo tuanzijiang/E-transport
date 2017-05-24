@@ -73,19 +73,19 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="发起用户："
                 android:layout_marginLeft="20dp"
                 android:textSize="14dp"
-                android:textColor="@color/font_light">
+                android:textColor="@color/font_standard">
             </TextView>
             <TextView
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_height="wrap_content"
                 android:text="自己"
                 android:textSize="14dp"
-                android:textColor="@color/font_light">
+                android:textColor="@color/font_standard">
             </TextView>
         </LinearLayout>
         <!--配送员-->
@@ -110,22 +110,23 @@
                     android:text="配送人："
                     android:layout_marginLeft="20dp"
                     android:textSize="14dp"
-                    android:textColor="@color/font_light">
+                    android:textColor="@color/font_standard">
                 </TextView>
                 <TextView
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
                     android:text="李小哥"
                     android:textSize="14dp"
-                    android:textColor="@color/font_light">
+                    android:textColor="@color/font_standard">
                 </TextView>
             </LinearLayout>
             <!--联系配送人按钮-->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginRight="20dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/border_radius_verify"
                 android:gravity="center">
@@ -146,6 +147,122 @@
                     android:text="联系配送人"/>
             </LinearLayout>
 
+        </LinearLayout>
+        <!--取货信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bottom_border_standard">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="取货信息："
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/line_standard_item_pic"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="王先生"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:text="13162311111"/>
+                </LinearLayout>
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/line_standard_item_pic"
+                    android:layout_gravity="center"
+                    android:text="华东师范大学（中北校区）"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!--收货信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bottom_border_standard">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="收货信息："
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/line_standard_item_pic"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="李先生"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:text="1316232222"/>
+                </LinearLayout>
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/line_standard_item_pic"
+                    android:layout_gravity="center"
+                    android:text="华东师范大学（中北校区）"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!--配送费-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/line_standard_details"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务费："
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard">
+            </TextView>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="¥32"
+                android:textSize="16dp"
+                android:textColor="@color/button_quit">
+            </TextView>
         </LinearLayout>
 
 
