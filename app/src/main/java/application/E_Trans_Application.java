@@ -29,6 +29,6 @@ public class E_Trans_Application extends Application {
     /*退出操作*/
     public void exit(){
         loginState=0;
-        user=new User();
+        user=null;
     }
 }
