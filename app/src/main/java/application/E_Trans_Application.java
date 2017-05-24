@@ -9,9 +9,12 @@ import entity.User;
  */
 
 public class E_Trans_Application extends Application {
-    private String loginState;
+    /**
+     * int loginState----------------登录状态：0-未登录，1-登录
+     */
+    private int loginState;
     private User user;
-    public void setLoginState(String loginState){
+    public void setLoginState(int loginState){
         this.loginState=loginState;
     }
     public void setUser(User user){
@@ -20,7 +23,12 @@ public class E_Trans_Application extends Application {
     public User getUser(){
         return this.user;
     }
-    public String getLoginState(){
+    public int getLoginState(){
         return this.loginState;
+    }
+    /*退出操作*/
+    public void exit(){
+        loginState=0;
+        user=new User();
     }
 }

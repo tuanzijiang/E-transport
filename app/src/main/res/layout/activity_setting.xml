@@ -34,12 +34,12 @@
                 android:textSize="@dimen/font_smallest"
                 android:textColor="@color/font_light">
             </TextView>
-
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/next_gray"></ImageView>
+                android:src="@drawable/next_gray">
+            </ImageView>
 
         </LinearLayout>
         <LinearLayout
@@ -95,6 +95,7 @@
         </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/button_exit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"

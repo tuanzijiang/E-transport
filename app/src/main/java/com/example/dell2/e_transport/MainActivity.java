@@ -16,7 +16,9 @@ import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
 
+import application.E_Trans_Application;
 import collector.BaseActivity;
+import entity.User;
 import fragment.HomePageFragment;
 import fragment.OrderFragment;
 import fragment.UserFragment;
@@ -52,7 +54,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         }
         setContentView(R.layout.activity_main);
         init();
+        /*测试函数，用于预先设置一些用户属性*/
+        test();
     }
+
+    /**
+     * 没有连接数据库的时候的测试函数，正式部署的时候可以删除
+     */
+    public void test(){
+        E_Trans_Application app=(E_Trans_Application)getApplication();
+        User user=new User();
+        user.setUserTel("123456789");
+        user.setUserName("吗字典");
+        user.setUserGender(0);
+        user.setUserAddress("上海市 普陀区华东师范大学");
+        app.setLoginState(1);
+        app.setUser(user);
+    }
+
+
     /**
      * 处理从其他activity返回的结果
      */
