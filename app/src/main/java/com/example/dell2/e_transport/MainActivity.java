@@ -83,7 +83,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 if(resultCode==RESULT_OK){
                     String returnDate=intent.getStringExtra("result");
                     UserFragment userFragment=(UserFragment)fragmentManager.findFragmentByTag(USERTAG);
-                    userFragment.setLogin(returnDate);
+                    userFragment.setLogin("未登录");
                 }
                 break;
             case 2:

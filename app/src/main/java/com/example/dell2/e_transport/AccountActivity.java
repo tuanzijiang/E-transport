@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.content.Intent;
 
+import org.w3c.dom.Text;
+
 import collector.BaseActivity;
 
 /**
@@ -18,7 +20,11 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private ImageView header_back_1;
     private TextView title_name;
     private LinearLayout setUserName;
-    private LinearLayout setUserSex;
+    private TextView userName;
+    private LinearLayout setUserGender;
+    private TextView userGender;
+    private LinearLayout setTel;
+    private TextView tel;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -29,12 +35,18 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         init();
     }
     public void init(){
+        /*实例化*/
         header_front_1=(ImageView) findViewById(R.id.header_front_1);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
         title_name=(TextView)findViewById(R.id.title_name);
         setUserName=(LinearLayout)findViewById(R.id.setUserName);
+        userName=(TextView)findViewById(R.id.userName);
+        setUserGender=(LinearLayout)findViewById(R.id.setUserGender);
+        userGender=(TextView)findViewById(R.id.userGender);
+        setTel=(LinearLayout)findViewById(R.id.setTel);
+        tel=(TextView)findViewById(R.id.tel);
+        /*相应事件*/
         setUserName.setOnClickListener(this);
-
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
         title_name.setText("账户信息");
