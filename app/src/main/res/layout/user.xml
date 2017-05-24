@@ -121,6 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
+            <!--收货地址-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
@@ -149,11 +150,13 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="50dp"
+                        android:layout_marginRight="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/next_gray"/>
                 </LinearLayout>
 
             </LinearLayout>
+            <!--我的收藏-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
@@ -183,10 +186,12 @@
                         android:layout_width="20dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
                         android:src="@drawable/next_gray"/>
                 </LinearLayout>
 
             </LinearLayout>
+            <!--实名认证-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
@@ -215,6 +220,7 @@
                         android:layout_width="20dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
                         android:src="@drawable/next_gray"/>
                 </LinearLayout>
 
@@ -226,6 +232,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
+            <!--服务中心-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
@@ -255,10 +262,12 @@
                         android:layout_width="20dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
                         android:src="@drawable/next_gray"/>
                 </LinearLayout>
 
             </LinearLayout>
+            <!--欢迎评分-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
@@ -288,10 +297,12 @@
                         android:layout_width="20dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
                         android:src="@drawable/next_gray"/>
                 </LinearLayout>
 
             </LinearLayout>
+            <!--合作加盟-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
@@ -321,10 +332,12 @@
                         android:layout_width="20dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
                         android:src="@drawable/next_gray"/>
                 </LinearLayout>
 
             </LinearLayout>
+            <!--邀请有奖-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
@@ -353,6 +366,7 @@
                         android:layout_width="20dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
                         android:src="@drawable/next_gray"/>
                 </LinearLayout>
 
