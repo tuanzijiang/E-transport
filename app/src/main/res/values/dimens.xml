@@ -15,7 +15,7 @@
     <dimen name="line_standard_input">50dp</dimen>
     <dimen name="line_standard_item">50dp</dimen>
     <dimen name="line_standard_item_pic">30dp</dimen>
-    <dimen name="line_standard_cards">170dp</dimen>
+    <dimen name="line_standard_cards">150dp</dimen>
     /*常规字*/
     <dimen name="font_smallest">12sp</dimen>
     <dimen name="font_smaller">14sp</dimen>
