@@ -4,7 +4,8 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/line_standard_input">
+        android:layout_height="@dimen/line_standard_input"
+        android:background="@drawable/bottom_border_standard">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -76,11 +77,13 @@
         </LinearLayout>
     </LinearLayout>
     <ListView
-            android:id="@+id/myOrdersListView"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:background="@color/theme_background">
+        android:id="@+id/myOrdersListView"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:background="@color/theme_background"
+        android:divider="#00000000"
+        android:dividerHeight="20dp">
 
         </ListView>
 </LinearLayout>
