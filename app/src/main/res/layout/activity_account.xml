@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:orientation="vertical">
+        <!--头像-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -32,7 +33,7 @@
                 android:layout_marginRight="7dp"
                 />
         </LinearLayout>
-
+        <!--用户名-->
         <LinearLayout
             android:id="@+id/setUserName"
             android:layout_width="match_parent"
@@ -66,7 +67,7 @@
                 android:src="@drawable/next_gray">
             </ImageView>
         </LinearLayout>
-
+        <!--性别-->
         <LinearLayout
             android:id="@+id/setUserSex"
             android:layout_width="match_parent"
@@ -100,7 +101,7 @@
                 android:src="@drawable/next_gray">
             </ImageView>
         </LinearLayout>
-
+        <!--手机-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
@@ -132,7 +133,7 @@
                 android:src="@drawable/next_gray">
             </ImageView>
         </LinearLayout>
-
+        <!--地区-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
@@ -167,6 +168,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <!--安全设置text-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -175,11 +178,14 @@
         android:textColor="@color/font_light"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"/>
+
+    <!--安全设置下属模块-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp">
+        <!--登陆密码-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
@@ -211,6 +217,7 @@
                 android:src="@drawable/next_gray">
             </ImageView>
         </LinearLayout>
+        <!--支付密码-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
@@ -242,6 +249,7 @@
                 android:src="@drawable/next_gray">
             </ImageView>
         </LinearLayout>
+        <!--小额免密支付-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
