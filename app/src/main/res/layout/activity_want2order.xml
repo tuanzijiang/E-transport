@@ -188,9 +188,8 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
                         android:hint="物品种类"
                         android:background="@drawable/bottom_border_standard"
                         android:textColorHint="@color/font_light"/>
@@ -206,9 +205,8 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
                         android:hint="物品图片"
                         android:background="@drawable/bottom_border_standard"
                         android:textColorHint="@color/font_light"/>
@@ -224,9 +222,8 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
                         android:hint="物品重量(单位:kg)"
                         android:background="@drawable/bottom_border_standard"
                         android:textColorHint="@color/font_light"/>
