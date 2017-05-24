@@ -42,6 +42,7 @@
             android:background="@drawable/bottom_border_standard"
             android:orientation="horizontal">
             <TextView
+
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +70,7 @@
         </LinearLayout>
         <!--性别-->
         <LinearLayout
-            android:id="@+id/setUserSex"
+            android:id="@+id/setUserGender"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
@@ -103,6 +104,7 @@
         </LinearLayout>
         <!--手机-->
         <LinearLayout
+            android:id="@+id/setTel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
@@ -119,6 +121,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <TextView
+                android:id="@+id/tel"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,6 +138,7 @@
         </LinearLayout>
         <!--地区-->
         <LinearLayout
+            android:id="@+id/setUserAddress"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
