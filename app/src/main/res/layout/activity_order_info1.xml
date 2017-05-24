@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <include layout="@layout/title_layout_ooo"/>
-    <!--蓝色的上部头-->
+    <!--蓝色的上部模块-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:text="配送者据您还有5km"
+                android:text="配送者距离您还有5km"
                 android:textSize="14dp"
                 android:textColor="@color/white"/>
             <TextView
@@ -37,7 +37,7 @@
             android:src="@drawable/car"/>
     </LinearLayout>
 
-    <!--配送信息-->
+    <!--配送信息模块-->
     <LinearLayout
 
         android:layout_width="match_parent"
@@ -109,18 +109,20 @@
 
                     android:text="配送人："
                     android:layout_marginLeft="20dp"
+                    android:layout_marginRight="4dp"
                     android:textSize="14dp"
                     android:textColor="@color/font_standard">
                 </TextView>
+
                 <TextView
-                    android:layout_gravity="center_vertical"
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
                     android:text="李小哥"
-                    android:textSize="14dp"
-                    android:textColor="@color/font_standard">
-                </TextView>
+                    android:textColor="@color/font_standard"
+                    android:textSize="14dp"></TextView>
             </LinearLayout>
             <!--联系配送人按钮-->
             <LinearLayout
@@ -264,8 +266,132 @@
                 android:textColor="@color/button_quit">
             </TextView>
         </LinearLayout>
-
-
     </LinearLayout>
 
+    <!--物品信息模块-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+        <!--物品信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/line_standard_item"
+            android:background="@drawable/bottom_border_standard"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="物品信息"
+                android:layout_marginLeft="20dp"
+                android:textSize="@dimen/font_input"
+                android:textColor="@color/font_weight"
+                >
+            </TextView>
+        </LinearLayout>
+        <!--物品类型-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/line_standard_details"
+            android:background="@drawable/bottom_border_standard"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物品类型："
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard">
+            </TextView>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:text="图书"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard">
+            </TextView>
+        </LinearLayout>
+        <!--物品重量-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/line_standard_details"
+            android:background="@drawable/bottom_border_standard"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物品重量："
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard">
+            </TextView>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:text="3kg"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard">
+            </TextView>
+        </LinearLayout>
+        <!--物品备注-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/line_standard_details"
+            android:background="@drawable/bottom_border_standard"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物品备注："
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard">
+            </TextView>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:text="贵重易碎物品"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard">
+            </TextView>
+        </LinearLayout>
+        <!--物品图片-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物品图片："
+                android:layout_marginLeft="20dp"
+                android:textSize="14dp"
+                android:textColor="@color/font_standard" />
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="66dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/user_avatar"
+                android:layout_marginLeft="20dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
