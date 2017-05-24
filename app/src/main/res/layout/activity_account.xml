@@ -138,6 +138,7 @@
         </LinearLayout>
         <!--地区-->
         <LinearLayout
+            android:id="@+id/setUserAddress"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
