@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.dell2.e_transport.MainActivity;
@@ -38,6 +39,12 @@ public class OrderFragment extends Fragment {
         initMyOrder();
         MyOrderAdapt myOrderAdapt=new MyOrderAdapt(getActivity(),R.layout.viewlist_myorder,myOrderList);
         myOrderListView.setAdapter(myOrderAdapt);
+        myOrderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                MyOrder myOrderItem=myOrderList.get(i);
+            }
+        });
     }
     public void initMyOrder(){
         /*初始化order列表*/
