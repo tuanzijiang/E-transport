@@ -191,6 +191,7 @@
         android:layout_marginTop="10dp">
         <!--登陆密码-->
         <LinearLayout
+            android:id="@+id/set_PwLogin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
@@ -207,6 +208,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <TextView
+                android:id="@+id/pwLogin"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -223,6 +225,7 @@
         </LinearLayout>
         <!--支付密码-->
         <LinearLayout
+            android:id="@+id/set_PwCover"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
@@ -239,6 +242,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <TextView
+                android:id="@+id/pwCover"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
