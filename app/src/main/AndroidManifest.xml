@@ -48,7 +48,6 @@
             android:name=".UserAreaAvtivity">
 
         </activity>
-
         <activity
             android:name=".UserLoginPwActivity">
 

@@ -69,12 +69,14 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         pwLogin=(TextView)findViewById(R.id.pwLogin);
         pwCover=(TextView)findViewById(R.id.pwCover);
         /*响应事件设定*/
+        header_front_1.setOnClickListener(this);
         setUserName.setOnClickListener(this);
         setUserGender.setOnClickListener(this);
         setUserTel.setOnClickListener(this);
         setUserAddress.setOnClickListener(this);
         setPwCover.setOnClickListener(this);
         setPwLogin.setOnClickListener(this);
+        setPwCover.setOnClickListener(this);
         /*标题初始化*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
@@ -129,6 +131,13 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                     intent=new Intent(AccountActivity.this,UserLoginPwChangeActivity.class);
                 else
                     intent=new Intent(AccountActivity.this,UserLoginPwActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.set_PwCover:
+                if(user.getUserPwCover()==null||user.getUserPwCover()=="")
+                    intent=new Intent(AccountActivity.this,UserPayPwChangeActivity.class);
+                else
+                    intent=new Intent(AccountActivity.this,UserPayPwActivity.class);
                 startActivity(intent);
                 break;
             default:
