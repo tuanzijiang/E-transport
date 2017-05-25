@@ -8,10 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by dell2 on 2017/5/24.
+ * Created by dell2 on 2017/5/25.
  */
 
-public class UserSexActivity extends BaseActivity implements View.OnClickListener {
+public class UserPhoneActivity extends BaseActivity implements View.OnClickListener {
     private ImageView header_front_1;
     private ImageView header_back_1;
     private TextView title_name;
@@ -21,7 +21,7 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
-        setContentView(R.layout.activity_usersex);
+        setContentView(R.layout.activity_userphone);
         init();
     }
     private void init(){
@@ -31,7 +31,7 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
         header_back_1.setVisibility(View.GONE);
         header_front_1.setImageResource(R.drawable.last_white);
         header_front_1.setOnClickListener(this);
-        title_name.setText("性别");
+        title_name.setText("手机");
     }
     @Override
     public void onClick(View view){

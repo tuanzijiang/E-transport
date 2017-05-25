@@ -68,6 +68,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         user.setUserName("吗字典");
         user.setUserGender(0);
         user.setUserAddress("上海市 普陀区华东师范大学");
+        user.setUserPwLogin("123456");
         app.setLoginState(1);
         app.setUser(user);
     }

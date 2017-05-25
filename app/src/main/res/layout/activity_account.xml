@@ -57,7 +57,6 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="张胖子"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_light">
             </TextView>
@@ -91,7 +90,6 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="男"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_light">
             </TextView>
@@ -125,7 +123,6 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="13367935363"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_light">
             </TextView>
@@ -159,7 +156,9 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="上海 普陀"
+                android:maxEms="10"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_light">
             </TextView>

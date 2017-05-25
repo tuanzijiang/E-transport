@@ -9,7 +9,9 @@ import android.content.Intent;
 
 import org.w3c.dom.Text;
 
+import application.E_Trans_Application;
 import collector.BaseActivity;
+import entity.User;
 
 /**
  * Created by wangyan on 2017/5/23.
@@ -31,6 +33,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private TextView pwLogin;
     private LinearLayout setPwCover;
     private TextView pwCover;
+    private E_Trans_Application app;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -40,8 +43,14 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_account);
         init();
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        initContent();
+    }
     public void init(){
         /*实例化*/
+        app=(E_Trans_Application)getApplication();
         header_front_1=(ImageView) findViewById(R.id.header_front_1);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
         title_name=(TextView)findViewById(R.id.title_name);
@@ -59,11 +68,36 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         pwCover=(TextView)findViewById(R.id.pwCover);
         /*响应事件设定*/
         setUserName.setOnClickListener(this);
+        setUserGender.setOnClickListener(this);
+        setUserTel.setOnClickListener(this);
+        /*标题初始化*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
         title_name.setText("账户信息");
+        /*内容初始化*/
+        initContent();
     }
-    /*响应事件*/
+    /*内容初始化函数*/
+    public void initContent(){
+        User user=app.getUser();
+        userName.setText(user.getUserName());
+        userGender.setText(user.getUserGenderString());
+        userTel.setText(user.getUserTel());
+        userAddress.setText(user.getUserAddress());
+        if(user.getUserPwCover()==null||user.getUserPwCover()==""){
+            pwCover.setText("未设置");
+        }
+        else{
+            pwCover.setText("已设置");
+        }
+        if(user.getUserPwLogin()==null||user.getUserPwLogin()==""){
+            pwCover.setText("未设置");
+        }
+        else{
+            pwCover.setText("已设置");
+        }
+    }
+    /*响应事件函数*/
     public void onClick(View view){
         Intent intent;
         switch (view.getId()){
@@ -78,9 +112,11 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 intent=new Intent(AccountActivity.this,UserSexActivity.class);
                 startActivity(intent);
             case R.id.setTel:
-//                intent=new Intent(AccountActivity.this)
+                intent=new Intent(AccountActivity.this,UserPhoneActivity.class);
+                startActivity(intent);
             default:
                 break;
         }
     }
+
 }

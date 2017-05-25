@@ -11,6 +11,8 @@ public class User {
     private String userName;
     private String userTel;
     private String userAddress;
+    private String userPwLogin;
+    private String userPwCover;
     private int userGender;
     public void setUserTel(String userTel){
         this.userTel=userTel;
@@ -23,6 +25,18 @@ public class User {
     }
     public void setUserAddress(String userAddress){
         this.userAddress=userAddress;
+    }
+    public void setUserPwLogin(String userPwLogin){
+        this.userPwLogin=userPwLogin;
+    }
+    public void setUserPwCover(String userPwCover){
+        this.userPwCover=userPwCover;
+    }
+    public String getUserPwCover(){
+        return userPwCover;
+    }
+    public String getUserPwLogin(){
+        return userPwLogin;
     }
     public String getUserName(){
         return this.userName;
