@@ -28,9 +28,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/verify_button"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_radius_theme"
+                android:gravity="center"
                 android:padding="10dp"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/white"
