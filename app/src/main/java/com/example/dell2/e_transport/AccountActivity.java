@@ -34,6 +34,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private LinearLayout setPwCover;
     private TextView pwCover;
     private E_Trans_Application app;
+    private User user;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -51,6 +52,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     public void init(){
         /*实例化*/
         app=(E_Trans_Application)getApplication();
+        user=app.getUser();
         header_front_1=(ImageView) findViewById(R.id.header_front_1);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
         title_name=(TextView)findViewById(R.id.title_name);
@@ -70,6 +72,9 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         setUserName.setOnClickListener(this);
         setUserGender.setOnClickListener(this);
         setUserTel.setOnClickListener(this);
+        setUserAddress.setOnClickListener(this);
+        setPwCover.setOnClickListener(this);
+        setPwLogin.setOnClickListener(this);
         /*标题初始化*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
@@ -79,7 +84,6 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     }
     /*内容初始化函数*/
     public void initContent(){
-        User user=app.getUser();
         userName.setText(user.getUserName());
         userGender.setText(user.getUserGenderString());
         userTel.setText(user.getUserTel());
@@ -101,7 +105,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View view){
         Intent intent;
         switch (view.getId()){
-            case R.id.header_back_1:
+            case R.id.header_front_1:
                 finish();
                 break;
             case R.id.setUserName:
@@ -111,9 +115,22 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             case R.id.setUserGender:
                 intent=new Intent(AccountActivity.this,UserSexActivity.class);
                 startActivity(intent);
+                break;
             case R.id.setTel:
                 intent=new Intent(AccountActivity.this,UserPhoneActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.setUserAddress:
+                intent=new Intent(AccountActivity.this,UserAreaAvtivity.class);
+                startActivity(intent);
+                break;
+            case R.id.set_PwLogin:
+                if(user.getUserPwLogin()==null||user.getUserPwLogin()=="")
+                    intent=new Intent(AccountActivity.this,UserLoginPwChangeActivity.class);
+                else
+                    intent=new Intent(AccountActivity.this,UserLoginPwActivity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
         }

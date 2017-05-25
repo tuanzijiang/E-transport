@@ -40,6 +40,31 @@
         <activity
             android:name=".UserSexActivity">
         </activity>
+        <activity
+            android:name=".UserPhoneActivity">
+
+        </activity>
+        <activity
+            android:name=".UserAreaAvtivity">
+
+        </activity>
+
+        <activity
+            android:name=".UserLoginPwActivity">
+
+        </activity>
+        <activity
+            android:name=".UserLoginPwChangeActivity">
+
+        </activity>
+        <activity
+            android:name=".UserPayPwActivity">
+
+        </activity>
+        <activity
+            android:name=".UserPayPwChangeActivity">
+
+        </activity>
     </application>
 
 </manifest>
