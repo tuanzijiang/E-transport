@@ -9,7 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
+
 import collector.BaseActivity;
+import handler.CountDownHandler;
 
 /**
  * Created by wangyan on 2017/5/22.
@@ -18,6 +21,7 @@ import collector.BaseActivity;
 public class MessageLoginActivity extends BaseActivity implements View.OnClickListener{
     public static final String BACK_STATE_NOLOGIN="NOLOGIN";
     public static final String BACK_STATE_LOGIN="LOGIN";
+    private CountDownHandler cdh=new CountDownHandler(new WeakReference<BaseActivity>(this),"MessageLoginActivity");
     private EditText message_login_et;
     private ImageView header_front_1;
     private TextView header_back_1;
@@ -74,5 +78,8 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
                     String returnData=intent.getDataString();
                 }
         }
+    }
+    public CountDownHandler getCdh(){
+        return cdh;
     }
 }
