@@ -11,6 +11,7 @@
         android:layout_marginTop="15dp"
         android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/ll_setting_male"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
@@ -27,6 +28,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <ImageView
+                android:id="@+id/iv_setting_male"
                 android:layout_gravity="center_vertical"
                 android:layout_width="20dp"
                 android:layout_marginRight="15dp"
@@ -35,6 +37,7 @@
             </ImageView>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_setting_female"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"
@@ -51,6 +54,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <ImageView
+                android:id="@+id/iv_setting_female"
                 android:layout_gravity="center_vertical"
                 android:layout_width="20dp"
                 android:layout_marginRight="15dp"

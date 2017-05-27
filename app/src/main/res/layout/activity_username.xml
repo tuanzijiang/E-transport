@@ -11,6 +11,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/bottom_border_standard">
         <EditText
+            android:id="@+id/edit_username"
             android:hint="用户名"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"/>
     <LinearLayout
+        android:id="@+id/button_verify"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"

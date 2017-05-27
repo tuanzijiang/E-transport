@@ -54,14 +54,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         }
         setContentView(R.layout.activity_main);
         init();
-        /*测试函数，用于预先设置一些用户属性*/
-        test();
     }
 
     /**
-     * 没有连接数据库的时候的测试函数，正式部署的时候可以删除
+     * 连接数据库的,加载用户信息
      */
-    public void test(){
+    public void setUserInfo(){
         E_Trans_Application app=(E_Trans_Application)getApplication();
         User user=new User();
         user.setUserTel("123456789");
@@ -122,6 +120,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setTopFragment(0);
         setTitleName(0);
         setTypeFace();
+        setUserInfo();
     }
     /**
      *
