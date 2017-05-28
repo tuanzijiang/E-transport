@@ -33,6 +33,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private TextView pwLogin;
     private LinearLayout setPwCover;
     private TextView pwCover;
+    private LinearLayout setIsAvoidPw;
     private E_Trans_Application app;
     private User user;
     @Override
@@ -68,7 +69,9 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         userAddress=(TextView)findViewById(R.id.userAddress);
         pwLogin=(TextView)findViewById(R.id.pwLogin);
         pwCover=(TextView)findViewById(R.id.pwCover);
+        setIsAvoidPw=(LinearLayout)findViewById(R.id.setIsAvoidPw);
         /*响应事件设定*/
+        setIsAvoidPw.setOnClickListener(this);
         header_front_1.setOnClickListener(this);
         setUserName.setOnClickListener(this);
         setUserGender.setOnClickListener(this);
@@ -148,6 +151,10 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                     intent=new Intent(AccountActivity.this,UserPayPwChangeActivity.class);
                 else
                     intent=new Intent(AccountActivity.this,UserPayPwActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.setIsAvoidPw:
+                intent=new Intent(AccountActivity.this,UserAvoidPwActivity.class);
                 startActivity(intent);
                 break;
             default:

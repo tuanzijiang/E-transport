@@ -108,6 +108,7 @@ public class CountDownHandler extends Handler {
                         upa.setVerify_button_bg(0);
                         break;
                     case STOP:
+                        second=60;
                         textOuter=RESET_INFO;
                         upa.getVerify_button().setText(textOuter);
                         upa.setVerify_button_bg(1);
@@ -142,6 +143,7 @@ public class CountDownHandler extends Handler {
                         unpa.setVerify_button_bg(0);
                         break;
                     case STOP:
+                        second=60;
                         textOuter=RESET_INFO;
                         unpa.getVerify_button().setText(textOuter);
                         unpa.setVerify_button_bg(1);

@@ -53,7 +53,12 @@ public class UserFragment extends Fragment implements View.OnClickListener{
     }
     public void initInfo(){
         if(app.getLoginState()==1)
-            userName.setText(app.getUser().getUserName());
+            if(app.getUser().getUserName()==null||app.getUser().getUserName().equals("")) {
+                userName.setText("货急送");
+            }
+            else {
+                userName.setText(app.getUser().getUserName());
+            }
         else
             userName.setText("未登录");
     }

@@ -258,6 +258,7 @@
         </LinearLayout>
         <!--小额免密支付-->
         <LinearLayout
+            android:id="@+id/setIsAvoidPw"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_standard_item"
             android:layout_gravity="center_horizontal"

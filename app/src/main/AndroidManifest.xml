@@ -68,6 +68,10 @@
             android:name=".UserNewPhoneActivity">
 
         </activity>
+        <activity
+            android:name=".UserAvoidPwActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -6,7 +6,8 @@ package entity;
 
 public class User {
     /**
-     * int userGender --------------用户性别，0--男，1--女
+     * int userGender --------------用户性别，0--男，1--女,2-未设定
+     * int isAvoidCover ------------免密支付,0--否，1--是，2-未设定
      */
     private String userName;
     private String userTel;
@@ -17,8 +18,13 @@ public class User {
     private String userPwLogin;
     private String userPwCover;
     private int userGender;
+    private int isAvoidCover;
     public User(){
+        isAvoidCover=2;
         userGender=2;
+    }
+    public void setIsAvoidCover(int isAvoidCover){
+        this.isAvoidCover=isAvoidCover;
     }
     public void setUserEmail(String userEmail){this.userEmail=userEmail;}
     public void setLoginPw(String loginPw){this.userPwLogin=loginPw;}
@@ -40,6 +46,9 @@ public class User {
     }
     public void setUserPwCover(String userPwCover){
         this.userPwCover=userPwCover;
+    }
+    public int getIsAvoidCover(){
+        return this.isAvoidCover;
     }
     public String getUserPwCover(){
         return userPwCover;
