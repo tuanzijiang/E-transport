@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +20,8 @@ import handler.CountDownHandler;
  */
 
 public class MessageLoginActivity extends BaseActivity implements View.OnClickListener{
+    private Drawable background_theme;
+    private Drawable background_gray;
     public static final String BACK_STATE_NOLOGIN="NOLOGIN";
     public static final String BACK_STATE_LOGIN="LOGIN";
     private CountDownHandler cdh=new CountDownHandler(new WeakReference<BaseActivity>(this),"MessageLoginActivity");
@@ -52,6 +55,8 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
         header_front_1=(ImageView)findViewById(R.id.header_front_1);
         header_back_1=(TextView)findViewById(R.id.header_back_1);
         verify_button=(TextView)findViewById(R.id.verify_button);
+        background_gray= ResourcesCompat.getDrawable(getResources(),R.drawable.border_radius_no_click,null);
+        background_theme=ResourcesCompat.getDrawable(getResources(),R.drawable.border_radius_theme,null);
 
         header_front_1.setOnClickListener(this);
         header_back_1.setOnClickListener(this);
@@ -98,5 +103,16 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
     }
     public void setVerify_state(int state){
         this.verify_state=state;
+    }
+    /*0--灰色，1--蓝色*/
+    public void setVerify_button_bg(int bg){
+        switch (bg){
+            case 0:
+                verify_button.setBackground(background_gray);
+                break;
+            default:
+                verify_button.setBackground(background_theme);
+                break;
+        }
     }
 }

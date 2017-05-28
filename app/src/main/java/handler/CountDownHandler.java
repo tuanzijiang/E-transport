@@ -1,9 +1,13 @@
 package handler;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 
 import com.example.dell2.e_transport.MessageLoginActivity;
+import com.example.dell2.e_transport.R;
+import com.example.dell2.e_transport.UserPhoneActivity;
 
 import java.lang.ref.WeakReference;
 
@@ -38,17 +42,16 @@ public class CountDownHandler extends Handler {
 
     @Override
     public void handleMessage(Message msg) {
+        String textOuter;
         super.handleMessage(msg);
         switch (activityKinds){
             case "MessageLoginActivity":
                 MessageLoginActivity mla=(MessageLoginActivity)wr.get();
-                String textOuter;
                 if(mla==null){
                     return;
                 }
                 if(mla.getCdh().hasMessages(DOING))
                     mla.getCdh().removeMessages(DOING);
-
                 switch (msg.what){
                     case DOING:
                         second--;
@@ -60,15 +63,52 @@ public class CountDownHandler extends Handler {
                         }
                         textOuter=String.valueOf(second)+DOING_INFO;
                         mla.getVerify_button().setText(textOuter);
+
                         break;
                     case START:
                         mla.getCdh().sendEmptyMessageDelayed(DOING,1000);
                         textOuter=String.valueOf(second)+DOING_INFO;
                         mla.getVerify_button().setText(textOuter);
+                        mla.setVerify_button_bg(0);
                         break;
                     case STOP:
                         textOuter=RESET_INFO;
                         mla.getVerify_button().setText(textOuter);
+                        mla.setVerify_button_bg(1);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "UserPhoneActivity":
+                UserPhoneActivity upa=(UserPhoneActivity)wr.get();
+                if(upa==null){
+                    return;
+                }
+                if(upa.getCdh().hasMessages(DOING))
+                    upa.getCdh().removeMessages(DOING);
+                switch (msg.what){
+                    case DOING:
+                        second--;
+                        if(second!=0)
+                            upa.getCdh().sendEmptyMessageDelayed(DOING,1000);
+                        else{
+                            second=60;
+                            upa.getCdh().sendEmptyMessageDelayed(STOP,1000);
+                        }
+                        textOuter=String.valueOf(second)+DOING_INFO;
+                        upa.getVerify_button().setText(textOuter);
+                        break;
+                    case START:
+                        upa.getCdh().sendEmptyMessageDelayed(DOING,1000);
+                        textOuter=String.valueOf(second)+DOING_INFO;
+                        upa.getVerify_button().setText(textOuter);
+                        upa.setVerify_button_bg(0);
+                        break;
+                    case STOP:
+                        textOuter=RESET_INFO;
+                        upa.getVerify_button().setText(textOuter);
+                        upa.setVerify_button_bg(1);
                         break;
                     default:
                         break;
