@@ -57,7 +57,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     /**
-     * 连接数据库的,加载用户信息
+     * 连接数据库,加载用户信息。
+     * 从数据库获取User实例,
+     * 如果用户已经登录将loginstate设置为1，否则设置为0，
+     * 将User实例和loginstate放入E_Trans_Application内部，作为全局变量
      */
     public void setUserInfo(){
         E_Trans_Application app=(E_Trans_Application)getApplication();

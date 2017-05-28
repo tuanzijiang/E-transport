@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.example.dell2.e_transport.MessageLoginActivity;
 import com.example.dell2.e_transport.R;
 
+import application.E_Trans_Application;
+
 /**
  * Created by dell2 on 2017/5/20.
  */
@@ -24,9 +26,15 @@ import com.example.dell2.e_transport.R;
 public class UserFragment extends Fragment implements View.OnClickListener{
     private LinearLayout user_login_line;
     private TextView userName;
+    private E_Trans_Application app;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
         View view = inflater.inflate(R.layout.user, container, false);
         return view;
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        init();
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -34,14 +42,27 @@ public class UserFragment extends Fragment implements View.OnClickListener{
         init();
     }
     public void init(){
+        /*实例化*/
         user_login_line=(LinearLayout)getView().findViewById(R.id.user_login_line);
         userName=(TextView)getView().findViewById(R.id.userName);
+        app=(E_Trans_Application)(getActivity().getApplication());
+        /*响应事件*/
         user_login_line.setOnClickListener(this);
+        /*初始化信息*/
+        initInfo();
+    }
+    public void initInfo(){
+        if(app.getLoginState()==1)
+            userName.setText(app.getUser().getUserName());
+        else
+            userName.setText("未登录");
     }
     public void onClick(View view){
         switch (view.getId()){
             case R.id.user_login_line:
-                MessageLoginActivity.actionStart(getActivity());
+                if(app.getLoginState()==0){
+                    MessageLoginActivity.actionStart(getActivity());
+                }
                 break;
             default:
                 break;
