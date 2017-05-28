@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         init();
     }
 
-    /**
+    /**（待改）
      * 连接数据库,加载用户信息。
      * 从数据库获取User实例,
      * 如果用户已经登录将loginstate设置为1，否则设置为0，
@@ -65,6 +65,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public void setUserInfo(){
         E_Trans_Application app=(E_Trans_Application)getApplication();
         User user=new User();
+        /*测试用的数据*/
         user.setUserTel("123456789");
         user.setUserName("吗字典");
         user.setUserGender(0);
@@ -72,7 +73,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         user.setUserPwLogin("123456");
         user.setLoginPw("qweqwe");
         user.setCoverPw("qweqwe");
-        app.setLoginState(1);
+        /*测试用的数据*/
+        app.setLoginState(0);
         app.setUser(user);
     }
 

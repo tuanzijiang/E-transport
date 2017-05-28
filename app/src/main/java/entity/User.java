@@ -12,8 +12,8 @@ public class User {
     private String userName;
     private String userTel;
     private String userEmail;
-    private String loginPw;
-    private String coverPw;
+    private String loginPw;//暂存，不用.登录密码用userPwLogin
+    private String coverPw;//赞存，不用.支付密码用userPwCover
     private String userAddress;
     private String userPwLogin;
     private String userPwCover;

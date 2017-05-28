@@ -114,7 +114,7 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
         switch (requestCode){
             case 1:/*密码登录返还后的处理*/
                 if(resultCode==RESULT_OK){
-                    String returnData=intent.getDataString();
+                    finish();
                 }
         }
     }
@@ -159,9 +159,9 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
     public boolean checkVerify(String verify){
         return true;
     }
-
     /**（待填）
-     * 登录，加载用户数据
+     * 登录，加载用户数据or注册，新的用户
+     * （手机号码已经存在，就加载原有记录，手机号码不存在，创建新的记录）
      * @return 加载是否成功
      */
     public boolean login(){
