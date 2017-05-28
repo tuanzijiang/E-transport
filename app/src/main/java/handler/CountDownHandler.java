@@ -7,6 +7,7 @@ import android.os.Message;
 
 import com.example.dell2.e_transport.MessageLoginActivity;
 import com.example.dell2.e_transport.R;
+import com.example.dell2.e_transport.UserNewPhoneActivity;
 import com.example.dell2.e_transport.UserPhoneActivity;
 
 import java.lang.ref.WeakReference;
@@ -72,6 +73,7 @@ public class CountDownHandler extends Handler {
                         mla.setVerify_button_bg(0);
                         break;
                     case STOP:
+                        second=60;
                         textOuter=RESET_INFO;
                         mla.getVerify_button().setText(textOuter);
                         mla.setVerify_button_bg(1);
@@ -109,6 +111,40 @@ public class CountDownHandler extends Handler {
                         textOuter=RESET_INFO;
                         upa.getVerify_button().setText(textOuter);
                         upa.setVerify_button_bg(1);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "UserNewPhoneActivity":
+                UserNewPhoneActivity unpa=(UserNewPhoneActivity)wr.get();
+                if(unpa==null){
+                    return;
+                }
+                if(unpa.getCdh().hasMessages(DOING))
+                    unpa.getCdh().removeMessages(DOING);
+                switch (msg.what){
+                    case DOING:
+                        second--;
+                        if(second!=0)
+                            unpa.getCdh().sendEmptyMessageDelayed(DOING,1000);
+                        else{
+                            second=60;
+                            unpa.getCdh().sendEmptyMessageDelayed(STOP,1000);
+                        }
+                        textOuter=String.valueOf(second)+DOING_INFO;
+                        unpa.getVerify_button().setText(textOuter);
+                        break;
+                    case START:
+                        unpa.getCdh().sendEmptyMessageDelayed(DOING,1000);
+                        textOuter=String.valueOf(second)+DOING_INFO;
+                        unpa.getVerify_button().setText(textOuter);
+                        unpa.setVerify_button_bg(0);
+                        break;
+                    case STOP:
+                        textOuter=RESET_INFO;
+                        unpa.getVerify_button().setText(textOuter);
+                        unpa.setVerify_button_bg(1);
                         break;
                     default:
                         break;

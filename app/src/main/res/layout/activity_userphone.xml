@@ -67,8 +67,10 @@
                 android:text="验证码"
                 />
             <EditText
+                android:id="@+id/et_verify"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:background="@null"
                 android:textColorHint="@color/font_light"
@@ -79,6 +81,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/button_verify"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"

@@ -67,18 +67,24 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
             case R.id.ll_setting_female:
                 changeToOtherGender(1);
                 if(setUserGender(1)){
+                    Toast.makeText(UserSexActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
                     app.getUser().setUserGender(1);
+                    finish();
                 }
                 else{
+                    Toast.makeText(UserSexActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
                     app.getUser().setUserGender(0);
                 }
                 break;
             case R.id.ll_setting_male:
                 changeToOtherGender(0);
                 if(setUserGender(0)){
+                    Toast.makeText(UserSexActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
                     app.getUser().setUserGender(0);
+                    finish();
                 }
                 else{
+                    Toast.makeText(UserSexActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
                     app.getUser().setUserGender(1);
                 }
                 break;
@@ -104,12 +110,6 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
      * @return 设置是否成功
      */
     public boolean setUserGender(int gender){
-        if(gender==0){
-            Toast.makeText(UserSexActivity.this,"男",Toast.LENGTH_SHORT);
-        }
-        else{
-            Toast.makeText(UserSexActivity.this,"女",Toast.LENGTH_SHORT);
-        }
         return true;
     }
 }

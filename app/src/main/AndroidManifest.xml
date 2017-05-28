@@ -64,6 +64,10 @@
             android:name=".UserPayPwChangeActivity">
 
         </activity>
+        <activity
+            android:name=".UserNewPhoneActivity">
+
+        </activity>
     </application>
 
 </manifest>
