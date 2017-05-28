@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by dell2 on 2017/5/24.
@@ -64,11 +65,51 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.ll_setting_female:
+                changeToOtherGender(1);
+                if(setUserGender(1)){
+                    app.getUser().setUserGender(1);
+                }
+                else{
+                    app.getUser().setUserGender(0);
+                }
                 break;
             case R.id.ll_setting_male:
+                changeToOtherGender(0);
+                if(setUserGender(0)){
+                    app.getUser().setUserGender(0);
+                }
+                else{
+                    app.getUser().setUserGender(1);
+                }
                 break;
             default:
                 break;
         }
+    }
+    public void changeToOtherGender(int gender){
+        switch (gender){
+            case 0:
+                iv_setting_male.setVisibility(View.VISIBLE);
+                iv_setting_female.setVisibility(View.GONE);
+                break;
+            case 1:
+                iv_setting_male.setVisibility(View.GONE);
+                iv_setting_female.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+    /**
+     * 设置数据库中用户的性别
+     * @param gender   0---男,1--女
+     * @return 设置是否成功
+     */
+    public boolean setUserGender(int gender){
+        if(gender==0){
+            Toast.makeText(UserSexActivity.this,"男",Toast.LENGTH_SHORT);
+        }
+        else{
+            Toast.makeText(UserSexActivity.this,"女",Toast.LENGTH_SHORT);
+        }
+        return true;
     }
 }

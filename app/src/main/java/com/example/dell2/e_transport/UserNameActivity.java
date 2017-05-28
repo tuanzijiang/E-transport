@@ -61,7 +61,12 @@ public class UserNameActivity extends BaseActivity implements View.OnClickListen
                     Toast.makeText(UserNameActivity.this,"用户名不能为空",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    setUserNameString(userNameString);
+                    if(setUserNameString(userNameString)){
+                        app.getUser().setUserName(userNameString);
+                    }
+                    else{
+                        Toast.makeText(UserNameActivity.this,"设置失败",Toast.LENGTH_SHORT);
+                    }
                 }
             default:
                 break;
@@ -70,8 +75,10 @@ public class UserNameActivity extends BaseActivity implements View.OnClickListen
     /**
      * 设置用户名的函数
      * 参数：String userNameString(需要设置的用户名)
+     * 返回值：是否设置成功
      */
-    public void setUserNameString(String userNameString){
+    public boolean setUserNameString(String userNameString){
         Toast.makeText(UserNameActivity.this,userNameString,Toast.LENGTH_SHORT).show();
+        return true;
     }
 }
