@@ -54,7 +54,11 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
         if(app.getUser().getUserGender()==0){
             iv_setting_female.setVisibility(View.GONE);
         }
-        else {
+        else if(app.getUser().getUserGender()==1) {
+            iv_setting_male.setVisibility(View.GONE);
+        }
+        else{
+            iv_setting_female.setVisibility(View.GONE);
             iv_setting_male.setVisibility(View.GONE);
         }
     }

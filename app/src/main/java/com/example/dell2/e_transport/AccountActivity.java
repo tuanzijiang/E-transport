@@ -86,17 +86,21 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     }
     /*内容初始化函数*/
     public void initContent(){
-        userName.setText(user.getUserName());
-        userGender.setText(user.getUserGenderString());
-        userTel.setText(user.getUserTel());
-        userAddress.setText(user.getUserAddress());
-        if(user.getUserPwCover()==null||user.getUserPwCover()==""){
+        if(user.getUserName()!=null&&!user.getUserName().equals(""))
+            userName.setText(user.getUserName());
+        if(user.getUserGenderString()!=null&&!user.getUserGenderString().equals(""))
+            userGender.setText(user.getUserGenderString());
+        if(user.getUserTel()!=null&&!user.getUserTel().equals(""))
+            userTel.setText(user.getUserTel());
+        if(user.getUserAddress()!=null&&!user.getUserAddress().equals(""))
+            userAddress.setText(user.getUserAddress());
+        if(user.getUserPwCover()==null||user.getUserPwCover().equals("")){
             pwCover.setText("未设置");
         }
         else{
             pwCover.setText("已设置");
         }
-        if(user.getUserPwLogin()==null||user.getUserPwLogin()==""){
+        if(user.getUserPwLogin()==null||user.getUserPwLogin().equals("")){
             pwCover.setText("未设置");
         }
         else{
@@ -119,8 +123,14 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.setTel:
-                intent=new Intent(AccountActivity.this,UserPhoneActivity.class);
-                startActivity(intent);
+                if(user.getUserTel()!=null&&!user.getUserTel().equals("")){
+                    intent=new Intent(AccountActivity.this,UserPhoneActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    intent=new Intent(AccountActivity.this,UserNewPhoneActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.setUserAddress:
                 intent=new Intent(AccountActivity.this,UserAreaAvtivity.class);

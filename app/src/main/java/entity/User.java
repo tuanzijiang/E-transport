@@ -14,6 +14,9 @@ public class User {
     private String userPwLogin;
     private String userPwCover;
     private int userGender;
+    public User(){
+        userGender=2;
+    }
     public void setUserTel(String userTel){
         this.userTel=userTel;
     }
@@ -57,8 +60,11 @@ public class User {
             case 0:
                 result="男";
                 break;
-            default:
+            case 1:
                 result="女";
+                break;
+            default:
+                result="";
                 break;
         }
         return result;
