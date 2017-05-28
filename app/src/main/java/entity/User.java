@@ -10,6 +10,9 @@ public class User {
      */
     private String userName;
     private String userTel;
+    private String userEmail;
+    private String loginPw;
+    private String coverPw;
     private String userAddress;
     private String userPwLogin;
     private String userPwCover;
@@ -17,6 +20,9 @@ public class User {
     public User(){
         userGender=2;
     }
+    public void setUserEmail(String userEmail){this.userEmail=userEmail;}
+    public void setLoginPw(String loginPw){this.userPwLogin=loginPw;}
+    public void setCoverPw(String coverPw){this.userPwCover=coverPw;}
     public void setUserTel(String userTel){
         this.userTel=userTel;
     }
@@ -53,6 +59,9 @@ public class User {
     public String getUserAddress(){
         return this.userAddress;
     }
+    public String getUserEmail(){ return this.userEmail; }
+    public String getLoginPw(){ return this.loginPw; }
+    public String getCoverPw(){ return this.coverPw; }
 
     public String getUserGenderString(){
         String result;

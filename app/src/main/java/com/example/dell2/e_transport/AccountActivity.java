@@ -101,10 +101,10 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             pwCover.setText("已设置");
         }
         if(user.getUserPwLogin()==null||user.getUserPwLogin().equals("")){
-            pwCover.setText("未设置");
+            pwLogin.setText("未设置");
         }
         else{
-            pwCover.setText("已设置");
+            pwLogin.setText("已设置");
         }
     }
     /*响应事件函数*/
@@ -137,14 +137,14 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.set_PwLogin:
-                if(user.getUserPwLogin()==null||user.getUserPwLogin()=="")
+                if(user.getUserPwLogin()!=null&&!user.getUserPwLogin().equals(""))
                     intent=new Intent(AccountActivity.this,UserLoginPwChangeActivity.class);
                 else
                     intent=new Intent(AccountActivity.this,UserLoginPwActivity.class);
                 startActivity(intent);
                 break;
             case R.id.set_PwCover:
-                if(user.getUserPwCover()==null||user.getUserPwCover()=="")
+                if(user.getUserPwCover()!=null&&!user.getUserPwCover().equals(""))
                     intent=new Intent(AccountActivity.this,UserPayPwChangeActivity.class);
                 else
                     intent=new Intent(AccountActivity.this,UserPayPwActivity.class);
