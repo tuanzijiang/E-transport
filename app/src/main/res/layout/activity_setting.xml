@@ -43,6 +43,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/setGeneral"
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/line_standard_item"
@@ -63,7 +64,9 @@
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/next_gray"></ImageView>
+                android:src="@drawable/next_gray">
+
+            </ImageView>
 
         </LinearLayout>
     </LinearLayout>
@@ -90,7 +93,9 @@
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/next_gray"></ImageView>
+            android:src="@drawable/next_gray">
+
+        </ImageView>
 
         </LinearLayout>
 

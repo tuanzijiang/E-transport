@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/go_account"
+            android:id="@+id/clearImage"
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/line_standard_item"
@@ -27,6 +27,7 @@
                 android:textColor="@color/font_weight">
             </TextView>
             <TextView
+                android:id="@+id/pic_size"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/quality"
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/line_standard_item"
@@ -48,18 +50,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="非WIFI下图片质量"
+                android:text="非WIFI下接受图片"
                 android:layout_marginLeft="10dp"
                 android:textSize="@dimen/font_input"
                 android:textColor="@color/font_weight">
             </TextView>
-
             <TextView
+                android:id="@+id/receive"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:text="普通"
+                android:text="接受"
                 android:textSize="@dimen/font_smaller"
                 android:textColor="@color/font_standard">
             </TextView>
@@ -67,6 +69,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_screen"
         android:layout_width="match_parent"
         android:layout_gravity="center_horizontal"
         android:layout_height="@dimen/line_standard_item"
@@ -85,6 +88,7 @@
         </TextView>
 
         <ImageView
+            android:id="@+id/im_screen"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"

@@ -24,6 +24,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private TextView title_name;
     private LinearLayout go_account;
     private LinearLayout button_exit;
+    private LinearLayout setGeneral;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -37,6 +38,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
     public void init(){
         /*获取实例*/
+        setGeneral=(LinearLayout)findViewById(R.id.setGeneral);
         header_front_1=(ImageView) findViewById(R.id.header_front_1);
         go_account=(LinearLayout)findViewById(R.id.go_account);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
@@ -46,6 +48,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         header_front_1.setOnClickListener(this);
         go_account.setOnClickListener(this);
         button_exit.setOnClickListener(this);
+        setGeneral.setOnClickListener(this);
         /*初始化title*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
@@ -78,6 +81,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 app.exit();
                 finish();
                 break;
+            case R.id.setGeneral:
+                Intent intent=new Intent(SettingActivity.this,SettingActivityGeneral.class);
+                startActivity(intent);
             default:
                 break;
         }

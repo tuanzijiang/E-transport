@@ -72,6 +72,10 @@
             android:name=".UserAvoidPwActivity">
 
         </activity>
+        <activity
+            android:name=".SettingActivityGeneral">
+
+        </activity>
     </application>
 
 </manifest>
