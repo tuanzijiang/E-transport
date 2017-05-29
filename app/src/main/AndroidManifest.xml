@@ -76,6 +76,10 @@
             android:name=".SettingActivityGeneral">
 
         </activity>
+        <activity
+            android:name=".MyOrderInfo">
+
+        </activity>
     </application>
 
 </manifest>

@@ -2,11 +2,13 @@ package entity;
 
 import com.example.dell2.e_transport.R;
 
+import java.io.Serializable;
+
 /**
  * Created by dell2 on 2017/5/24.
  */
 
-public class MyOrder {
+public class MyOrder implements Serializable{
     /**
      * String orderId---------------订单的主键，唯一确定订单
      * String sendAddress--------发出地
@@ -14,6 +16,17 @@ public class MyOrder {
      * int orderState------------订单的状态：0-未接单，1-进行中，2-已接单
      * int orderSend-------------订单的发起状态：0-已接到的订单，1-已发起的订单
      * float price---------------订单的价格
+     * User launchMan------------发起人信息
+     * User postMan--------------送货人信息
+     * User sendMan--------------寄出人信息
+     * User receiveMan-----------收件人信息
+     * String coverKind----------支付方式
+     * String time---------------送达时间段
+     * String orderTime----------下单时间
+     * String goodsKind----------物品种类
+     * String goodsWeight--------物品重量
+     * String goodsInfo----------物品备注
+     * String goodsPic-----------物品照片
      */
     private String orderId;
     private String sendAddress;
@@ -21,6 +34,37 @@ public class MyOrder {
     private int orderState;
     private int orderSend;
     private float price;
+    private String time;
+    private User postMan;
+    private User launchMan;
+    private User sendMan;
+    private User receiveMan;
+    private String goodsKind;
+    private String coverKind;
+    private String orderTime;
+    private String goodsWeight;
+    private String goodsInfo;
+    private String goodsPic;
+    public MyOrder(){
+        /*测试用的数据*/
+        orderId="123456789";
+        sendAddress="上海市普陀区";
+        receiveAddress="上海市静安区";
+        orderSend=0;
+        orderState=0;
+        price=(float)20.5;
+        time="14:30-15:30";
+        postMan=new User();
+        sendMan=new User();
+        receiveMan=new User();
+        launchMan=new User();
+        goodsKind="图书";
+        coverKind="在线支付";
+        orderTime="2016-5-13 19:30";
+        goodsWeight="3kg";
+        goodsInfo="贵重易碎物品";
+        /*测试用的数据*/
+    }
     public MyOrder(String orderId,String sendAddress,String receiveAddress,int orderState,int orderSend,float price){
         this.orderId=orderId;
         this.sendAddress=sendAddress;
@@ -28,6 +72,44 @@ public class MyOrder {
         this.orderState=orderState;
         this.orderSend=orderSend;
         this.price=price;
+    }
+
+    public void setLaunchMan(User launchMan){
+        this.launchMan=launchMan;
+    }
+    public void setGoodsPic(String goodsPic){
+        this.goodsPic=goodsPic;
+    }
+    public void setGoodsInfo(String goodsInfo){
+        this.goodsInfo=goodsInfo;
+    }
+    public void setGoodsWeight(String goodsWeight){
+        this.goodsWeight=goodsWeight;
+    }
+    public void setOrderTime(String orderTime){
+        this.orderTime=orderTime;
+    }
+    public void setCoverKind(String coverKind){
+        this.coverKind=coverKind;
+    }
+    public void setGoodsKind(String goodsKind){
+        this.goodsKind=goodsKind;
+    }
+    public void setPostMan(User postMan){ this.postMan=postMan;}
+    public void setSendMan(User sendMan){ this.sendMan=sendMan;}
+    public void setReceiveMan(User receiveMan){ this.receiveMan=receiveMan;}
+    public void setOrderId(String orderId){
+        this.orderId=orderId;
+    }
+    public void setSendAddress(String sendAddress){
+        this.sendAddress=sendAddress;
+    }
+    public void setReceiveAddress(String receiveAddress){this.receiveAddress=receiveAddress;}
+    public void setOrderState(int orderState){this.orderState=orderState;}
+    public void setOrderSend(int orderSend){this.orderSend=orderSend;}
+    public void setPrice(float price){this.price=price;}
+    public void setTime(String time){
+        this.time=time;
     }
 
     public String getOrderSendString(){
@@ -91,5 +173,23 @@ public class MyOrder {
     }
     public String getReceiveAddress(){
         return receiveAddress;
+    }
+    public User getPostMan(){ return postMan;}
+    public User getSendMan(){ return sendMan;}
+    public User getReceiveMan(){ return receiveMan;}
+    public String getTime(){ return time;}
+    public String getOrderId(){
+        return orderId;
+    }
+    public String getGoodsKind(){ return goodsKind;}
+    public String getCoverKind(){ return coverKind;}
+    public String getOrderTime(){ return orderTime;}
+    public String getGoodsWeight(){ return goodsWeight;}
+    public String getGoodsInfo(){ return goodsInfo;}
+    public String getGoodsPic(){ return goodsPic;}
+    public int getOrderState(){ return orderState;}
+    public int getOrderSend(){ return orderSend;}
+    public User getLaunchMan(){
+        return launchMan;
     }
 }

@@ -1,10 +1,12 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * Created by dell2 on 2017/5/24.
  */
 
-public class User {
+public class User implements Serializable{
     /**
      * int userGender --------------用户性别，0--男，1--女,2-未设定
      * int isAvoidCover ------------免密支付,0--否，1--是，2-未设定
@@ -21,7 +23,13 @@ public class User {
     private int isAvoidCover;
     public User(){
         isAvoidCover=2;
-        userGender=2;
+        userGender=0;
+        /*测试用数据*/
+        userName="章琪";
+        userTel="15317315332";
+        userEmail="985638485@qq.com";
+        userAddress="上海市黄浦区";
+        /*测试用数据*/
     }
     public void setIsAvoidCover(int isAvoidCover){
         this.isAvoidCover=isAvoidCover;
