@@ -339,6 +339,25 @@
                         />
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/button_verify"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border_radius_verify"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/button_standard"
+                    android:text="接单"/>
+            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

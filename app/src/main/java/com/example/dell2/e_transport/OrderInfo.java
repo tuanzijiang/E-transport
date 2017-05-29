@@ -36,6 +36,7 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
     private TextView order_ID;
     private TextView order_cover_kind;
     private TextView order_time;
+    private LinearLayout button_verify;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -60,10 +61,12 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
         goods_weight=(TextView)findViewById(R.id.goods_weight);
         goods_info=(TextView)findViewById(R.id.goods_info);
         goods_pic=(ImageView)findViewById(R.id.goods_pic);
+        button_verify=(LinearLayout)findViewById(R.id.button_verify);
         /*信息初始化*/
         initInfo();
         /*事件监听*/
         header_front_1.setOnClickListener(this);
+        button_verify.setOnClickListener(this);
         /*标题栏*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
@@ -83,6 +86,11 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
             case R.id.header_front_1:
                 finish();
                 break;
+            case R.id.button_verify:
+                if(order()){
+                    finish();
+                }
+                break;
             default:
                 break;
         }
@@ -100,19 +108,12 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
         goods_info.setText(myOrder.getGoodsInfo());
         goods_weight.setText(myOrder.getGoodsWeight());
     }
-    /**（待填）
-     *
-     * @return 配送者离目的地的距离
-     */
-    public String getDistance(){
-        return "6km";
-    }
 
     /**（待填）
-     * 调动系统的电话功能，打电话
-     * @param tel 手机号
+     * 下单
+     * @return 下单是否成功
      */
-    public void call(String tel){
-        Toast.makeText(OrderInfo.this,tel,Toast.LENGTH_SHORT).show();
+    public boolean order(){
+        return true;
     }
 }
