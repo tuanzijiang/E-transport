@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.example.dell2.e_transport.R;
 import com.example.dell2.e_transport.Want2OrderActivity;
+import com.example.dell2.e_transport.Want2ReceiveActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
     private LayoutInflater inflate;
     private ViewPager homepage_carousel;
     private LinearLayout want2order_button;
+    private LinearLayout want2receive_button;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
         this.inflate=inflater;
         view=inflater.inflate(R.layout.homepage,container,false);
@@ -44,7 +46,9 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
     }
     public void init(){
         want2order_button=(LinearLayout)getView().findViewById(R.id.want2order_button);
+        want2receive_button=(LinearLayout)getView().findViewById(R.id.want2receive_button);
         want2order_button.setOnClickListener(this);
+        want2receive_button.setOnClickListener(this);
     }
     /**
      * 初始化轮播图
@@ -97,9 +101,16 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
         return homepage_carousel;
     }
     public void onClick(View view){
+        Intent intent;
         switch (view.getId()){
             case R.id.want2order_button:
                 Want2OrderActivity.actionStart(this.getActivity());
+                break;
+            case R.id.want2receive_button:
+                intent=new Intent(getActivity(), Want2ReceiveActivity.class);
+                startActivity(intent);
+                break;
+            default:
                 break;
         }
     }

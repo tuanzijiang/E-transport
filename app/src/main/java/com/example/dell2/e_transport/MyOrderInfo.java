@@ -193,15 +193,13 @@ public class MyOrderInfo extends BaseActivity implements View.OnClickListener {
         }
     }
     public void setSend(){
-        User sendUser=myOrder.getSendMan();
-        send_userName.setText(sendUser.getUserName());
-        send_tel.setText(sendUser.getUserTel());
+        send_userName.setText(myOrder.getSendUserName());
+        send_tel.setText(myOrder.getSendUserTel());
         send_address.setText(myOrder.getSendAddress());
     }
     public void setReceive(){
-        User receiveUser=myOrder.getReceiveMan();
-        receive_userName.setText(receiveUser.getUserName());
-        receive_tel.setText(receiveUser.getUserTel());
+        receive_userName.setText(myOrder.getReceiveUserName());
+        receive_tel.setText(myOrder.getReceiverUserTel());
         receive_address.setText(myOrder.getReceiveAddress());
     }
     public void setOther(){

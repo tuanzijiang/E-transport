@@ -37,8 +37,10 @@ public class MyOrder implements Serializable{
     private String time;
     private User postMan;
     private User launchMan;
-    private User sendMan;
-    private User receiveMan;
+    private String sendUserName;
+    private String sendUserTel;
+    private String receiveUserName;
+    private String receiverUserTel;
     private String goodsKind;
     private String coverKind;
     private String orderTime;
@@ -55,14 +57,16 @@ public class MyOrder implements Serializable{
         price=(float)20.5;
         time="14:30-15:30";
         postMan=new User();
-        sendMan=new User();
-        receiveMan=new User();
         launchMan=new User();
         goodsKind="图书";
         coverKind="在线支付";
         orderTime="2016-5-13 19:30";
         goodsWeight="3kg";
         goodsInfo="贵重易碎物品";
+        sendUserName="章琪";
+        sendUserTel="123456";
+        receiveUserName="章琪";
+        receiverUserTel="456798";
         /*测试用的数据*/
     }
     public MyOrder(String orderId,String sendAddress,String receiveAddress,int orderState,int orderSend,float price){
@@ -74,6 +78,10 @@ public class MyOrder implements Serializable{
         this.price=price;
     }
 
+    public void setSendUserName(String sendUserName){this.sendUserName=sendUserName;}
+    public void setSendUserTel(String sendUserTel){this.sendUserTel=sendUserTel;}
+    public void setReceiveUserName(String receiveUserName){this.receiveUserName=receiveUserName;}
+    public void setReceiverUserTel(String receiverUserTel){this.receiverUserTel=receiverUserTel;}
     public void setLaunchMan(User launchMan){
         this.launchMan=launchMan;
     }
@@ -96,8 +104,6 @@ public class MyOrder implements Serializable{
         this.goodsKind=goodsKind;
     }
     public void setPostMan(User postMan){ this.postMan=postMan;}
-    public void setSendMan(User sendMan){ this.sendMan=sendMan;}
-    public void setReceiveMan(User receiveMan){ this.receiveMan=receiveMan;}
     public void setOrderId(String orderId){
         this.orderId=orderId;
     }
@@ -175,8 +181,6 @@ public class MyOrder implements Serializable{
         return receiveAddress;
     }
     public User getPostMan(){ return postMan;}
-    public User getSendMan(){ return sendMan;}
-    public User getReceiveMan(){ return receiveMan;}
     public String getTime(){ return time;}
     public String getOrderId(){
         return orderId;
@@ -192,4 +196,8 @@ public class MyOrder implements Serializable{
     public User getLaunchMan(){
         return launchMan;
     }
+    public String getSendUserName(){ return sendUserName;}
+    public String getSendUserTel(){ return sendUserTel;}
+    public String getReceiveUserName(){return receiveUserName;}
+    public String getReceiverUserTel(){ return receiverUserTel;}
 }

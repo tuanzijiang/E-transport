@@ -39,6 +39,7 @@
                 android:text="我要下单"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/want2receive_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
