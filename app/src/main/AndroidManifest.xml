@@ -88,6 +88,10 @@
             android:name=".OrderInfo">
 
         </activity>
+        <activity
+            android:name=".OnLinePayMentActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -35,6 +35,7 @@
                     android:layout_height="@dimen/line_standard_input"
                     android:background="@drawable/bottom_border_standard">
                     <EditText
+                        android:id="@+id/sendAddress"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_width="wrap_content"
@@ -61,6 +62,7 @@
                             android:layout_marginRight="10dp"
                             android:src="@drawable/name"/>
                         <EditText
+                            android:id="@+id/sendUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="姓名"
@@ -81,6 +83,7 @@
                             android:layout_marginRight="10dp"
                             android:src="@drawable/tel"/>
                         <EditText
+                            android:id="@+id/sendUserTel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="电话"
@@ -114,6 +117,7 @@
                         android:layout_height="@dimen/line_standard_input"
                         android:background="@drawable/bottom_border_standard">
                         <EditText
+                            android:id="@+id/receiveAddress"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_width="wrap_content"
@@ -140,6 +144,7 @@
                                 android:layout_marginRight="10dp"
                                 android:src="@drawable/name"/>
                             <EditText
+                                android:id="@+id/receiveUserName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:hint="姓名"
@@ -160,6 +165,7 @@
                                 android:layout_marginRight="10dp"
                                 android:src="@drawable/tel"/>
                             <EditText
+                                android:id="@+id/receiveUserTel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:hint="电话"
@@ -188,6 +194,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
+                        android:id="@+id/goods_kind"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="物品种类"
@@ -205,6 +212,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
+                        android:id="@+id/goods_pic"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="物品图片"
@@ -222,6 +230,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
+                        android:id="@+id/goods_weight"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="物品重量(单位:kg)"
@@ -239,6 +248,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
+                        android:id="@+id/arrive_time"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -271,6 +281,20 @@
                         android:textSize="@dimen/font_input"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/font_weight"/>
+                    <ImageView
+                        android:id="@+id/goods_cheap"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/box"/>
+                    <ImageView
+                        android:id="@+id/goods_exp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/yes_box"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -295,6 +319,7 @@
                         android:textColor="@color/font_standard"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/ll_pre_price"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/line_standard_item">
                     <ImageView
@@ -305,12 +330,14 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
                     <EditText
+                        android:id="@+id/pre_price"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/line_standard_item_pic"
                         android:layout_weight="1"
                         android:hint="预估商品价值(单位:元)"
                         android:textSize="@dimen/font_input"
+                        android:inputType="number"
                         android:layout_gravity="center_vertical"
                         android:textColorHint="@color/font_light"
                         android:background="@null"/>
@@ -329,6 +356,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"/>
                 <EditText
+                    android:id="@+id/serve_price"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -336,7 +364,8 @@
                     android:textSize="@dimen/font_input"
                     android:layout_gravity="center_vertical"
                     android:textColorHint="@color/font_light"
-                    android:background="@null"/>
+                    android:background="@null"
+                    android:inputType="number"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -345,6 +374,7 @@
         android:layout_height="@dimen/activity_bottom"
         android:background="@drawable/top_border_standard">
         <TextView
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -354,6 +384,7 @@
             android:layout_gravity="center_vertical"
             android:text="总费用："/>
         <TextView
+            android:id="@+id/button_verify"
             android:layout_width="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

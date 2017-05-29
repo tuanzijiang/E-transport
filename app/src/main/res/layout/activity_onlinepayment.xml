@@ -29,6 +29,7 @@
             </TextView>
             <!--倒计时-->
             <TextView
+                android:id="@+id/countDownTime"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_item"
                 android:textColor="@color/font_weight"
@@ -68,6 +69,7 @@
                 </LinearLayout>
                 <!--价格-->
                 <TextView
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/line_standard_details"
                     android:gravity="center"
@@ -123,6 +125,7 @@
                 </LinearLayout>
                 <!--选择-->
                 <ImageView
+                    android:id="@+id/ali_yes"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/select_green"
@@ -157,6 +160,7 @@
                 </LinearLayout>
                 <!--选择-->
                 <ImageView
+                    android:id="@+id/wx_yes"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/select_gray"
@@ -170,6 +174,7 @@
 
     <!--确认支付-->
     <LinearLayout
+        android:id="@+id/button_verify"
         android:layout_width="match_parent"
         android:layout_height="@dimen/line_standard_item"
         android:gravity="center"
