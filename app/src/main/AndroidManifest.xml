@@ -84,6 +84,10 @@
             android:name=".Want2ReceiveActivity">
 
         </activity>
+        <activity
+            android:name=".OrderInfo">
+
+        </activity>
     </application>
 
 </manifest>
