@@ -27,6 +27,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/bottom_border_standard">
                 <EditText
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="姓名"
@@ -96,6 +97,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/bottom_border_standard">
                 <EditText
+                    android:id="@+id/tel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="收货人电话"
@@ -133,6 +135,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/bottom_border_standard">
                 <TextView
+                    android:id="@+id/address"
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

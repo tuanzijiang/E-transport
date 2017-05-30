@@ -1,6 +1,7 @@
 package com.example.dell2.e_transport;
 
 import collector.BaseActivity;
+import entity.Location;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -9,13 +10,16 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by dell2 on 2017/5/30.
  */
 
 public class ChangeAddressActivity extends BaseActivity implements View.OnClickListener {
+    private Location location;
     private ImageView header_front_1;
     private ImageView header_back_1;
     private TextView title_name;
@@ -25,6 +29,11 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
     private TextView female;
     private EditText address_detail;
     private int gender=0;
+    private LinearLayout button_verify;
+    private EditText name;
+    private EditText tel;
+    private TextView address;
+    private TextView tel_book;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -39,6 +48,11 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         header_front_1=(ImageView) findViewById(R.id.header_front_1);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
         title_name=(TextView)findViewById(R.id.title_name);
+        button_verify=(LinearLayout)findViewById(R.id.button_verify);
+        name=(EditText)findViewById(R.id.name);
+        tel=(EditText)findViewById(R.id.tel);
+        tel_book=(TextView)findViewById(R.id.tel_book);
+        address=(TextView)findViewById(R.id.address);
         blue= ResourcesCompat.getDrawable(getResources(),R.drawable.border_round_theme,null);
         gray=ResourcesCompat.getDrawable(getResources(),R.drawable.border_round_no_click,null);
         male=(TextView)findViewById(R.id.male);
@@ -49,10 +63,26 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         header_front_1.setOnClickListener(this);
         male.setOnClickListener(this);
         female.setOnClickListener(this);
+        button_verify.setOnClickListener(this);
         /*标题栏*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
-        title_name.setText("新增地址");
+
+        Intent intent=this.getIntent();
+        String kinds=intent.getExtras().getString("kind");
+        if(kinds!=null&&kinds.equals("add")){
+            title_name.setText("新增地址");
+        }
+        else{
+            title_name.setText("修改地址");
+            location=(Location)intent.getSerializableExtra("locationItem");
+            initInfo();
+        }
+    }
+    public void initInfo(){
+        name.setText(location.getUserName());
+        tel.setText(location.getTel());
+        address.setText(location.getAddress());
     }
     public void onClick(View view){
         Intent intent;
@@ -69,8 +99,31 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
                 gender=1;
                 male.setBackground(gray);
                 female.setBackground(blue);
+            case R.id.button_verify:
+                if(addAddress()){
+                    finish();
+                }
+                break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 添加地址到数据库
+     * @return 添加是否成功
+     */
+    public boolean addAddress(){
+        String address_name=name.getText().toString();
+        String address_tel=tel.getText().toString();
+        String address_gender=String.valueOf(gender);
+        String address_address;
+        if(address.getText().toString().equals("小区/写字楼/学校等")){
+            address_address=address_detail.getText().toString();
+        }
+        else {
+            address_address=address.getText().toString() + address_detail.getText().toString();
+        }
+        return true;
     }
 }

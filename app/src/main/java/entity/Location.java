@@ -37,14 +37,14 @@ public class Location implements Serializable {
     public String getTel(){return this.tel;}
     public int getGender(){ return this.gender;}
 
-    public String getGenderString(){
-        switch (gender){
-            case 0:
-                return "男";
-            case 1:
-                return "女";
-            default:
-                return "未知";
-        }
-    }
+//    public String getGenderString(){
+//        switch (gender){
+//            case 0:
+//                return "男";
+//            case 1:
+//                return "女";
+//            default:
+//                return "未知";
+//        }
+//    }
 }

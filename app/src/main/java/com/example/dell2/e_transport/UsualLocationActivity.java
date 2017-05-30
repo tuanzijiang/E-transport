@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -55,6 +56,17 @@ public class UsualLocationActivity extends BaseActivity implements View.OnClickL
         initInfo();
         LocationAdapt locationAdapt=new LocationAdapt(UsualLocationActivity.this,R.layout.viewlist_location,locations);
         lv_location.setAdapter(locationAdapt);
+        lv_location.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Location LocationItem=locations.get(i);
+                Intent intent=new Intent(UsualLocationActivity.this,ChangeAddressActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("locationItem",LocationItem);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
     public void initInfo(){
         Location location=new Location();
@@ -67,6 +79,7 @@ public class UsualLocationActivity extends BaseActivity implements View.OnClickL
         switch (view.getId()){
             case R.id.add_address:
                 intent=new Intent(UsualLocationActivity.this,ChangeAddressActivity.class);
+                intent.putExtra("kind","add");
                 startActivity(intent);
                 break;
             case R.id.header_front_1:
