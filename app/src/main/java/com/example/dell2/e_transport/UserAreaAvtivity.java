@@ -3,6 +3,7 @@ package com.example.dell2.e_transport;
 import application.E_Trans_Application;
 import collector.BaseActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -59,8 +60,16 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.button_verify:
                 if(location.getText().toString()!=null&&!location.getText().toString().equals("")) {
-                    if(setUserLocation(location.getText().toString())){
-                        app.getUser().setUserAddress(location.getText().toString());
+                    if(this.getIntent().getExtras().getString("kind")==null){
+                        if(setUserLocation(location.getText().toString())){
+                            app.getUser().setUserAddress(location.getText().toString());
+                            finish();
+                        }
+                    }
+                    else{
+                        Intent intent=new Intent();
+                        intent.putExtra("address",location.getText().toString());
+                        setResult(RESULT_OK,intent);
                         finish();
                     }
                 }

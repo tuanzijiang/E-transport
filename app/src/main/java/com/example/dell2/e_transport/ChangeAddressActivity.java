@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -64,6 +65,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         male.setOnClickListener(this);
         female.setOnClickListener(this);
         button_verify.setOnClickListener(this);
+        address.setOnClickListener(this);
         /*标题栏*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setVisibility(View.GONE);
@@ -105,11 +107,21 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
                     finish();
                 }
                 break;
+            case R.id.address:
+                intent=new Intent(ChangeAddressActivity.this,UserAreaAvtivity.class);
+                intent.putExtra("kind","location");
+                setResult(RESULT_OK,intent);
+                startActivityForResult(intent,1);
+                break;
             default:
                 break;
         }
     }
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            address.setText(data.getStringExtra("address"));
+        }
+    }
     /**
      * 添加地址到数据库
      * @return 添加是否成功
