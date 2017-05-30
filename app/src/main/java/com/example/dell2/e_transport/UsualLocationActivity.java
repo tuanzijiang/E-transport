@@ -5,6 +5,7 @@ import collector.BaseActivity;
 import entity.Location;
 import entity.MyOrder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
@@ -62,6 +63,17 @@ public class UsualLocationActivity extends BaseActivity implements View.OnClickL
         locations.add(location);
     }
     public void onClick(View view){
-
+        Intent intent;
+        switch (view.getId()){
+            case R.id.add_address:
+                intent=new Intent(UsualLocationActivity.this,ChangeAddressActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.header_front_1:
+                finish();
+                break;
+            default:
+                break;
+        }
     }
 }

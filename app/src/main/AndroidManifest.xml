@@ -96,6 +96,10 @@
             android:name=".UsualLocationActivity">
 
         </activity>
+        <activity
+            android:name=".ChangeAddressActivity">
+
+        </activity>
     </application>
 
 </manifest>
