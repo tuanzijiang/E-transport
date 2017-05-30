@@ -82,7 +82,8 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
     public void initInfo(){
         name.setText(location.getUserName());
         tel.setText(location.getTel());
-        address.setText(location.getAddress());
+        address.setText(location.getDistrict());
+        address_detail.setText(location.getAddress());
     }
     public void onClick(View view){
         Intent intent;
@@ -117,13 +118,8 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         String address_name=name.getText().toString();
         String address_tel=tel.getText().toString();
         String address_gender=String.valueOf(gender);
-        String address_address;
-        if(address.getText().toString().equals("小区/写字楼/学校等")){
-            address_address=address_detail.getText().toString();
-        }
-        else {
-            address_address=address.getText().toString() + address_detail.getText().toString();
-        }
+        String address_address=address_detail.getText().toString();
+        String address_district=address_detail.getText().toString();
         return true;
     }
 }

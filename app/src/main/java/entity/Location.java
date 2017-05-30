@@ -11,9 +11,11 @@ public class Location implements Serializable {
     private String userName;
     private int gender;
     private String tel;
+    private String district;
 
     public Location(){
         /*测试数据*/
+        district="上海 普陀区";
         address="华东师范大学(中山北路校区) 3663号 5舍432B";
         userName="章琪";
         gender=0;
@@ -31,20 +33,22 @@ public class Location implements Serializable {
         this.tel=tel;
     }
     public void setGender(int gender){this.gender=gender;}
+    public void setDistrict(String district){this.district=district;}
 
     public String getAddress(){return this.address;}
     public String getUserName(){return this.userName;}
     public String getTel(){return this.tel;}
     public int getGender(){ return this.gender;}
+    public String getDistrict(){ return this.district;}
 
-//    public String getGenderString(){
-//        switch (gender){
-//            case 0:
-//                return "男";
-//            case 1:
-//                return "女";
-//            default:
-//                return "未知";
-//        }
-//    }
+    public String getGenderString(){
+        switch (gender){
+            case 0:
+                return "男";
+            case 1:
+                return "女";
+            default:
+                return "未知";
+        }
+    }
 }
