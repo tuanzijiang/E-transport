@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_marginTop="10dp"
     android:layout_height="match_parent"
-    android:minHeight="@dimen/line_standard_cards"
+    android:minHeight="70dp"
     android:background="@color/white"
     android:orientation="horizontal">
     <LinearLayout
@@ -12,37 +12,42 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.2">
             <TextView
                 android:id="@+id/address"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:maxLines="1"
                 android:text="华东师范大学（中山北路校区）"
-                android:textColor="@color/font_standard"
+                android:textColor="@color/font_weight"
                 android:textSize="@dimen/font_input"/>
         </LinearLayout>
         <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
             android:layout_weight="1">
             <TextView
                 android:id="@+id/name"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="章先生"
-                android:textColor="@color/font_light"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/font_standard"
                 android:textSize="@dimen/font_smaller"/>
             <TextView
                 android:id="@+id/tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="top"
                 android:text="15317315332"
                 android:textColor="@color/font_standard"
                 android:textSize="@dimen/font_smaller"/>
@@ -50,7 +55,9 @@
     </LinearLayout>
     <ImageView
         android:layout_gravity="center_vertical"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:src="@drawable/input"/>
 </LinearLayout>
