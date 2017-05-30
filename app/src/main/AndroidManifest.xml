@@ -92,6 +92,10 @@
             android:name=".OnLinePayMentActivity">
 
         </activity>
+        <activity
+            android:name=".UsualLocationActivity">
+
+        </activity>
     </application>
 
 </manifest>

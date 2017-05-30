@@ -123,6 +123,7 @@
             android:orientation="vertical">
             <!--收货地址-->
             <LinearLayout
+                android:id="@+id/ll_location"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line_standard_input"
                 android:background="@color/white"
