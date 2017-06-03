@@ -18,6 +18,7 @@ import collector.BaseActivity;
 import collector.CommonRequest;
 import collector.CommonResponse;
 import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
 import collector.ResponseHandler;
 import entity.User;
 
@@ -88,12 +89,12 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 if(login(account.getText().toString(),et_pw.getText().toString())){
                     User user=new User();
                     //user信息更改
-                    user.setUserName(response.getPropertyMap().get("IDName"));
-                    Log.d("ID",user.getUserName());
+                    //user.setUserName(response.getPropertyMap().get("IDName"));
+                    //Log.d("ID",user.getUserName());
                     loadUserInfo(user);
                     intent.putExtra("result",BACK_STATE_LOGIN);
                     setResult(RESULT_OK,intent);
-                    finish();
+                    //finish();
                 }
                 else{
                     Toast.makeText(PasswordLoginActivity.this,"密码错误",Toast.LENGTH_SHORT).show();
@@ -129,6 +130,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
             @Override
             public CommonResponse success(CommonResponse response) {
                 Log.e("S","SSS");
+                LoadingDialogUtil.cancelLoading();
                 Toast.makeText(PasswordLoginActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
 
                 return response;
@@ -137,19 +139,14 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
             @Override
             public CommonResponse fail(String failCode, String failMsg) {
                 Log.e("F","FFF");
+                LoadingDialogUtil.cancelLoading();
                 Toast.makeText(PasswordLoginActivity.this,"登陆失败",Toast.LENGTH_SHORT).show();
 
                 return null;
             }
-        },false);
-        response=myTask.getFinalresponse();
-        if(response == null){
-            Log.d("TaskRes","NULL");
-            return false;
-        }
-        else {
-            return true;
-        }
+        },true);
+        //response=myTask.getFinalresponse();
+        return true;
     }
 
 }

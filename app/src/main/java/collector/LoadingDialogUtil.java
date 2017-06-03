@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +16,12 @@ import com.example.dell2.e_transport.R;
 
 public class LoadingDialogUtil {
 
-    private static Dialog loadDialog;
+    private static Dialog loadDialog = null;
     private static View loadingView;
 
     public static void showLoadingDialog(Context context) {
         if(loadDialog == null) {
+            Log.d("DIA","Loading");
             prepareLoadingView(context, true, "正在为您加载，请稍候...");
             loadDialog = new Dialog(context, R.style.MyDialogStyle);
             loadDialog.setContentView(loadingView);
