@@ -130,6 +130,11 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
             public void success(CommonResponse response) {
                 Log.e("S","SSS");
                 Toast.makeText(PasswordLoginActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
+                String IDname = response.getPropertyMap().get("IDName");
+                if(IDname==null){
+                    Log.d("null","ffff");
+                }
+                Log.d("resp",IDname);
             }
 
             @Override
