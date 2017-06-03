@@ -25,11 +25,15 @@ public class User implements Serializable{
         isAvoidCover=2;
         userGender=0;
         /*测试用数据*/
-        userName="章琪";
+        /*userName="章琪";
         userTel="15317315332";
         userEmail="985638485@qq.com";
-        userAddress="上海市黄浦区";
+        userAddress="上海市黄浦区";*/
         /*测试用数据*/
+        userName = null;
+        userTel = null;
+        userEmail = null;
+        userAddress = null;
     }
     public void setIsAvoidCover(int isAvoidCover){
         this.isAvoidCover=isAvoidCover;

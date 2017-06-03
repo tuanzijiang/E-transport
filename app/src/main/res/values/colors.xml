@@ -14,4 +14,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- 控件颜色（ViewColor简写为VC） -->
+    <color name="VC_solid">#E5E5EA</color>
+    <color name="VC_stroke">#C6C9CB</color>
+    <color name="VC_divide_line">#A7AAAD</color>
 </resources>

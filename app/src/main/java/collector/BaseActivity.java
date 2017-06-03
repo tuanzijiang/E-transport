@@ -22,11 +22,14 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         AppCompatActivityCollector.removeActivity(this);
     }
-    protected void sendHttpPostRequest(String url, CommonRequest request, ResponseHandler responseHandler, boolean showLoadingDialog) {
-        new HttpPostTask(request, mHandler, responseHandler).execute(url);
+    protected HttpPostTask sendHttpPostRequest(String url, CommonRequest request, ResponseHandler responseHandler, boolean showLoadingDialog) {
+        HttpPostTask temp = new HttpPostTask(request, mHandler, responseHandler);
+        temp.execute(url);
     /*    if(showLoadingDialog) {
             LoadingDialogUtil.showLoadingDialog(BaseActivity.this);
         }*/
+        //Log.d("TESTkkk",temp.getFinalresponse().getPropertyMap().get("IDName"));
+        return temp;
     }
 
     protected Handler mHandler = new Handler(){

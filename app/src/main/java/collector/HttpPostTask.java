@@ -16,6 +16,7 @@ public class HttpPostTask extends AsyncTask<String,String,String> {
     /** BaseActivity 中基础问题的处理 handler */
     private Handler mHandler;
 
+    private CommonResponse finalresponse;
     /** 返回信息处理回调接口 */
     private ResponseHandler rHandler;
 
@@ -86,11 +87,16 @@ public class HttpPostTask extends AsyncTask<String,String,String> {
                 CommonResponse response = new CommonResponse(result);
                 // 这里response.getResCode()为多少表示业务完成也是和服务器约定好的
                 if ("0".equals(response.getResCode())) { // 正确
-                    rHandler.success(response);
+                    finalresponse = rHandler.success(response);
+                    Log.d("TEST",finalresponse.getPropertyMap().get("IDName"));
                 } else {
-                    rHandler.fail(response.getResCode(), response.getResMsg());
+                    finalresponse = rHandler.fail(response.getResCode(), response.getResMsg());
                 }
             }
         }
+    }
+
+    public CommonResponse getFinalresponse(){
+        return finalresponse;
     }
 }

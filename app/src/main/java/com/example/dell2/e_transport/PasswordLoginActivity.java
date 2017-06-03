@@ -32,6 +32,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
     //Login_Url
     public static final String LOGIN_URL = "http://118.89.191.184:8080/ETServer/ETHome/LoginServlet";
 
+    private CommonResponse response;
     private TextView title_name;
     private ImageView header_front_1;
     private ImageView header_back_1;
@@ -86,9 +87,9 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 }
                 if(login(account.getText().toString(),et_pw.getText().toString())){
                     User user=new User();
-                    /**
-                     * （待填）
-                     */
+                    //user信息更改
+                    user.setUserName(response.getPropertyMap().get("IDName"));
+                    Log.d("ID",user.getUserName());
                     loadUserInfo(user);
                     intent.putExtra("result",BACK_STATE_LOGIN);
                     setResult(RESULT_OK,intent);
@@ -124,27 +125,31 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
         CommonRequest request = new CommonRequest();
         request.addRequestParam("name",account);
         request.addRequestParam("password",password);
-
-        sendHttpPostRequest(LOGIN_URL, request, new ResponseHandler() {
+        HttpPostTask myTask = sendHttpPostRequest(LOGIN_URL, request, new ResponseHandler() {
             @Override
-            public void success(CommonResponse response) {
+            public CommonResponse success(CommonResponse response) {
                 Log.e("S","SSS");
                 Toast.makeText(PasswordLoginActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
-                String IDname = response.getPropertyMap().get("IDName");
-                if(IDname==null){
-                    Log.d("null","ffff");
-                }
-                Log.d("resp",IDname);
+
+                return response;
             }
 
             @Override
-            public void fail(String failCode, String failMsg) {
+            public CommonResponse fail(String failCode, String failMsg) {
                 Log.e("F","FFF");
                 Toast.makeText(PasswordLoginActivity.this,"登陆失败",Toast.LENGTH_SHORT).show();
-            }
-        },true);
 
-        return true;
+                return null;
+            }
+        },false);
+        response=myTask.getFinalresponse();
+        if(response == null){
+            Log.d("TaskRes","NULL");
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
 }
