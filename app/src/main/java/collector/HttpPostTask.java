@@ -2,6 +2,7 @@ package collector;
 
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.util.Log;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -69,6 +70,7 @@ public class HttpPostTask extends AsyncTask<String,String,String> {
             }
         } catch (IOException e) {
             // 网络请求过程中发生IO异常
+            Log.d("IO",e.toString());
             mHandler.obtainMessage(Constant.HANDLER_HTTP_SEND_FAIL,
                     e.getClass().getName() + " : " + e.getMessage()).sendToTarget();
         }

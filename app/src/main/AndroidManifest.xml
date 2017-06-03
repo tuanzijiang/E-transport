@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dell2.e_transport">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name="application.E_Trans_Application"
         android:allowBackup="true"
