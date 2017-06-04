@@ -86,19 +86,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                     Toast.makeText(PasswordLoginActivity.this,"请输入密码",Toast.LENGTH_SHORT).show();
                     break;
                 }
-                if(login(account.getText().toString(),et_pw.getText().toString())){
-                    User user=new User();
-                    //user信息更改
-                    //user.setUserName(response.getPropertyMap().get("IDName"));
-                    //Log.d("ID",user.getUserName());
-                    loadUserInfo(user);
-                    intent.putExtra("result",BACK_STATE_LOGIN);
-                    setResult(RESULT_OK,intent);
-                    //finish();
-                }
-                else{
-                    Toast.makeText(PasswordLoginActivity.this,"密码错误",Toast.LENGTH_SHORT).show();
-                }
+                login(account.getText().toString(),et_pw.getText().toString(),intent);
                 break;
             default:
                 break;
@@ -121,7 +109,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
      * @param password
      * @return
      */
-    public boolean login(String account,String password){
+    public boolean login(final String account, final String password, final Intent intent){
         Log.d("LOGIN",account + "::" +password);
         CommonRequest request = new CommonRequest();
         request.addRequestParam("name",account);
@@ -131,21 +119,39 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
             public CommonResponse success(CommonResponse response) {
                 Log.e("S","SSS");
                 LoadingDialogUtil.cancelLoading();
+                User user=new User();
+                //user信息更改
+                user.setUserName(response.getPropertyMap().get("IDName"));
+                user.setUserAddress(response.getPropertyMap().get("location"));
+                user.setUserEmail(account);
+                Log.d("GE",response.getPropertyMap().get("gender")+" ");
+                user.setUserGender(response.getPropertyMap().get("gender").equals("female")?1:0);
+                user.setUserTel(response.getPropertyMap().get("phoneNumber"));
+                user.setLoginPw(password);
+                loadUserInfo(user);
+                intent.putExtra("result",BACK_STATE_LOGIN);
+                setResult(RESULT_OK,intent);
                 Toast.makeText(PasswordLoginActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
+                finish();
 
                 return response;
             }
 
             @Override
             public CommonResponse fail(String failCode, String failMsg) {
-                Log.e("F","FFF");
                 LoadingDialogUtil.cancelLoading();
-                Toast.makeText(PasswordLoginActivity.this,"登陆失败",Toast.LENGTH_SHORT).show();
-
+                if(failCode.equals("100")) {
+                    Toast.makeText(PasswordLoginActivity.this, "密码错误，请重新登陆", Toast.LENGTH_SHORT).show();
+                }
+                if(failCode.equals("200")){
+                    Toast.makeText(PasswordLoginActivity.this, "账号不存在，请您注册", Toast.LENGTH_SHORT).show();
+                }
+                if(failCode.equals("300")){
+                    Toast.makeText(PasswordLoginActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
+                }
                 return null;
             }
         },true);
-        //response=myTask.getFinalresponse();
         return true;
     }
 
