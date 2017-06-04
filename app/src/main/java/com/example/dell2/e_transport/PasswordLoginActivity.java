@@ -17,6 +17,7 @@ import application.E_Trans_Application;
 import collector.BaseActivity;
 import collector.CommonRequest;
 import collector.CommonResponse;
+import collector.Constant;
 import collector.HttpPostTask;
 import collector.LoadingDialogUtil;
 import collector.ResponseHandler;
@@ -31,7 +32,6 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
     public static final String BACK_STATE_LOGIN="LOGIN";
 
     //Login_Url
-    public static final String LOGIN_URL = "http://118.89.191.184:8080/ETServer/ETHome/LoginServlet";
 
     private CommonResponse response;
     private TextView title_name;
@@ -109,12 +109,12 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
      * @param password
      * @return
      */
-    public boolean login(final String account, final String password, final Intent intent){
+    public void login(final String account, final String password, final Intent intent){
         Log.d("LOGIN",account + "::" +password);
         CommonRequest request = new CommonRequest();
         request.addRequestParam("name",account);
         request.addRequestParam("password",password);
-        HttpPostTask myTask = sendHttpPostRequest(LOGIN_URL, request, new ResponseHandler() {
+        HttpPostTask myTask = sendHttpPostRequest(Constant.LOGIN_URL, request, new ResponseHandler() {
             @Override
             public CommonResponse success(CommonResponse response) {
                 Log.e("S","SSS");
@@ -128,6 +128,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 user.setUserGender(response.getPropertyMap().get("gender").equals("female")?1:0);
                 user.setUserTel(response.getPropertyMap().get("phoneNumber"));
                 user.setLoginPw(password);
+
                 loadUserInfo(user);
                 intent.putExtra("result",BACK_STATE_LOGIN);
                 setResult(RESULT_OK,intent);
@@ -152,7 +153,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 return null;
             }
         },true);
-        return true;
+        return;
     }
 
 }

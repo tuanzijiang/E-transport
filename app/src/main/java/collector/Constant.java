@@ -8,6 +8,9 @@ public class Constant {
 
     public static final int HANDLER_HTTP_SEND_FAIL = 1001;
     public static final int HANDLER_HTTP_RECEIVE_FAIL = 1002;
+    public static final String SETTING_URL = "http://118.89.191.184:8080/ETServer/ETHome/SettingServlet";
+    public static final String LOGIN_URL = "http://118.89.191.184:8080/ETServer/ETHome/LoginServlet";
+
 
     /*
      * Activity跳转用RequestCode

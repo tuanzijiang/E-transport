@@ -41,7 +41,7 @@ public class HttpPostTask extends AsyncTask<String,String,String> {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             // 第二步：设置HttpURLConnection连接相关属性
-            connection.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+            connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             connection.setRequestMethod("POST"); // 设置请求方法，“POST或GET”
             connection.setConnectTimeout(8000); // 设置连接建立的超时时间
             connection.setReadTimeout(8000); // 设置网络报文收发超时时间
@@ -88,7 +88,6 @@ public class HttpPostTask extends AsyncTask<String,String,String> {
                 // 这里response.getResCode()为多少表示业务完成也是和服务器约定好的
                 if ("0".equals(response.getResCode())) { // 正确
                     finalresponse = rHandler.success(response);
-                    Log.d("TEST",finalresponse.getPropertyMap().get("IDName"));
                 } else {
                     finalresponse = rHandler.fail(response.getResCode(), response.getResMsg());
                 }
