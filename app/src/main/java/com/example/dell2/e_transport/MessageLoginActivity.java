@@ -4,17 +4,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.content.res.ResourcesCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
 import java.lang.ref.WeakReference;
 
 import application.E_Trans_Application;
+import cn.smssdk.EventHandler;
+import cn.smssdk.SMSSDK;
 import collector.BaseActivity;
+import collector.CommonRequest;
+import collector.CommonResponse;
+import collector.Constant;
+import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
+import collector.ResponseHandler;
 import entity.User;
 import handler.CountDownHandler;
 
@@ -36,6 +51,10 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
     private TextView verify_button;
     private E_Trans_Application app;
     private int verify_state;/*0--未开始计时 1--已开始计时*/
+
+    private EventHandler eventHandler;
+    private String strPhoneNumber;
+
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -44,6 +63,12 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
         }
         setContentView(R.layout.activity_messagelogin);
         init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SMSSDK.unregisterEventHandler(eventHandler);
     }
     /**
      * 启动本activity
@@ -72,10 +97,37 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
         message_login_et.setHorizontallyScrolling(true);
         button_verify.setOnClickListener(this);
         verify_state=0;
+
+
+        SMSSDK.initSDK(this, "1e6ea2840b7c3", "67fbcafac5d69c190212cff1a8a02e37");
+
+        eventHandler = new EventHandler() {
+
+            /**
+             * 在操作之后被触发
+             *
+             * @param event  参数1
+             * @param result 参数2 SMSSDK.RESULT_COMPLETE表示操作成功，为SMSSDK.RESULT_ERROR表示操作失败
+             * @param data   事件操作的结果
+             */
+
+            @Override
+            public void afterEvent(int event, int result, Object data) {
+                Message message = myHandler.obtainMessage(0x00);
+                message.arg1 = event;
+                message.arg2 = result;
+                message.obj = data;
+                myHandler.sendMessage(message);
+            }
+        };
+
+        SMSSDK.registerEventHandler(eventHandler);
+
     }
     @Override
     public void onClick(View view){
         Intent intent=new Intent();
+
         switch (view.getId()){
             case R.id.header_front_1:
                 intent.putExtra("result",BACK_STATE_NOLOGIN);
@@ -88,22 +140,16 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
                 break;
             case R.id.verify_button:
                 if(verify_state==0){
-                    if(sendVerify()){
-                        cdh.sendEmptyMessageDelayed(cdh.START,1000);
-                    }
+                    strPhoneNumber = message_login_et.getText().toString();
+                    SMSSDK.getVerificationCode("86", strPhoneNumber);
+                    cdh.sendEmptyMessageDelayed(cdh.START,1000);
                 }
                 break;
             case R.id.button_verify:
                 String verify=et_pw.getText().toString();
-                if(checkVerify(verify)){
-                    if(login()){
-                        User user=new User();
-                        /**
-                         * （待填）
-                         */
-                        loadUserInfo(user);
-                        finish();
-                    }
+                if(verify!=null&&verify.length()==4) {
+                    LoadingDialogUtil.showLoadingDialog(this);
+                    SMSSDK.submitVerificationCode("86", strPhoneNumber, verify);
                 }
             default:
                 break;
@@ -167,4 +213,82 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
     public boolean login(){
         return true;
     }
+
+    Handler myHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0x00:
+                    int event = msg.arg1;
+                    int result = msg.arg2;
+                    Object data = msg.obj;
+                    Log.e("phone", "result : " + result + ", event: " + event + ", data : " + data);
+                    if (result == SMSSDK.RESULT_COMPLETE) { //回调  当返回的结果是complete
+                        if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) { //获取验证码
+                            Toast.makeText(MessageLoginActivity.this, "发送验证码成功", Toast.LENGTH_SHORT).show();
+                            Log.d("phone", "get verification code successful.");
+                        } else if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) { //提交验证码
+                            Log.d("phone", "submit code successful");
+                            LoadingDialogUtil.cancelLoading();
+                            User user=new User();
+                            CommonRequest request = new CommonRequest();
+
+                            request.setRequestCode("phoneNumber");
+                            request.addRequestParam("phoneNumber",strPhoneNumber);
+
+                            HttpPostTask myTask = sendHttpPostRequest(Constant.LOGIN_URL, request, new ResponseHandler() {
+                                @Override
+                                public CommonResponse success(CommonResponse response) {
+                                    Log.e("S","SSS");
+                                    LoadingDialogUtil.cancelLoading();
+                                    User user=new User();
+                                    //user信息更改
+                                    user.setUserName(response.getPropertyMap().get("IDName"));
+                                    user.setUserAddress(response.getPropertyMap().get("location"));
+                                    Log.d("GE",response.getPropertyMap().get("gender")+" ");
+                                    user.setUserGender(response.getPropertyMap().get("gender").equals("female")?1:0);
+                                    user.setUserTel(response.getPropertyMap().get("phoneNumber"));
+                                    user.setCoverPw(response.getPropertyMap().get("payPassword"));
+                                    Toast.makeText(MessageLoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+
+                                    loadUserInfo(user);
+                                    //intent.putExtra("result",BACK_STATE_LOGIN);
+                                    //setResult(RESULT_OK,intent);
+                                    finish();
+
+                                    return response;
+                                }
+
+                                @Override
+                                public CommonResponse fail(String failCode, String failMsg) {
+                                    LoadingDialogUtil.cancelLoading();
+                                    return null;
+                                }
+                            },true);
+
+                        } else {
+                            LoadingDialogUtil.cancelLoading();
+                            Toast.makeText(MessageLoginActivity.this, "请重新验证", Toast.LENGTH_SHORT).show();
+                            Log.d("phone", data.toString());
+                        }
+                    } else { //进行操作出错，通过下面的信息区分析错误原因
+                        try {
+                            Throwable throwable = (Throwable) data;
+                            throwable.printStackTrace();
+                            JSONObject object = new JSONObject(throwable.getMessage());
+                            String des = object.optString("detail");//错误描述
+                            int status = object.optInt("status");//错误代码
+                            Log.e("phone", "status: " + status + ", detail: " + des);
+                            if (status > 0 && !TextUtils.isEmpty(des)) {
+                                Toast.makeText(MessageLoginActivity.this, des, Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+            }
+        }
+    };
 }

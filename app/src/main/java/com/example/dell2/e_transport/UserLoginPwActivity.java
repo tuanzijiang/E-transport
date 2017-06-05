@@ -2,15 +2,26 @@ package com.example.dell2.e_transport;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.CommonRequest;
+import collector.CommonResponse;
+import collector.Constant;
+import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
+import collector.ResponseHandler;
+import entity.User;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * Created by dell2 on 2017/5/25.
@@ -73,13 +84,8 @@ public class UserLoginPwActivity extends BaseActivity implements View.OnClickLis
                     Toast.makeText(UserLoginPwActivity.this,"两次密码输入不同",Toast.LENGTH_SHORT).show();
                     break;
                 }
-                if(setUserLoginPw(et_pw.getText().toString())){
-                    app.getUser().setUserPwLogin(et_pw.getText().toString());
-                    intent=new Intent();
-                    intent.putExtra("result","true");
-                    setResult(RESULT_OK);
-                    finish();
-                }
+                intent = new Intent();
+                setUserLoginPw(et_pw.getText().toString(), intent);
                 break;
             default:
                 break;
@@ -90,7 +96,42 @@ public class UserLoginPwActivity extends BaseActivity implements View.OnClickLis
      * 设置登录密码，邮箱注意检查是否和数据库里面的重复
      * @return 修改结果
      */
-    public boolean setUserLoginPw(String pw){
-        return true;
+    public void setUserLoginPw(final String pw,final Intent intent){
+
+        CommonRequest request = new CommonRequest();
+
+        request.setRequestCode("password");
+
+        request.addRequestParam("param", pw);
+
+        Log.d("PW",pw);
+        User user = app.getUser();
+        String userName = user.getUserEmail();
+        String phoneNumber = user.getUserTel();
+        request.addRequestParam("userName",userName);
+        request.addRequestParam("phoneNumber",phoneNumber);
+        HttpPostTask myTask = sendHttpPostRequest(Constant.SETTING_URL, request, new ResponseHandler() {
+            @Override
+            public CommonResponse success(CommonResponse response) {
+                Log.e("SETTING","S");
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(UserLoginPwActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
+                app.getUser().setLoginPw(pw);
+
+                intent.putExtra("result","true");
+                setResult(RESULT_OK);
+                finish();
+
+                return response;
+            }
+
+            @Override
+            public CommonResponse fail(String failCode, String failMsg) {
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(UserLoginPwActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        },true);
+        return;
     }
 }

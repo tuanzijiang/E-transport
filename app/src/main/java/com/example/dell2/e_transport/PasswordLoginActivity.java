@@ -127,6 +127,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 Log.d("GE",response.getPropertyMap().get("gender")+" ");
                 user.setUserGender(response.getPropertyMap().get("gender").equals("female")?1:0);
                 user.setUserTel(response.getPropertyMap().get("phoneNumber"));
+                user.setCoverPw(response.getPropertyMap().get("payPassword"));
                 user.setLoginPw(password);
 
                 loadUserInfo(user);

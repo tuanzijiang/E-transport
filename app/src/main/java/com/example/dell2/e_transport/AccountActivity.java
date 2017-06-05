@@ -1,6 +1,7 @@
 package com.example.dell2.e_transport;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -148,10 +149,12 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 startActivity(intent);
                 break;
             case R.id.set_PwLogin:
-                if(user.getUserPwLogin()!=null&&!user.getUserPwLogin().equals(""))
-                    intent=new Intent(AccountActivity.this,UserLoginPwChangeActivity.class);
-                else
-                    intent=new Intent(AccountActivity.this,UserLoginPwActivity.class);
+                if(user.getUserPwLogin()!=null&&!user.getUserPwLogin().equals("")) {
+                    intent = new Intent(AccountActivity.this, UserLoginPwChangeActivity.class);
+                }
+                else {
+                    intent = new Intent(AccountActivity.this, UserLoginPwActivity.class);
+                }
                 startActivity(intent);
                 break;
             case R.id.set_PwCover:
