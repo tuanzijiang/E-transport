@@ -127,6 +127,10 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.setUserGender:
                 intent=new Intent(AccountActivity.this,UserSexActivity.class);
+                Bundle genderBundle=new Bundle();
+                genderBundle.putString("userName", user.getUserEmail());
+                genderBundle.putString("phoneNumber",user.getUserTel());
+                intent.putExtras(genderBundle);
                 startActivity(intent);
                 break;
             case R.id.setTel:

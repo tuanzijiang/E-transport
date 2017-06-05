@@ -91,10 +91,11 @@ public class UserNameActivity extends BaseActivity implements View.OnClickListen
         Log.d("CN",userNameString);
         try {
             String strUTF8 = URLEncoder.encode(userNameString,"UTF-8");
-            Log.d("Ts",strUTF8);
+            //Log.d("Ts",strUTF8);
             request.addRequestParam("param", strUTF8);
         }catch (UnsupportedEncodingException e){
-            Log.d("TAG",e.getMessage());
+            //Log.d("TAG",e.getMessage());
+            e.printStackTrace();
         }
 
 
@@ -106,7 +107,7 @@ public class UserNameActivity extends BaseActivity implements View.OnClickListen
         HttpPostTask myTask = sendHttpPostRequest(Constant.SETTING_URL, request, new ResponseHandler() {
             @Override
             public CommonResponse success(CommonResponse response) {
-                Log.e("SETTING","S");
+                //Log.e("SETTING","S");
                 LoadingDialogUtil.cancelLoading();
                 Toast.makeText(UserNameActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
                 app.getUser().setUserName(userNameString);
@@ -118,7 +119,6 @@ public class UserNameActivity extends BaseActivity implements View.OnClickListen
             public CommonResponse fail(String failCode, String failMsg) {
                 LoadingDialogUtil.cancelLoading();
                 Toast.makeText(UserNameActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
-
                 return null;
             }
         },true);

@@ -2,13 +2,23 @@ package com.example.dell2.e_transport;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.CommonRequest;
+import collector.CommonResponse;
+import collector.Constant;
+import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
+import collector.ResponseHandler;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * Created by dell2 on 2017/5/24.
@@ -70,27 +80,11 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.ll_setting_female:
                 changeToOtherGender(1);
-                if(setUserGender(1)){
-                    Toast.makeText(UserSexActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
-                    app.getUser().setUserGender(1);
-                    finish();
-                }
-                else{
-                    Toast.makeText(UserSexActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
-                    app.getUser().setUserGender(0);
-                }
+                setUserGender(1);
                 break;
             case R.id.ll_setting_male:
                 changeToOtherGender(0);
-                if(setUserGender(0)){
-                    Toast.makeText(UserSexActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
-                    app.getUser().setUserGender(0);
-                    finish();
-                }
-                else{
-                    Toast.makeText(UserSexActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
-                    app.getUser().setUserGender(1);
-                }
+                setUserGender(0);
                 break;
             default:
                 break;
@@ -113,7 +107,44 @@ public class UserSexActivity extends BaseActivity implements View.OnClickListene
      * @param gender   0---男,1--女
      * @return 设置是否成功
      */
-    public boolean setUserGender(int gender){
-        return true;
+    public void setUserGender(final int gender){
+        String changeGender = null;
+        if(gender == 0){
+            changeGender="male";
+        }
+        else{
+            changeGender="female";
+        }
+
+        CommonRequest request = new CommonRequest();
+
+        request.setRequestCode("gender");
+
+        Log.d("cG",changeGender);
+        request.addRequestParam("param",changeGender);
+        Bundle bundle = this.getIntent().getExtras();
+        String userName = bundle.getString("userName");
+        String phoneNumber = bundle.getString("phoneNumber");
+        request.addRequestParam("userName",userName);
+        request.addRequestParam("phoneNumber",phoneNumber);
+        HttpPostTask myTask = sendHttpPostRequest(Constant.SETTING_URL, request, new ResponseHandler() {
+            @Override
+            public CommonResponse success(CommonResponse response) {
+                Log.e("SETTING","S");
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(UserSexActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
+                app.getUser().setUserGender(gender);
+                finish();
+                return response;
+            }
+
+            @Override
+            public CommonResponse fail(String failCode, String failMsg) {
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(UserSexActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        },true);
+        return;
     }
 }
