@@ -86,6 +86,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
      * @param location 用户的输入
      */
     public void search(String location){
+
     }
 
     /**（待填）
