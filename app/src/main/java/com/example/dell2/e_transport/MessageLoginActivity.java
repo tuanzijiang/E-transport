@@ -249,6 +249,7 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
                                     user.setUserGender(response.getPropertyMap().get("gender").equals("female")?1:0);
                                     user.setUserTel(response.getPropertyMap().get("phoneNumber"));
                                     user.setCoverPw(response.getPropertyMap().get("payPassword"));
+                                    user.setLoginPw(response.getPropertyMap().get("password"));
                                     Toast.makeText(MessageLoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
 
                                     loadUserInfo(user);
