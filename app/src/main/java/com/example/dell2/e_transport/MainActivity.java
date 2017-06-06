@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         user.setLoginPw("qweqwe");
         user.setCoverPw("qweqwe");
         /*测试用的数据*/
-        app.setLoginState(0);
+        app.setLoginState(1);
         app.setUser(user);
     }
 

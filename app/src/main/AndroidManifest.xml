@@ -100,6 +100,9 @@
             android:name=".ChangeAddressActivity">
 
         </activity>
+        <activity android:name=".UserAvatarActivity">
+
+        </activity>
     </application>
 
 </manifest>
