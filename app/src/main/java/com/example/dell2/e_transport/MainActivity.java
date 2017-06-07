@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         user.setLoginPw("qweqwe");
         user.setCoverPw("qweqwe");
         /*测试用的数据*/
-        app.setLoginState(0);
+        app.setLoginState(1);
         app.setUser(user);
     }
 
@@ -124,7 +124,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         userRelativeLayout.setOnClickListener(this);
         header_back_1.setOnClickListener(this);
         /*初始化碎片*/
-        setUserInfo();
+        //setUserInfo();
         setTypeFace();
         setTopFragment(0);
         setTitleName(0);

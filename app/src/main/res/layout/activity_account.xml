@@ -12,6 +12,7 @@
         android:orientation="vertical">
         <!--头像-->
         <LinearLayout
+            android:id="@+id/ll_avatar"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="@drawable/bottom_border_standard"

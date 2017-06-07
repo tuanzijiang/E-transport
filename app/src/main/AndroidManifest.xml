@@ -34,6 +34,9 @@
             android:name=".PasswordLoginActivity">
 
         </activity>
+        <activity android:name=".UserAvatarActivity">
+
+        </activity>
         <activity
             android:name=".SettingActivity">
         </activity>

@@ -22,6 +22,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private ImageView header_front_1;
     private ImageView header_back_1;
     private TextView title_name;
+    private LinearLayout ll_avatar;
     private LinearLayout setUserName;
     private TextView userName;
     private LinearLayout setUserGender;
@@ -71,7 +72,9 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         pwLogin=(TextView)findViewById(R.id.pwLogin);
         pwCover=(TextView)findViewById(R.id.pwCover);
         setIsAvoidPw=(LinearLayout)findViewById(R.id.setIsAvoidPw);
-        /*响应事件设定*/
+        ll_avatar=(LinearLayout)findViewById(R.id.ll_avatar);
+          /*响应事件设定*/
+        ll_avatar.setOnClickListener(this);
         setIsAvoidPw.setOnClickListener(this);
         header_front_1.setOnClickListener(this);
         setUserName.setOnClickListener(this);
@@ -166,6 +169,10 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.setIsAvoidPw:
                 intent=new Intent(AccountActivity.this,UserAvoidPwActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ll_avatar:
+                intent=new Intent(AccountActivity.this,UserAvatarActivity.class);
                 startActivity(intent);
                 break;
             default:
