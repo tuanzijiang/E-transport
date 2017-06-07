@@ -60,7 +60,7 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
         super.onCreate(saveInstanceState);
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
-        }
+        }//////opkkkk
         setContentView(R.layout.activity_messagelogin);
         init();
     }
