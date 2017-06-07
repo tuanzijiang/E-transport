@@ -37,7 +37,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private TextView pwCover;
     private LinearLayout setIsAvoidPw;
     private E_Trans_Application app;
-    private User user;
+    private User user;//Test
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
