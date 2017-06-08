@@ -9,11 +9,15 @@
         android:layout_weight="1"
         android:layout_height="0dp">
         <!--地图-->
-        <RelativeLayout
-            android:background="@drawable/temp_map_bg1"
+        <!--<RelativeLayout-->
+            <!--android:background="@drawable/temp_map_bg1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+        <!--</RelativeLayout>-->
+        <com.amap.api.maps.MapView
+            android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </RelativeLayout>
+            android:layout_height="match_parent" />
         <!---->
         <LinearLayout
             android:layout_marginTop="20dp"
