@@ -12,6 +12,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    sourceSets{
+        main {
+            jniLibs.srcDirs =["libs"]
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -28,12 +33,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support:design:25.0.0'
     compile 'com.android.support:support-vector-drawable:25.0.0'
-
-
-    compile name:'SMSSDK-2.1.4',ext:'aar'
-    compile name:'SMSSDKGUI-2.1.4',ext:'aar'
-
+    compile name: 'SMSSDK-2.1.4', ext: 'aar'
+    compile name: 'SMSSDKGUI-2.1.4', ext: 'aar'
     testCompile 'junit:junit:4.12'
+    compile files('libs/AMap3DMap_5.2.0_AMapNavi_5.1.0_AMapSearch_5.1.0_AMapLocation_3.4.0_20170602.jar')
 }
 
 repositories {
