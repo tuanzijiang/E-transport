@@ -6,6 +6,7 @@ import collector.BaseActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,44 +15,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
-import com.amap.api.navi.AMapNaviViewListener;
 
 /**
  * Created by dell2 on 2017/5/25.
  */
 
-public class UserAreaAvtivity extends BaseActivity implements View.OnClickListener,AMapLocationListener{
-    MapView mMapView = null;
-//    private TextView textView;
-//    private String[] strMsg;
-//    //声明AMapLocationClient类对象
-//    public AMapLocationClient mLocationClient = null;
-//    //声明定位回调监听器
-//    public AMapLocationListener mLocationListener = new AMapLocationListener() {
-//        @Override
-//        public void onLocationChanged(AMapLocation loc) {
-//            if (null!=loc){
-//                Message msg=mHandler.obtainMessage();
-//                msg.obj=loc;
-//                ms
-//            }
-//        }
-//
-//
-//    };
-////初始化定位
-//    mLocationClient = new AMapLocationClient(getApplicationContext());
-////设置定位回调监听
-//    mLocationClient.setLocationListener(mLocationListener);
-//
-//
-
-
+public class UserAreaAvtivity extends BaseActivity implements View.OnClickListener{
 
     //old*******************
     private ImageView back_button;
@@ -59,22 +30,28 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     private ImageView search_button;
     private EditText location;
     private RelativeLayout button_verify;
+   private MapView mMapView;
     private AMap aMap;
+
     @Override
-    protected void onCreate(Bundle saveInstanceState) {
-        super.onCreate(saveInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_usermap);
-        //获取地图控件引用
-        mMapView = (MapView) findViewById(R.id.map);
-        //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
-        mMapView.onCreate(saveInstanceState);
+        mMapView = (MapView) findViewById(R.id.mymap);
+        mMapView.onCreate(savedInstanceState);// 此方法必须重写
+
+        aMap = mMapView.getMap();
+
+        Log.e("myamap",String.valueOf(aMap));
 
 
-//        textView=(TextView)findViewById(R.id.location);
-//        Location();
+            aMap.setTrafficEnabled(true);// 显示实时交通状况
+            //地图模式可选类型：MAP_TYPE_NORMAL,MAP_TYPE_SATELLITE,MAP_TYPE_NIGHT
+            aMap.setMapType(AMap.MAP_TYPE_SATELLITE);// 卫星地图模式
+
         init();
     }
     protected void onDestroy() {
@@ -101,9 +78,9 @@ protected void onResume() {
     }
     private void init(){
 
-        if (aMap == null) {
-            aMap = mMapView.getMap();
-        }
+//        if (aMap == null) {
+//            aMap = mMapView.getMap();
+//        }
         /*实例化*/
         button_verify=(RelativeLayout)findViewById(R.id.button_verify);
         back_button=(ImageView)findViewById(R.id.back_button);
@@ -173,8 +150,4 @@ protected void onResume() {
     public void initLocation(){
     }
 
-    @Override
-    public void onLocationChanged(AMapLocation aMapLocation) {
-
-    }
 }

@@ -17,6 +17,22 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+     
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:name="application.E_Trans_Application"
         android:allowBackup="true"
@@ -25,7 +41,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="1b9ff7bc2e52a2b87a301fbe6d0c717c">//开发者申请的key
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="4b5b3159266118940bd6f8a533f4e8d0">//开发者申请的key
 
         </meta-data>
         <activity
@@ -128,7 +144,8 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
-        <service android:name="com.amap.api.location.APSService"></service>
+        <!--<service android:name="com.amap.api.location.APSService"></service>-->
+
     </application>
 
 </manifest>

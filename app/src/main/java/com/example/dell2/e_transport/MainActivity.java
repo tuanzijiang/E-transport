@@ -49,6 +49,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        Log.e("mainsavedInstanceState",String.valueOf(savedInstanceState));
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
@@ -124,7 +125,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         userRelativeLayout.setOnClickListener(this);
         header_back_1.setOnClickListener(this);
         /*初始化碎片*/
-        //setUserInfo();
+        setUserInfo();
         setTypeFace();
         setTopFragment(0);
         setTitleName(0);

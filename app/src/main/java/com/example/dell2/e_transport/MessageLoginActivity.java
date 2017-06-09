@@ -58,6 +58,7 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+//        Log.e("mass_savedInstanceState",String.valueOf(saveInstanceState));
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }//////opkkkk
