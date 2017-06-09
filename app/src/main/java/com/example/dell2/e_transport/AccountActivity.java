@@ -149,6 +149,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.setUserAddress:
                 intent=new Intent(AccountActivity.this,UserAreaAvtivity.class);
+                Log.d("a","CHANGE");
                 startActivity(intent);
                 break;
             case R.id.set_PwLogin:
