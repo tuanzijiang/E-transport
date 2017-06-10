@@ -14,10 +14,12 @@ import org.w3c.dom.Text;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.net.Inet4Address;
 import java.net.Socket;
 
 import application.E_Trans_Application;

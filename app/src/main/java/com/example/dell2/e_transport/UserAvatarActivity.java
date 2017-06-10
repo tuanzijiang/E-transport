@@ -2,6 +2,7 @@ package com.example.dell2.e_transport;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Gravity;
@@ -15,6 +16,8 @@ import android.widget.Button;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.Constant;
+import collector.PictureUtils;
 
 /**
  * Created by wangyan on 2017/6/6.
@@ -23,6 +26,7 @@ import collector.BaseActivity;
 public class UserAvatarActivity extends BaseActivity implements View.OnClickListener {
     private ImageView header_front_1;
     private ImageView header_back_1;
+    private ImageView avatar;
     private TextView title_name;
     private Button choosePhoto;
     private Button takePhoto;
@@ -42,6 +46,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
         header_front_1=(ImageView)findViewById(R.id.header_front_1);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
         title_name=(TextView)findViewById(R.id.title_name);
+        avatar=(ImageView)findViewById(R.id.iv_personal_icon);
         /*初始化标题*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setImageResource(R.drawable.more);
@@ -96,7 +101,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
      * 设置头像加载
      */
     public void initInfo(){
-
+        avatar.setImageBitmap(PictureUtils.getBitmap(Constant.avatarPath,1000,1000));
     }
 
 }

@@ -75,6 +75,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     private PoiSearch poiSearch;// POI搜索
     private String  etDistrict, etAddress;//区，地址
     double etLng, etLat;//横纵
+    private String preAc;
     GeocodeSearch search;
     int m=0;
     int j=0;
@@ -83,6 +84,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("aaa", "dddd");
+        preAc = null;
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -94,9 +96,22 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
                 RegeocodeAddress addr = regeocodeResult.getRegeocodeAddress();
-                etDistrict=addr.getDistrict();
+                etDistrict=addr.getProvince()+addr.getDistrict();
                 etAddress=addr.getFormatAddress();
                 Log.d("etDistrict",etDistrict);
+                if(preAc!=null){
+                    Intent intent = new Intent();
+                    intent.putExtra("address", etDistrict);
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }
+                else {
+                    Intent intent = new Intent();
+                    intent.putExtra("address", etAddress);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+
             }
 
             @Override
@@ -414,6 +429,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
             case R.id.button_verify:
                 if (keyWord != null && !keyWord.equals("")) {
                     Log.d("aaaaaa","bbbb");
+                    preAc = this.getIntent().getExtras().getString("kind");
                     setUserLocation(keyWord);
 //                    if (this.getIntent().getExtras().getString("kind") == null) {
 //
@@ -421,12 +437,6 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 //                            app.getUser().setUserAddress(location.getText().toString());
 //                            finish();
 //                        }
-//                    } else {
-//
-//                        Intent intent = new Intent();
-//                        intent.putExtra("address", location.getText().toString());
-//                        setResult(RESULT_OK, intent);
-//                        finish();
 //                    }
                 } else
                     Toast.makeText(UserAreaAvtivity.this, "地址不能为空", Toast.LENGTH_SHORT).show();
