@@ -74,13 +74,15 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     private PoiSearch.Query query;// Poi查询条件类
     private PoiSearch poiSearch;// POI搜索
     private String  etDistrict, etAddress;//区，地址
-    double etLng, etLat;//经纬度
+    double etLng, etLat;//横纵
     GeocodeSearch search;
-
+    int m=0;
+    int j=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("aaa", "dddd");
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -95,7 +97,6 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
                 etDistrict=addr.getDistrict();
                 etAddress=addr.getFormatAddress();
                 Log.d("etDistrict",etDistrict);
-                Log.d("etAddress",etAddress);
             }
 
             @Override
@@ -104,8 +105,8 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
                 LatLonPoint latlng = addr.getLatLonPoint();
                 etLat=latlng.getLatitude();
                 etLng=latlng.getLongitude();
-                Log.d("etLat", String.valueOf(etLat));
-                Log.d("etLng", String.valueOf(etLng));
+                setUseretLatLng(etLat,etLng);
+                Log.d("latlng", String.valueOf(etLng));
             }
         });
         init();
@@ -153,7 +154,6 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 
     private void init() {
 
-        Log.d("T","TTTT");
         if (aMap == null) {
             aMap = mMapView.getMap();
             setUpMap();
@@ -182,11 +182,11 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
         MyLocationStyle myLocationStyle;
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，
         // 定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-        //aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
+        aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         setupLocationStyle();
 
-        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_SHOW);//只定位一次。
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);//连续定位、蓝点不会移动到地图中心点，定位点依照设备方向旋转，并且蓝点会跟随设备移动。
         aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
 
         ImageView searButton = (ImageView) findViewById(R.id.search_button);//sezrch
@@ -249,6 +249,8 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
         poiSearch = new PoiSearch(this, query);
         poiSearch.setOnPoiSearchListener(this);
         poiSearch.searchPOIAsyn();
+        String a=query.getQueryString();
+        String b=query.getCity();
     }
 
 
@@ -271,17 +273,22 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
      *
      * @param location 用户地址
      */
+
     public boolean setUserLocation(String location) {
         String address = keyWord.trim();
-        GeocodeQuery query = new GeocodeQuery(address, "上海");
+        GeocodeQuery mquery = new GeocodeQuery(address, "");
         // 根据地理名称执行异步解析
-        search.getFromLocationNameAsyn(query);
-        Log.d("query", String.valueOf(query));
+        search.getFromLocationNameAsyn(mquery);
+
+        return true;
+    }
+
+    public boolean setUseretLatLng(double Lat,double Lng)
+    {
         search.getFromLocationAsyn(new RegeocodeQuery(
-                new LatLonPoint(etLat, etLng)
+                new LatLonPoint(Lat, Lng)
                 , 20 // 区域半径
                 , GeocodeSearch.GPS));
-        Log.d("setUserLocationetLat", String.valueOf(etLat));
         return true;
     }
 
@@ -400,24 +407,22 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
                 {
 //                    search(location.getText().toString());
                     searchButton();
-                    Log.d("case R.id.search_button","ss");
                 }
                 else
                     Toast.makeText(UserAreaAvtivity.this, "地址不能为空", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button_verify:
-                if (location.getText().toString() != null && !location.getText().toString().equals("")) {
-
-                    setUserLocation(location.getText().toString());
-                 //   Log.d("addresss",etAddress);
+                if (keyWord != null && !keyWord.equals("")) {
+                    Log.d("aaaaaa","bbbb");
+                    setUserLocation(keyWord);
 //                    if (this.getIntent().getExtras().getString("kind") == null) {
-//                        Log.d("cccc","ddddd");
+//
 //                        if (setUserLocation(location.getText().toString())) {
 //                            app.getUser().setUserAddress(location.getText().toString());
 //                            finish();
 //                        }
 //                    } else {
-//                        Log.d("eeeee","fffff");
+//
 //                        Intent intent = new Intent();
 //                        intent.putExtra("address", location.getText().toString());
 //                        setResult(RESULT_OK, intent);
