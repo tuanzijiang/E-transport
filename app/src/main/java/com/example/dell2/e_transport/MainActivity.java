@@ -67,16 +67,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         E_Trans_Application app=(E_Trans_Application)getApplication();
         User user=new User();
         /*测试用的数据*/
-        user.setUserTel("123456789");
+        /*user.setUserTel("123456789");
         user.setUserName("吗字典");
         user.setUserGender(0);
         user.setUserAddress("上海市 普陀区华东师范大学");
         user.setUserPwLogin("123456");
         user.setLoginPw("qweqwe");
-        user.setCoverPw("qweqwe");
+        user.setCoverPw("qweqwe");*/
         /*测试用的数据*/
-        app.setLoginState(1);
-        app.setUser(user);
+        app.setLoginState(0);
+        //app.setUser(user);
     }
 
 

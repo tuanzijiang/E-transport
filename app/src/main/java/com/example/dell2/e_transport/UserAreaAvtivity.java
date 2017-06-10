@@ -81,7 +81,6 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("aaa", "dddd");
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -154,6 +153,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 
     private void init() {
 
+        Log.d("T","TTTT");
         if (aMap == null) {
             aMap = mMapView.getMap();
             setUpMap();
@@ -182,7 +182,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
         MyLocationStyle myLocationStyle;
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，
         // 定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-        aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
+        //aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         setupLocationStyle();
 
@@ -407,8 +407,9 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.button_verify:
                 if (location.getText().toString() != null && !location.getText().toString().equals("")) {
-                    Log.d("aaaaaa","bbbb");
+
                     setUserLocation(location.getText().toString());
+                 //   Log.d("addresss",etAddress);
 //                    if (this.getIntent().getExtras().getString("kind") == null) {
 //                        Log.d("cccc","ddddd");
 //                        if (setUserLocation(location.getText().toString())) {

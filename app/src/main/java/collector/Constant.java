@@ -11,6 +11,7 @@ public class Constant {
     public static final String SETTING_URL = "http://118.89.191.184:8080/ETServer/ETHome/SettingServlet";
     public static final String LOGIN_URL = "http://118.89.191.184:8080/ETServer/ETHome/LoginServlet";
 
+    public static String avatarPath = null;
 
     /*
      * Activity跳转用RequestCode

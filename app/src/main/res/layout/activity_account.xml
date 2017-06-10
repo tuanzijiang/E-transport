@@ -27,12 +27,14 @@
                 android:textColor="@color/font_weight"
                 android:layout_weight="1"/>
             <ImageView
+                android:id="@+id/TestView"
                 android:layout_gravity="center_vertical"
                 android:layout_width="66dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/user_avatar"
                 android:layout_marginRight="7dp"
                 />
+                <!--android:src="@drawable/user_avatar"-->
+
         </LinearLayout>
         <!--用户名-->
         <LinearLayout

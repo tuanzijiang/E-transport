@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!--允许程序设置内置sd卡的写权限-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <!--允许程序获取网络状态-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--允许程序访问WiFi网络信息-->
@@ -56,7 +58,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="1b9ff7bc2e52a2b87a301fbe6d0c717c">//开发者的key。
+            android:value="169f53a8338968a3328959ade7adcf4d">//开发者的key。
 
         </meta-data>
         <activity

@@ -3,6 +3,8 @@ package com.example.dell2.e_transport;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
@@ -129,7 +138,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 user.setUserTel(response.getPropertyMap().get("phoneNumber"));
                 user.setCoverPw(response.getPropertyMap().get("payPassword"));
                 user.setLoginPw(password);
-
+                DecodeBase64(response.getPropertyMap().get("avatar"));
                 loadUserInfo(user);
                 intent.putExtra("result",BACK_STATE_LOGIN);
                 setResult(RESULT_OK,intent);
@@ -157,4 +166,52 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
         return;
     }
 
+    private String DecodeBase64(String base64){
+        byte[] byteIcon= Base64.decode(base64, Base64.DEFAULT);
+        for (int i = 0; i < byteIcon.length; ++i) {
+            if (byteIcon[i] < 0) {
+                byteIcon[i] += 256;
+            }
+        }
+//建立一个文件对象
+        File out = new File(getExternalFilesDir("avatar").getPath()+"/avatar.jpg");
+        Constant.avatarPath = getExternalFilesDir("avatar").getPath()+"/avatar.jpg";
+        if(out==null){
+            Log.d("Fa","filefail");
+            return null;
+        }
+        if(!out.exists()) {
+            Log.e("TAG", "Directory not created");
+        }
+        else{
+            try {
+                out.createNewFile();
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+            Log.e("TAG", "Directory created");
+        }
+        java.io.FileOutputStream outputStream = null;
+        try {
+            outputStream = new java.io.FileOutputStream(out);
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+
+        //把图片数据写入文件形成图片
+        if(outputStream!=null){
+            try {
+                outputStream.write(byteIcon);
+                Log.d("ff","ssssss");
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        return out.getPath();
+    }
 }
