@@ -33,6 +33,15 @@ import com.amap.api.services.help.InputtipsQuery;
 import com.amap.api.services.help.Tip;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.geocoder.GeocodeAddress;
+import com.amap.api.services.geocoder.GeocodeQuery;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.amap.api.services.geocoder.GeocodeSearch;
+import com.amap.api.services.geocoder.GeocodeSearch.OnGeocodeSearchListener;
+import com.amap.api.services.geocoder.RegeocodeAddress;
+import com.amap.api.services.geocoder.RegeocodeQuery;
+import com.amap.api.services.geocoder.RegeocodeResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +73,9 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     private int currentPage = 0;// 当前页面，从0开始计数
     private PoiSearch.Query query;// Poi查询条件类
     private PoiSearch poiSearch;// POI搜索
+    private String  etDistrict, etAddress;//区，地址
+    double etLng, etLat;//经纬度
+    GeocodeSearch search;
 
 
     @Override
@@ -76,6 +88,27 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
         setContentView(R.layout.activity_usermap);
         mMapView = (MapView) findViewById(R.id.mymap);
         mMapView.onCreate(savedInstanceState);// 此方法必须重写
+        search = new GeocodeSearch(this);
+        search.setOnGeocodeSearchListener(new OnGeocodeSearchListener() {
+            @Override
+            public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
+                RegeocodeAddress addr = regeocodeResult.getRegeocodeAddress();
+                etDistrict=addr.getDistrict();
+                etAddress=addr.getFormatAddress();
+                Log.d("etDistrict",etDistrict);
+                Log.d("etAddress",etAddress);
+            }
+
+            @Override
+            public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
+                GeocodeAddress addr = geocodeResult.getGeocodeAddressList().get(0);
+                LatLonPoint latlng = addr.getLatLonPoint();
+                etLat=latlng.getLatitude();
+                etLng=latlng.getLongitude();
+                Log.d("etLat", String.valueOf(etLat));
+                Log.d("etLng", String.valueOf(etLng));
+            }
+        });
         init();
     }
 
@@ -85,7 +118,6 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
      */
     public void searchButton() {
         keyWord = AMapUtil.checkEditText(searchText);
-        Log.d("aaaaaa","searchButton");
         if ("".equals(keyWord)) {
             ToastUtil.show(UserAreaAvtivity.this, "请输入搜索关键字");
             return;
@@ -137,7 +169,10 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
         search_button.setOnClickListener(this);
         button_verify.setOnClickListener(this);
         /*初始化定位*/
-        initLocation();
+//        initLocation();
+
+        // 创建GeocodeSearch对象
+
     }
 
     /**
@@ -218,42 +253,6 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 
 
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.back_button:
-                finish();
-                break;
-            case R.id.search_button:
-                if (location.getText().toString() != null && !location.getText().toString().equals(""))
-                {
-//                    search(location.getText().toString());
-                    searchButton();
-                    Log.d("case R.id.search_button","ss");
-                }
-                else
-                    Toast.makeText(UserAreaAvtivity.this, "地址不能为空", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.button_verify:
-                if (location.getText().toString() != null && !location.getText().toString().equals("")) {
-                    if (this.getIntent().getExtras().getString("kind") == null) {
-                        if (setUserLocation(location.getText().toString())) {
-                            app.getUser().setUserAddress(location.getText().toString());
-                            finish();
-                        }
-                    } else {
-                        Intent intent = new Intent();
-                        intent.putExtra("address", location.getText().toString());
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    }
-                } else
-                    Toast.makeText(UserAreaAvtivity.this, "地址不能为空", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                break;
-        }
-    }
 
 
     /**
@@ -273,6 +272,16 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
      * @param location 用户地址
      */
     public boolean setUserLocation(String location) {
+        String address = keyWord.trim();
+        GeocodeQuery query = new GeocodeQuery(address, "上海");
+        // 根据地理名称执行异步解析
+        search.getFromLocationNameAsyn(query);
+        Log.d("query", String.valueOf(query));
+        search.getFromLocationAsyn(new RegeocodeQuery(
+                new LatLonPoint(etLat, etLng)
+                , 20 // 区域半径
+                , GeocodeSearch.GPS));
+        Log.d("setUserLocationetLat", String.valueOf(etLat));
         return true;
     }
 
@@ -280,8 +289,8 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
      * （待填）
      * 初始化地图中心点的位置
      */
-    public void initLocation() {
-    }
+//    public void initLocation() {
+//    }
 
     @Override
     public void onPoiSearched(PoiResult result, int rCode) {
@@ -376,5 +385,51 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     public void afterTextChanged(Editable s) {
 
     }
+
+
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.back_button:
+                finish();
+                break;
+            case R.id.search_button:
+                if (location.getText().toString() != null && !location.getText().toString().equals(""))
+                {
+//                    search(location.getText().toString());
+                    searchButton();
+                    Log.d("case R.id.search_button","ss");
+                }
+                else
+                    Toast.makeText(UserAreaAvtivity.this, "地址不能为空", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button_verify:
+                if (location.getText().toString() != null && !location.getText().toString().equals("")) {
+                    Log.d("aaaaaa","bbbb");
+                    setUserLocation(location.getText().toString());
+//                    if (this.getIntent().getExtras().getString("kind") == null) {
+//                        Log.d("cccc","ddddd");
+//                        if (setUserLocation(location.getText().toString())) {
+//                            app.getUser().setUserAddress(location.getText().toString());
+//                            finish();
+//                        }
+//                    } else {
+//                        Log.d("eeeee","fffff");
+//                        Intent intent = new Intent();
+//                        intent.putExtra("address", location.getText().toString());
+//                        setResult(RESULT_OK, intent);
+//                        finish();
+//                    }
+                } else
+                    Toast.makeText(UserAreaAvtivity.this, "地址不能为空", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+    }
+
+
 
 }
