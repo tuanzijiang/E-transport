@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/E-transport.iml" filepath="$PROJECT_DIR$/E-transport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/E-transport6.iml" filepath="$PROJECT_DIR$/E-transport6.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

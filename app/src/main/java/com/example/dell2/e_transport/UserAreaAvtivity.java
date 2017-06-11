@@ -21,8 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.AMapUtils;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.AMapException;
@@ -79,6 +81,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     double etLng, etLat;//横纵
     private String preAc;
     GeocodeSearch search;
+    LatLonPoint currLatLonll=new LatLonPoint(31.227766,121.402987);
     int m=0;
     int j=0;
 
@@ -101,6 +104,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
                 etDistrict=addr.getProvince()+addr.getDistrict();
                 etAddress=addr.getFormatAddress();
                 //Log.d("etDistrict",etDistrict);
+                Log.d("etAddress",etAddress);
                 if(preAc.equals("setting")){
                     Log.d("area","setting");
                     User myuser = app.getUser();
@@ -123,7 +127,7 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
-                GeocodeAddress addr = geocodeResult.getGeocodeAddressList().get(0);
+                GeocodeAddress addr = geocodeResult.getGeocodeAddressList().get(1);
                 LatLonPoint latlng = addr.getLatLonPoint();
                 etLat=latlng.getLatitude();
                 etLng=latlng.getLongitude();
@@ -307,9 +311,10 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 
     public boolean setUseretLatLng(double Lat,double Lng)
     {
+        // 根据地理名称执行异步解析
         search.getFromLocationAsyn(new RegeocodeQuery(
                 new LatLonPoint(Lat, Lng)
-                , 20 // 区域半径
+                , 1 // 区域半径
                 , GeocodeSearch.GPS));
         return true;
     }
@@ -453,6 +458,15 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    //计算距离distance起点定死了经纬度
+    //double lat,double lng从数据库得到经纬度，转化为地理码
 
+public void distancecount(double lat,double lng){
+
+    LatLonPoint deslatlngllp=new LatLonPoint(lng,lat);
+    LatLng deslatlng=AMapUtil.convertToLatLng(deslatlngllp);
+    LatLng currLatLon=AMapUtil.convertToLatLng(currLatLonll);
+   float distance = AMapUtils.calculateLineDistance(currLatLon,deslatlng);
+    }
 
 }

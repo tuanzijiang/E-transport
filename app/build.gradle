@@ -43,7 +43,7 @@ dependencies {
 
     //compile 'com.amap.api:3dmap:latest.integration'
     //compile 'com.amap.api:search:latest.integration'
-    //    compile files('libs/AMap3DMap_5.2.0_AMapNavi_5.1.0_AMapSearch_5.1.0_AMapLocation_3.4.0_20170602.jar')
+//        compile files('libs/AMap3DMap_5.2.0_AMapNavi_5.1.0_AMapSearch_5.1.0_AMapLocation_3.4.0_20170602.jar')
     compile files('libs/AMap_Search_V5.1.0_20170517.jar')
 //    compile files('libs/Amap_2DMap_V4.2.0_20170209.jar')
     compile files('libs/Android_Map3D_SDK_V5.2.0_20170602.jar')
