@@ -81,9 +81,9 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
     double etLng, etLat;//横纵
     private String preAc;
     GeocodeSearch search;
-    LatLonPoint currLatLonll=new LatLonPoint(31.227766,121.402987);
     int m=0;
     int j=0;
+    LatLonPoint currLatLonll=new LatLonPoint(31.227901,121.4029);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
