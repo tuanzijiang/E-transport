@@ -138,7 +138,9 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 user.setUserTel(response.getPropertyMap().get("phoneNumber"));
                 user.setCoverPw(response.getPropertyMap().get("payPassword"));
                 user.setLoginPw(password);
-                DecodeBase64(response.getPropertyMap().get("avatar"));
+                if(response.getPropertyMap().get("avatar")!=null&&!response.getPropertyMap().get("avatar").equals("")) {
+                    DecodeBase64(response.getPropertyMap().get("avatar"));
+                }
                 loadUserInfo(user);
                 intent.putExtra("result",BACK_STATE_LOGIN);
                 setResult(RESULT_OK,intent);
