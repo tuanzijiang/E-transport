@@ -102,6 +102,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
                 gender=1;
                 male.setBackground(gray);
                 female.setBackground(blue);
+                break;
             case R.id.button_verify:
                 if(addAddress()){
                     finish();
@@ -118,8 +119,8 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         }
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==1){
-            address.setText(data.getStringExtra("address"));
+        if(requestCode==1&&resultCode==RESULT_OK){
+            address.setText(data.getStringExtra("Daddress"));
         }
     }
     /**
