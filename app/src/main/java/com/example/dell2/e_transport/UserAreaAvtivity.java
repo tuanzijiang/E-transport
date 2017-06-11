@@ -101,24 +101,25 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
                 RegeocodeAddress addr = regeocodeResult.getRegeocodeAddress();
-                etDistrict=addr.getProvince()+addr.getDistrict();
+                etDistrict=addr.getProvince()+addr.getDistrict()+addr.getBuilding();
                 etAddress=addr.getFormatAddress();
-                //Log.d("etDistrict",etDistrict);
-                Log.d("etAddress",etAddress);
+                Log.d("etDistrict",etDistrict);
                 if(preAc.equals("setting")){
                     Log.d("area","setting");
                     User myuser = app.getUser();
                     myuser.setUserAddress(etDistrict);
                     Intent intent = getIntent();
                     intent.putExtra("address",etDistrict);
-
                     setResult(RESULT_OK,intent);
                     finish();
                 }
                 else {
                     Intent intent = getIntent();
-                    intent.putExtra("Daddress", etAddress);
-                    Log.d("Daddress",etAddress);
+                    intent.putExtra("Daddress", etDistrict);
+                    Log.d("latlng", String.valueOf(etLng));
+                    Log.d("Daddress",etDistrict);
+                    intent.putExtra("longitude",String.valueOf(etLng));
+                    intent.putExtra("latitude",String.valueOf(etLat));
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -127,12 +128,12 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
-                GeocodeAddress addr = geocodeResult.getGeocodeAddressList().get(1);
+                GeocodeAddress addr = geocodeResult.getGeocodeAddressList().get(0);
                 LatLonPoint latlng = addr.getLatLonPoint();
                 etLat=latlng.getLatitude();
                 etLng=latlng.getLongitude();
                 setUseretLatLng(etLat,etLng);
-                Log.d("latlng", String.valueOf(etLng));
+
             }
         });
         init();
@@ -311,10 +312,9 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
 
     public boolean setUseretLatLng(double Lat,double Lng)
     {
-        // 根据地理名称执行异步解析
         search.getFromLocationAsyn(new RegeocodeQuery(
                 new LatLonPoint(Lat, Lng)
-                , 1 // 区域半径
+                , 20 // 区域半径
                 , GeocodeSearch.GPS));
         return true;
     }
@@ -458,8 +458,6 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-    //计算距离distance起点定死了经纬度
-    //double lat,double lng从数据库得到经纬度，转化为地理码
 
 public void distancecount(double lat,double lng){
 
