@@ -43,6 +43,8 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
     private double server_price_doc=0;
     private double price_doc=0;
     private boolean isorder=false;
+    private int orderAddressID = -1;
+    private int recAddressID = -1;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -166,8 +168,19 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
         switch (requestCode){
             case 0:/*登录返还后的处理*/
                 if(resultCode==RESULT_OK){
-                    Location location = (Location) getIntent().getSerializableExtra("locationItem");
-
+                    Location location = (Location) intent.getSerializableExtra("locationItem");
+                    if(isorder) {
+                        sendAddress.setText(location.getDistrict()+location.getAddress());
+                        sendUserName.setText(location.getUserName());
+                        sendTel.setText(location.getTel());
+                        orderAddressID = location.getID();
+                    }
+                    else {
+                        receiveAddress.setText(location.getDistrict()+location.getAddress());
+                        receiveTel.setText(location.getTel());
+                        receiveUserName.setText(location.getUserName());
+                        recAddressID = location.getID();
+                    }
                 }
                 break;
             default:
