@@ -45,6 +45,8 @@ import com.amap.api.services.geocoder.RegeocodeResult;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import entity.User;
 import overlay.PoiOverlay;
 import util.AMapUtil;
 import util.ToastUtil;
@@ -99,15 +101,18 @@ public class UserAreaAvtivity extends BaseActivity implements View.OnClickListen
                 etDistrict=addr.getProvince()+addr.getDistrict();
                 etAddress=addr.getFormatAddress();
                 Log.d("etDistrict",etDistrict);
-                if(preAc!=null){
-                    Intent intent = new Intent();
-                    intent.putExtra("address", etDistrict);
+                if(preAc.equals("setting")){
+                    Log.d("area","setting");
+                    User myuser = app.getUser();
+                    myuser.setUserAddress(etDistrict);
+                    Intent intent = getIntent();
+                    intent.putExtra("address",etDistrict);
                     setResult(RESULT_OK,intent);
                     finish();
                 }
                 else {
-                    Intent intent = new Intent();
-                    intent.putExtra("address", etAddress);
+                    Intent intent = getIntent();
+                    intent.putExtra("Daddress", etAddress);
                     setResult(RESULT_OK, intent);
                     finish();
                 }

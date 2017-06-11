@@ -19,13 +19,20 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.Inet4Address;
 import java.net.Socket;
+import java.net.URLEncoder;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.CommonRequest;
+import collector.CommonResponse;
 import collector.Constant;
+import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
 import collector.PictureUtils;
+import collector.ResponseHandler;
 import entity.User;
 
 /**
@@ -109,20 +116,22 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         title_name.setText("账户信息");
         /*内容初始化*/
         imageView=(ImageView)findViewById(R.id.TestView);
-        imageView.setImageBitmap(PictureUtils.getBitmap(Constant.avatarPath,66,66));
+
         initContent();
     }
 
     /*内容初始化函数*/
     public void initContent() {
+        imageView.setImageBitmap(PictureUtils.getBitmap(Constant.avatarPath,66,66));
         if (user.getUserName() != null && !user.getUserName().equals(""))
             userName.setText(user.getUserName());
         if (user.getUserGenderString() != null && !user.getUserGenderString().equals(""))
             userGender.setText(user.getUserGenderString());
         if (user.getUserTel() != null && !user.getUserTel().equals(""))
             userTel.setText(user.getUserTel());
-        if (user.getUserAddress() != null && !user.getUserAddress().equals(""))
+        if (user.getUserAddress() != null && !user.getUserAddress().equals("")) {
             userAddress.setText(user.getUserAddress());
+        }
         if (user.getUserPwCover() == null || user.getUserPwCover().equals(""))
         {
             pwCover.setText("未设置");
@@ -176,7 +185,8 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             case R.id.setUserAddress:
                 intent = new Intent(AccountActivity.this, UserAreaAvtivity.class);
                 Log.d("a", "CHANGE");
-                startActivity(intent);
+                intent.putExtra("kind","setting");
+                startActivityForResult(intent,0);
                 break;
             case R.id.set_PwLogin:
                 if (user.getUserPwLogin() != null && !user.getUserPwLogin().equals("")) {
@@ -206,4 +216,52 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==0 && resultCode==RESULT_OK){
+            Bundle bundle = data.getExtras();
+            if(bundle!=null) {
+                final String address = bundle.getString("address");
+                Log.d("text", address);
+                if (address != null && !address.equals("")) {
+                    CommonRequest request = new CommonRequest();
+                    request.setRequestCode("location");
+                    try {
+                        String strUTF8 = URLEncoder.encode(address, "UTF-8");
+                        Log.d("Ts", strUTF8);
+                        request.addRequestParam("param", strUTF8);
+                    } catch (UnsupportedEncodingException e) {
+                        //Log.d("TAG",e.getMessage());
+                        e.printStackTrace();
+                    }
+                    final User user = app.getUser();
+                    String userName = user.getUserEmail();
+                    String phoneNumber = user.getUserTel();
+                    request.addRequestParam("userName", userName);
+                    request.addRequestParam("phoneNumber", phoneNumber);
+                    HttpPostTask myTask = sendHttpPostRequest(Constant.SETTING_URL, request, new ResponseHandler() {
+                        @Override
+                        public CommonResponse success(CommonResponse response) {
+                            Log.e("SETTING", "S");
+                            LoadingDialogUtil.cancelLoading();
+                            Toast.makeText(AccountActivity.this, "地址设置成功", Toast.LENGTH_SHORT).show();
+                            userAddress.setText(address);
+                            return response;
+                        }
+
+                        @Override
+                        public CommonResponse fail(String failCode, String failMsg) {
+                            LoadingDialogUtil.cancelLoading();
+                            Toast.makeText(AccountActivity.this, "地址设置失败", Toast.LENGTH_SHORT).show();
+                            return null;
+                        }
+                    }, true);
+                } else {
+                    userAddress.setText(user.getUserAddress());
+                }
+            }
+
+        }
+    }
 }
