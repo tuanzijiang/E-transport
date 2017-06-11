@@ -1,7 +1,15 @@
 package com.example.dell2.e_transport;
 
+import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.CommonRequest;
+import collector.CommonResponse;
+import collector.Constant;
+import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
+import collector.ResponseHandler;
 import entity.Location;
+import entity.User;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -14,6 +22,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * Created by dell2 on 2017/5/30.
@@ -35,6 +46,10 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
     private EditText tel;
     private TextView address;
     private TextView tel_book;
+    private E_Trans_Application app;
+    private String longitude;
+    private String latitude;
+    private int mode;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -74,9 +89,11 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         String kinds=intent.getExtras().getString("kind");
         if(kinds!=null&&kinds.equals("add")){
             title_name.setText("新增地址");
+            mode = 0;
         }
         else{
             title_name.setText("修改地址");
+            mode = 1;
             location=(Location)intent.getSerializableExtra("locationItem");
             initInfo();
         }
@@ -102,6 +119,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
                 gender=1;
                 male.setBackground(gray);
                 female.setBackground(blue);
+                break;
             case R.id.button_verify:
                 if(addAddress()){
                     finish();
@@ -118,8 +136,10 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         }
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==1){
-            address.setText(data.getStringExtra("address"));
+        if(requestCode==1&&resultCode==RESULT_OK){
+            address.setText(data.getStringExtra("Daddress"));
+            longitude = data.getExtras().getString("longitude");
+            latitude = data.getExtras().getString("latitude");
         }
     }
     /**
@@ -130,8 +150,78 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         String address_name=name.getText().toString();
         String address_tel=tel.getText().toString();
         String address_gender=String.valueOf(gender);
-        String address_address=address_detail.getText().toString();
+        String address_address=address.getText().toString();
         String address_district=address_detail.getText().toString();
+        CommonRequest request = new CommonRequest();
+        if(mode==1) {
+            request.setRequestCode("change");
+            request.addRequestParam("addressID",location.getID()+"");
+        }
+        else{
+            request.setRequestCode("add");
+        }
+
+        app=(E_Trans_Application)getApplication();
+        User user = app.getUser();
+        request.addRequestParam("userName",user.getUserEmail());
+        request.addRequestParam("contactPhone",address_tel);
+        request.addRequestParam("contactGender",address_gender.equals("0")?"male":"female");
+        request.addRequestParam("longitude",longitude);
+        request.addRequestParam("latitude",latitude);
+        try {
+            String strUTF8 = "";
+            strUTF8 = URLEncoder.encode(address_name,"UTF-8");
+            //Log.d("Ts",strUTF8);
+            request.addRequestParam("contactName", strUTF8);
+        }catch (UnsupportedEncodingException e){
+            //Log.d("TAG",e.getMessage());
+            e.printStackTrace();
+        }
+
+        try {
+            String strUTF8 = "";
+            strUTF8 = URLEncoder.encode(address_address,"UTF-8");
+            //Log.d("Ts",strUTF8);
+            request.addRequestParam("addressLocation", strUTF8);
+        }catch (UnsupportedEncodingException e){
+            //Log.d("TAG",e.getMessage());
+            e.printStackTrace();
+        }
+
+        try {
+            String strUTF8 = "";
+            if(address_district!=null) {
+                strUTF8 = URLEncoder.encode(address_district, "UTF-8");
+            }
+            //Log.d("Ts",strUTF8);
+            request.addRequestParam("addressDetail", strUTF8);
+        }catch (UnsupportedEncodingException e){
+            //Log.d("TAG",e.getMessage());
+            e.printStackTrace();
+        }
+
+
+        String userName = user.getUserEmail();
+        String phoneNumber = user.getUserTel();
+        request.addRequestParam("userName",userName);
+        request.addRequestParam("phoneNumber",phoneNumber);
+        HttpPostTask myTask = sendHttpPostRequest(Constant.ADDRESS_URL, request, new ResponseHandler() {
+            @Override
+            public CommonResponse success(CommonResponse response) {
+                //Log.e("SETTING","S");
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(ChangeAddressActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
+                finish();
+                return response;
+            }
+
+            @Override
+            public CommonResponse fail(String failCode, String failMsg) {
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(ChangeAddressActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        },true);
         return true;
     }
 }

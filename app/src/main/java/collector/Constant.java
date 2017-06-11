@@ -10,7 +10,9 @@ public class Constant {
     public static final int HANDLER_HTTP_RECEIVE_FAIL = 1002;
     public static final String SETTING_URL = "http://118.89.191.184:8080/ETServer/ETHome/SettingServlet";
     public static final String LOGIN_URL = "http://118.89.191.184:8080/ETServer/ETHome/LoginServlet";
-
+    public static final String ADDRESS_URL = "http://118.89.191.184:8080/ETServer/ETHome/AddressServlet";
+    public static final String REQUEST_ADDRESS_URL = "http://118.89.191.184:8080/ETServer/ETHome/RequestAddress";
+    public static String avatarPath = null;
 
     /*
      * Activity跳转用RequestCode

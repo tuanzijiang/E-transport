@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -18,6 +19,9 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 
 import application.E_Trans_Application;
@@ -58,6 +62,7 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+//        Log.e("mass_savedInstanceState",String.valueOf(saveInstanceState));
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }//////opkkkk
@@ -250,6 +255,9 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
                                     user.setUserTel(response.getPropertyMap().get("phoneNumber"));
                                     user.setCoverPw(response.getPropertyMap().get("payPassword"));
                                     user.setLoginPw(response.getPropertyMap().get("password"));
+                                    if(response.getPropertyMap().get("avatar")!=null&&!response.getPropertyMap().get("avatar").equals("")) {
+                                        DecodeBase64(response.getPropertyMap().get("avatar"));
+                                    }
                                     Toast.makeText(MessageLoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
 
                                     loadUserInfo(user);
@@ -292,4 +300,53 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
             }
         }
     };
+
+    private String DecodeBase64(String base64){
+        byte[] byteIcon= Base64.decode(base64, Base64.DEFAULT);
+        for (int i = 0; i < byteIcon.length; ++i) {
+            if (byteIcon[i] < 0) {
+                byteIcon[i] += 256;
+            }
+        }
+//建立一个文件对象
+        File out = new File(getExternalFilesDir("avatar").getPath()+"/avatar.jpg");
+        Constant.avatarPath = getExternalFilesDir("avatar").getPath()+"/avatar.jpg";
+        if(out==null){
+            Log.d("Fa","filefail");
+            return null;
+        }
+        if(!out.exists()) {
+            Log.e("TAG", "Directory not created");
+        }
+        else{
+            try {
+                out.createNewFile();
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+            Log.e("TAG", "Directory created");
+        }
+        java.io.FileOutputStream outputStream = null;
+        try {
+            outputStream = new java.io.FileOutputStream(out);
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+
+        //把图片数据写入文件形成图片
+        if(outputStream!=null){
+            try {
+                outputStream.write(byteIcon);
+                Log.d("ff","ssssss");
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        return out.getPath();
+    }
 }

@@ -2,7 +2,10 @@ package com.example.dell2.e_transport;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Gravity;
 import android.view.Window;
@@ -13,8 +16,12 @@ import android.view.LayoutInflater;
 import android.widget.Toast;
 import android.widget.Button;
 
+import java.io.File;
+
 import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.Constant;
+import collector.PictureUtils;
 
 /**
  * Created by wangyan on 2017/6/6.
@@ -23,14 +30,23 @@ import collector.BaseActivity;
 public class UserAvatarActivity extends BaseActivity implements View.OnClickListener {
     private ImageView header_front_1;
     private ImageView header_back_1;
+    private ImageView avatar;
     private TextView title_name;
     private Button choosePhoto;
     private Button takePhoto;
     private Button cancel;
     private Dialog dialog;
     private View inflate;
+    private File mPhotoFile;
+    private static final int REQUEST_PHOTO = 2;
+
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
@@ -42,6 +58,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
         header_front_1=(ImageView)findViewById(R.id.header_front_1);
         header_back_1=(ImageView)findViewById(R.id.header_back_1);
         title_name=(TextView)findViewById(R.id.title_name);
+        avatar=(ImageView)findViewById(R.id.iv_personal_icon);
         /*初始化标题*/
         header_front_1.setImageResource(R.drawable.last_white);
         header_back_1.setImageResource(R.drawable.more);
@@ -80,8 +97,15 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
                 show(view);
             break;
             case R.id.takePhoto:
-                Toast.makeText(this,"点击了拍照",Toast.LENGTH_SHORT).show();
-
+               // Toast.makeText(this,"点击了拍照",Toast.LENGTH_SHORT).show();
+                final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                mPhotoFile=new File(getExternalFilesDir("avatar").getPath()+"/avatar.jpg");
+                boolean canTakePhoto = mPhotoFile != null && captureImage.resolveActivity(getPackageManager()) !=null ;
+                if(canTakePhoto){
+                    Uri uri = Uri.fromFile(mPhotoFile);
+                    captureImage.putExtra(MediaStore.EXTRA_OUTPUT,uri);
+                    startActivityForResult(captureImage,REQUEST_PHOTO);
+                }
                 break;
             case R.id.choosePhoto:
                 Toast.makeText(this,"点击了选择照片",Toast.LENGTH_SHORT).show();
@@ -96,7 +120,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
      * 设置头像加载
      */
     public void initInfo(){
-
+        avatar.setImageBitmap(PictureUtils.getBitmap(Constant.avatarPath,1000,1000));
     }
 
 }

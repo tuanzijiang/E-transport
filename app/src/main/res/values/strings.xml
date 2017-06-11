@@ -14,5 +14,6 @@
     <string name="carousel4_head1">实名认证，保证安全</string>
     <string name="carousel4_head2">用户实名认真，缴纳押金，保证交易安全</string>
     /*其他*/
+    <string name="no_result">对不起，没有搜索到相关数据！</string>
     <string name="title_notifications">Notifications</string>
 </resources>

@@ -11,6 +11,7 @@
     <color name="font_weight">#333</color>
     <color name="font_light">#ccc</color>
     <color name="white">#ffffff</color>
+    <color name="gary">#898989</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>

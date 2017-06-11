@@ -9,11 +9,17 @@
         android:layout_weight="1"
         android:layout_height="0dp">
         <!--地图-->
-        <RelativeLayout
-            android:background="@drawable/temp_map_bg1"
+        <!--<RelativeLayout-->
+            <!--android:background="@drawable/temp_map_bg1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+        <!--</RelativeLayout>-->
+        <com.amap.api.maps.MapView
+            android:id="@+id/mymap"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </RelativeLayout>
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linearLayout"
+            android:layout_above="@+id/button_verify" />
         <!---->
         <LinearLayout
             android:layout_marginTop="20dp"
@@ -22,7 +28,8 @@
             android:background="@drawable/border_radius_white"
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_height="@dimen/line_standard_input">
+            android:layout_height="@dimen/line_standard_input"
+            android:id="@+id/linearLayout">
             <ImageView
                 android:id="@+id/back_button"
                 android:layout_gravity="center_vertical"
@@ -30,7 +37,7 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/last_gray"/>
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/location"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
