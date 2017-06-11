@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import collector.BaseActivity;
+import entity.Location;
 import fragment.UserFragment;
 
 /**
@@ -41,6 +42,9 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
     private double pre_price_doc=0;
     private double server_price_doc=0;
     private double price_doc=0;
+    private boolean isorder=false;
+    private int orderAddressID = -1;
+    private int recAddressID = -1;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -73,6 +77,12 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
         price=(TextView)findViewById(R.id.price);
         button_verify=(TextView)findViewById(R.id.button_verify);
         /*响应事件*/
+        sendAddress.setOnClickListener(this);
+        sendUserName.setOnClickListener(this);
+        sendTel.setOnClickListener(this);
+        receiveAddress.setOnClickListener(this);
+        receiveTel.setOnClickListener(this);
+        receiveUserName.setOnClickListener(this);
         box.setOnClickListener(this);
         yes_box.setOnClickListener(this);
         header_front_1.setOnClickListener(this);
@@ -106,6 +116,22 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
     }
     public void onClick(View view){
         switch (view.getId()){
+            case R.id.sendAddress:
+            case R.id.sendUserName:
+            case R.id.sendUserTel:
+                isorder=true;
+                Intent mintent = new Intent(Want2OrderActivity.this,UsualLocationActivity.class);
+                mintent.putExtra("order","address");
+                startActivityForResult(mintent,0);
+                break;
+            case R.id.receiveAddress:
+            case R.id.receiveUserTel:
+            case R.id.receiveUserName:
+                isorder=false;
+                Intent nintent = new Intent(Want2OrderActivity.this,UsualLocationActivity.class);
+                nintent.putExtra("order","address");
+                startActivityForResult(nintent,0);
+                break;
             case R.id.header_front_1:
                 finish();
                 break;
@@ -142,7 +168,19 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
         switch (requestCode){
             case 0:/*登录返还后的处理*/
                 if(resultCode==RESULT_OK){
-                    finish();
+                    Location location = (Location) intent.getSerializableExtra("locationItem");
+                    if(isorder) {
+                        sendAddress.setText(location.getDistrict()+location.getAddress());
+                        sendUserName.setText(location.getUserName());
+                        sendTel.setText(location.getTel());
+                        orderAddressID = location.getID();
+                    }
+                    else {
+                        receiveAddress.setText(location.getDistrict()+location.getAddress());
+                        receiveTel.setText(location.getTel());
+                        receiveUserName.setText(location.getUserName());
+                        recAddressID = location.getID();
+                    }
                 }
                 break;
             default:

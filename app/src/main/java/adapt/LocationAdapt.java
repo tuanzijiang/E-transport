@@ -7,16 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dell2.e_transport.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import entity.Location;
-import entity.MyOrder;
 
 /**
  * Created by dell2 on 2017/5/30.

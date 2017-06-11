@@ -40,6 +40,7 @@ public class UsualLocationActivity extends BaseActivity implements View.OnClickL
     private ListView lv_location;
     private LinearLayout add_address;
     private E_Trans_Application app;
+    private String result;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -53,6 +54,11 @@ public class UsualLocationActivity extends BaseActivity implements View.OnClickL
             getSupportActionBar().hide();
         }
         setContentView(R.layout.activity_location);
+        result = null;
+        Intent intent = getIntent();
+        if(intent!=null&&intent.getExtras()!=null) {
+            result = intent.getExtras().getString("order");
+        }
         init();
     }
 
@@ -86,7 +92,7 @@ public class UsualLocationActivity extends BaseActivity implements View.OnClickL
         request.addRequestParam("phoneNumber",user.getUserTel());
         HttpPostTask myTask = sendHttpPostRequest(Constant.REQUEST_ADDRESS_URL, request, new ResponseHandler() {
             @Override
-            public CommonResponse success(CommonResponse response) {
+            public CommonResponse success(final CommonResponse response) {
                 Log.e("S","SSS");
                 LoadingDialogUtil.cancelLoading();
                 ArrayList<HashMap<String, String>> myList = response.getDataList();
@@ -112,12 +118,23 @@ public class UsualLocationActivity extends BaseActivity implements View.OnClickL
                 lv_location.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Location LocationItem=locationss.get(i);
-                        Intent intent=new Intent(UsualLocationActivity.this,ChangeAddressActivity.class);
-                        Bundle bundle=new Bundle();
-                        bundle.putSerializable("locationItem",LocationItem);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+                        if(result!=null&&result.equals("address")) {
+                            Location LocationItem = locationss.get(i);
+                            Intent intent = getIntent();
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("locationItem", LocationItem);
+                            intent.putExtras(bundle);
+                            setResult(RESULT_OK,intent);
+                            finish();
+                        }
+                        else{
+                            Location LocationItem = locationss.get(i);
+                            Intent intent = new Intent(UsualLocationActivity.this, ChangeAddressActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("locationItem", LocationItem);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
                     }
                 });
                 //finish();

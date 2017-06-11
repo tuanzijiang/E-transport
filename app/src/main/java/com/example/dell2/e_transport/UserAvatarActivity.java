@@ -172,7 +172,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
                     Log.e("TAG", "Directory created");
                 }
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, 2);
+                startActivityForResult(i, 1);
                 break;
             case R.id.btn_cancel:
                 dialog.dismiss();
@@ -221,7 +221,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 2 && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
             Uri uri = data.getData();
             String[] proj = {MediaStore.Images.Media.DATA};
             Cursor actualimagecursor = managedQuery(uri, proj, null, null, null);
@@ -250,7 +250,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
             Bitmap bitmap = BitmapFactory.decodeFile(img_path, options);
             String string = null;
             ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 30, bStream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bStream);
             byte[] bytes = bStream.toByteArray();
             FileOutputStream out = null;
             try {
