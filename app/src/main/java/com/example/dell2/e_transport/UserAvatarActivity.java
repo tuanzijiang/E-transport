@@ -3,7 +3,9 @@ package com.example.dell2.e_transport;
 import android.app.Dialog;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Gravity;
 import android.view.Window;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 import android.widget.Button;
+
+import java.io.File;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
@@ -33,8 +37,16 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
     private Button cancel;
     private Dialog dialog;
     private View inflate;
+    private File mPhotoFile;
+    private static final int REQUEST_PHOTO = 2;
+
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
         if(getSupportActionBar()!=null){
             getSupportActionBar().hide();
         }
@@ -85,8 +97,15 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
                 show(view);
             break;
             case R.id.takePhoto:
-                Toast.makeText(this,"点击了拍照",Toast.LENGTH_SHORT).show();
-
+               // Toast.makeText(this,"点击了拍照",Toast.LENGTH_SHORT).show();
+                final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                mPhotoFile=new File(getExternalFilesDir("avatar").getPath()+"/avatar.jpg");
+                boolean canTakePhoto = mPhotoFile != null && captureImage.resolveActivity(getPackageManager()) !=null ;
+                if(canTakePhoto){
+                    Uri uri = Uri.fromFile(mPhotoFile);
+                    captureImage.putExtra(MediaStore.EXTRA_OUTPUT,uri);
+                    startActivityForResult(captureImage,REQUEST_PHOTO);
+                }
                 break;
             case R.id.choosePhoto:
                 Toast.makeText(this,"点击了选择照片",Toast.LENGTH_SHORT).show();
