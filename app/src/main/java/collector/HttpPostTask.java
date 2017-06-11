@@ -44,7 +44,7 @@ public class HttpPostTask extends AsyncTask<String,String,String> {
             connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             connection.setRequestMethod("POST"); // 设置请求方法，“POST或GET”
             connection.setConnectTimeout(8000); // 设置连接建立的超时时间
-            connection.setReadTimeout(8000); // 设置网络报文收发超时时间
+            connection.setReadTimeout(50000); // 设置网络报文收发超时时间
             connection.setDoOutput(true);
             connection.setDoInput(true);
 
