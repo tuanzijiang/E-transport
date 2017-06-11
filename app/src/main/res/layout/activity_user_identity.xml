@@ -56,15 +56,10 @@
         android:layout_gravity="center_horizontal">
         <!--参考照片-->
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/alipay" />
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/wechat"/>
+            android:layout_width="280dp"
+            android:layout_height="180dp"
+            android:src="@drawable/identy" />
+
 
     </LinearLayout>
     <LinearLayout
