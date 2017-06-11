@@ -111,7 +111,7 @@ public class MyOrderInfo extends BaseActivity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.launch_button:
-                call(myOrder.getLaunchMan().getUserTel());
+                //call(myOrder.getLaunchMan().getUserTel());
                 break;
             case R.id.postman_button:
                 call(myOrder.getPostMan().getUserTel());

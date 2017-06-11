@@ -3,11 +3,15 @@ package com.example.dell2.e_transport;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import collector.BaseActivity;
 import entity.Location;
@@ -136,11 +140,7 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.button_verify:
-                if(launchOrder()){
-                    Intent intent=new Intent(Want2OrderActivity.this,OnLinePayMentActivity.class);
-                    intent.putExtra("price",String.valueOf(price_doc));
-                    startActivityForResult(intent,0);
-                }
+                launchOrder();
                 break;
             case R.id.goods_cheap:
                 goodsInfo="贵重物品，请轻拿轻放";
@@ -203,6 +203,11 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
         String order_arrive_time=arriveTime.getText().toString();
         String order_goods_info=goodsInfo;
         String order_price=String.valueOf(price_doc);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Log.d("time",df.format(new Date()));// new Date()为获取当前系统时间
+        Intent intent=new Intent(Want2OrderActivity.this,OnLinePayMentActivity.class);
+        intent.putExtra("price",String.valueOf(price_doc));
+        startActivityForResult(intent,0);
         return true;
     }
 }

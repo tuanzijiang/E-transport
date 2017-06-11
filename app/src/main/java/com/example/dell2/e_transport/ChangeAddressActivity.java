@@ -129,9 +129,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
                 female.setBackground(blue);
                 break;
             case R.id.button_verify:
-                if(addAddress()){
-                    finish();
-                }
+                addAddress();
                 break;
             case R.id.address:
                 intent=new Intent(ChangeAddressActivity.this,UserAreaAvtivity.class);
