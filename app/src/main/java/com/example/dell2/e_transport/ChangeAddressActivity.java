@@ -103,6 +103,14 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         tel.setText(location.getTel());
         address.setText(location.getDistrict());
         address_detail.setText(location.getAddress());
+        if(location.getGender()==1){
+            male.setBackground(gray);
+            female.setBackground(blue);
+        }
+        else{
+            male.setBackground(blue);
+            female.setBackground(gray);
+        }
     }
     public void onClick(View view){
         Intent intent;

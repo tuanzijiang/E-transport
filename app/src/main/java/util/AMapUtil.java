@@ -20,9 +20,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-import com.example.dell2.e_transport.R;
-
 public class AMapUtil {
     /**
      * 判断edittext是否null

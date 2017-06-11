@@ -163,7 +163,7 @@ public class MyOrder implements Serializable{
                 result= R.drawable.cloth;
                 break;
             case "1":
-                result=R.drawable.gift;
+                result= R.drawable.gift;
                 break;
             default:
                 result=R.drawable.cloth;

@@ -1,12 +1,9 @@
 package handler;
 
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 
 import com.example.dell2.e_transport.MessageLoginActivity;
-import com.example.dell2.e_transport.R;
 import com.example.dell2.e_transport.UserNewPhoneActivity;
 import com.example.dell2.e_transport.UserPhoneActivity;
 
