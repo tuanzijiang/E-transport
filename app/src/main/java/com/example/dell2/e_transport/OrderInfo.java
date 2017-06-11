@@ -2,11 +2,18 @@ package com.example.dell2.e_transport;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.CommonRequest;
+import collector.CommonResponse;
+import collector.Constant;
+import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
+import collector.ResponseHandler;
 import entity.MyOrder;
 import entity.User;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,6 +44,7 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
     private TextView order_cover_kind;
     private TextView order_time;
     private LinearLayout button_verify;
+    private E_Trans_Application app;
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -87,9 +95,7 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.button_verify:
-                if(order()){
-                    finish();
-                }
+                order();
                 break;
             default:
                 break;
@@ -114,6 +120,29 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
      * @return 下单是否成功
      */
     public boolean order(){
+        CommonRequest request = new CommonRequest();
+
+        app = (E_Trans_Application)getApplication();
+        request.setRequestCode("pick");
+        request.addRequestParam("serName", app.getUser().getUserEmail());
+        request.addRequestParam("orderID",myOrder.getorderID());
+        HttpPostTask myTask = sendHttpPostRequest(Constant.ORDER_URL, request, new ResponseHandler() {
+            @Override
+            public CommonResponse success(CommonResponse response) {
+                Log.e("SEuTTING","S");
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(OrderInfo.this,"接单成功",Toast.LENGTH_SHORT).show();
+                finish();
+                return response;
+            }
+
+            @Override
+            public CommonResponse fail(String failCode, String failMsg) {
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(OrderInfo.this,"接单失败",Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        },true);
         return true;
     }
 }

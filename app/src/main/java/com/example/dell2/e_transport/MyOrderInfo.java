@@ -139,8 +139,8 @@ public class MyOrderInfo extends BaseActivity implements View.OnClickListener {
         }
     }
     public void setLaunch(){
-        String str1=myOrder.getLaunchMan().getUserName().substring(0,1);
-        switch (myOrder.getLaunchMan().getUserGender()){
+        String str1=myOrder.getSendUserName().substring(0,1);
+        switch (0){
             case 0:
                 str1+="先生";
                 break;
@@ -166,8 +166,8 @@ public class MyOrderInfo extends BaseActivity implements View.OnClickListener {
         }
     }
     public void setPost(){
-        String str1=myOrder.getPostMan().getUserName().substring(0,1);
-        switch (myOrder.getPostMan().getUserGender()){
+        String str1=myOrder.getReceiveUserName().substring(0,1);
+        switch (0){
             case 0:
                 str1+="小哥";
                 break;

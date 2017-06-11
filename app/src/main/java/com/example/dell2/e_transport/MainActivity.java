@@ -3,6 +3,8 @@ package com.example.dell2.e_transport;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -18,6 +20,11 @@ import android.widget.Toast;
 
 import application.E_Trans_Application;
 import collector.BaseActivity;
+import collector.CommonRequest;
+import collector.Constant;
+import collector.HttpPostTask;
+import collector.LoadingDialogUtil;
+import collector.ResponseHandler;
 import entity.User;
 import fragment.HomePageFragment;
 import fragment.OrderFragment;
@@ -278,4 +285,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         if(userFragment!=null)
             fragmentTransaction.hide(userFragment);
     }
+
+    public HttpPostTask sendHttpPostRequest(String url, CommonRequest request, ResponseHandler responseHandler, boolean showLoadingDialog) {
+        HttpPostTask temp = new HttpPostTask(request, mHandler, responseHandler);
+        temp.execute(url);
+        if(showLoadingDialog) {
+            Log.d("Lo","Loading");
+            Toast.makeText(MainActivity.this,"Loading", Toast.LENGTH_SHORT);
+            LoadingDialogUtil.showLoadingDialog(MainActivity.this);
+        }
+        //Log.d("TESTkkk",temp.getFinalresponse().getPropertyMap().get("IDName"));
+        return temp;
+    }
+
+    public Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if(msg.what == Constant.HANDLER_HTTP_SEND_FAIL) {
+                Log.d("SEND_FAIL",msg.obj.toString());
+
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(MainActivity.this, "请求发送失败，请重试", Toast.LENGTH_SHORT).show();
+            } else if (msg.what == Constant.HANDLER_HTTP_RECEIVE_FAIL) {
+                Log.d("RECEIVE_FAIL",msg.obj.toString());
+
+                LoadingDialogUtil.cancelLoading();
+                Toast.makeText(MainActivity.this, "请求接受失败，请重试", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 }

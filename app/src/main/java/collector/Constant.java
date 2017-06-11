@@ -12,6 +12,9 @@ public class Constant {
     public static final String LOGIN_URL = "http://118.89.191.184:8080/ETServer/ETHome/LoginServlet";
     public static final String ADDRESS_URL = "http://118.89.191.184:8080/ETServer/ETHome/AddressServlet";
     public static final String REQUEST_ADDRESS_URL = "http://118.89.191.184:8080/ETServer/ETHome/RequestAddress";
+    public static final String ORDER_URL = "http://118.89.191.184:8080/ETServer/ETHome/OrderServlet";
+    public static final String REQUEST_ORDER_URL = "http://118.89.191.184:8080/ETServer/ETHome/RequestOrder";
+
     public static String avatarPath = null;
 
     /*

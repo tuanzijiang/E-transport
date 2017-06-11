@@ -47,12 +47,14 @@ public class MyOrder implements Serializable{
     private String goodsWeight;
     private String goodsInfo;
     private String goodsPic;
+    private float longitude;
+    private float latitude;
     public MyOrder(){
         /*测试用的数据*/
         orderId="123456789";
         sendAddress="上海市普陀区";
         receiveAddress="上海市静安区";
-        orderSend=0;
+        orderSend=1;
         orderState=0;
         price=(float)20.5;
         time="14:30-15:30";
@@ -120,7 +122,7 @@ public class MyOrder implements Serializable{
 
     public String getOrderSendString(){
         String result="";
-        switch (this.orderState){
+        switch (this.orderSend){
             case 0:
                 result="已接到的订单";
                 break;
@@ -200,4 +202,20 @@ public class MyOrder implements Serializable{
     public String getSendUserTel(){ return sendUserTel;}
     public String getReceiveUserName(){return receiveUserName;}
     public String getReceiverUserTel(){ return receiverUserTel;}
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
 }
