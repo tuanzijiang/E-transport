@@ -62,11 +62,11 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/sendName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="20dp"
-                            android:text="李先生"
                             android:textColor="@color/font_standard"
                             android:textSize="14dp"></TextView>
                     </LinearLayout>

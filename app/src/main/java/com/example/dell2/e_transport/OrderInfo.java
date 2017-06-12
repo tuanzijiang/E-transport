@@ -43,6 +43,7 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
     private TextView order_ID;
     private TextView order_cover_kind;
     private TextView order_time;
+    private TextView sendName;
     private LinearLayout button_verify;
     private E_Trans_Application app;
     @Override
@@ -69,6 +70,7 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
         goods_weight=(TextView)findViewById(R.id.goods_weight);
         goods_info=(TextView)findViewById(R.id.goods_info);
         goods_pic=(ImageView)findViewById(R.id.goods_pic);
+        sendName=(TextView)findViewById(R.id.sendName);
         button_verify=(LinearLayout)findViewById(R.id.button_verify);
         /*信息初始化*/
         initInfo();
@@ -108,6 +110,7 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
         receive_address.setText(myOrder.getReceiveAddress());
     }
     public void setOther(){
+        sendName.setText(myOrder.getSendUserName()+"先生");
         arrive_time.setText(myOrder.getTime());
         serve_price.setText("￥"+myOrder.getPriceString());
         goods_kind.setText(myOrder.getGoodsKind());
@@ -124,7 +127,7 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
 
         app = (E_Trans_Application)getApplication();
         request.setRequestCode("pick");
-        request.addRequestParam("serName", app.getUser().getUserEmail());
+        request.addRequestParam("userName", app.getUser().getUserEmail());
         request.addRequestParam("orderID",myOrder.getorderID());
         HttpPostTask myTask = sendHttpPostRequest(Constant.ORDER_URL, request, new ResponseHandler() {
             @Override

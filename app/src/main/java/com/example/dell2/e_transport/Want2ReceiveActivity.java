@@ -94,10 +94,11 @@ public class Want2ReceiveActivity extends BaseActivity implements View.OnClickLi
                 Log.e("S","SSS");
                 LoadingDialogUtil.cancelLoading();
                 ArrayList<HashMap<String, String>> myList = response.getDataList();
+                HashMap<String,String> mymap = null;
 
                 final ArrayList<MyOrder> orders=new ArrayList<MyOrder>();
                 for(int i = 0;i < myList.size(); i++){
-                    HashMap<String,String> mymap = myList.get(i);
+                    mymap = myList.get(i);
                     MyOrder myOrder = null;
                     myOrder = new MyOrder();
                     myOrder.setGoodsInfo(mymap.get("goodsInfo"));
@@ -129,7 +130,10 @@ public class Want2ReceiveActivity extends BaseActivity implements View.OnClickLi
                 OrderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        TextView launch = (TextView)findViewById(R.id.launch_userName);
+
                         MyOrder OrderItem=orders.get(i);
+
                         Intent intent=new Intent(Want2ReceiveActivity.this, OrderInfo.class);
                         Bundle bundle=new Bundle();
                         bundle.putSerializable("Order_item",OrderItem);

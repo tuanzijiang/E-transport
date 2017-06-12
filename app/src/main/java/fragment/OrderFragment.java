@@ -89,6 +89,7 @@ public class OrderFragment extends Fragment {
     public void initMyOrder(){
         /*初始化order列表*/
         final CommonRequest request = new CommonRequest();
+        request.setRequestCode("myorder");
         request.addRequestParam("userName",name);
         HttpPostTask myTask = ((MainActivity)getActivity()).sendHttpPostRequest(Constant.REQUEST_ORDER_URL, request, new ResponseHandler() {
             @Override
@@ -108,7 +109,8 @@ public class OrderFragment extends Fragment {
                     myOrder.setOrderId(mymap.get("OrderID"));
                     myOrder.setOrderTime(mymap.get("orderTime"));
                     myOrder.setTime(mymap.get("time"));
-                    myOrder.setOrderState(0);
+                    myOrder.setOrderState(mymap.get("orderState").equals("0")?0:1);
+                    myOrder.setOrderSend(mymap.get("orderSend").equals("0")?0:1);
                     myOrder.setPrice(Float.parseFloat(mymap.get("price")));
                     myOrder.setReceiveAddress(mymap.get("receiveAddress"));
                     myOrder.setReceiveUserName(mymap.get("receiveUserName"));

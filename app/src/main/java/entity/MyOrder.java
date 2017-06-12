@@ -127,7 +127,7 @@ public class MyOrder implements Serializable{
                 result="已接到的订单";
                 break;
             case 1:
-                result="未接到的订单";
+                result="已发出的订单";
                 break;
             default:
                 result="";

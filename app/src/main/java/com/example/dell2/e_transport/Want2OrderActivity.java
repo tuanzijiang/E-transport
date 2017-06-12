@@ -206,7 +206,13 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
      */
     public boolean launchOrder(){
         server_price_doc=Double.valueOf(serve_price.getText().toString());
-        pre_price_doc=Double.valueOf(pre_price.getText().toString());
+        if(goodsInfo!=null&&!goodsInfo.equals("")) {
+            pre_price_doc = Double.valueOf(pre_price.getText().toString());
+        }
+        else
+        {
+            pre_price_doc=0;
+        }
         price_doc=pre_price_doc*0.05+server_price_doc;
         price.setText("总费用"+String.valueOf(price_doc)+"元");
         String order_sendAddress=sendAddress.getText().toString();
