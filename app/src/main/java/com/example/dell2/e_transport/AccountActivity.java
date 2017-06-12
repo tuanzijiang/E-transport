@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.content.Intent;
 
@@ -43,7 +44,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     private ImageView header_front_1;
     private ImageView header_back_1;
     private TextView title_name;
-    private LinearLayout ll_avatar;
+    private RelativeLayout ll_avatar;
     private LinearLayout setUserName;
     private TextView userName;
     private LinearLayout setUserGender;
@@ -98,7 +99,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         pwLogin = (TextView) findViewById(R.id.pwLogin);
         pwCover = (TextView) findViewById(R.id.pwCover);
         setIsAvoidPw = (LinearLayout) findViewById(R.id.setIsAvoidPw);
-        ll_avatar = (LinearLayout) findViewById(R.id.ll_avatar);
+        ll_avatar = (RelativeLayout) findViewById(R.id.ll_avatar);
           /*响应事件设定*/
         ll_avatar.setOnClickListener(this);
         setIsAvoidPw.setOnClickListener(this);
