@@ -247,8 +247,9 @@ public class MessageLoginActivity extends BaseActivity implements View.OnClickLi
                                     Log.e("S","SSS");
                                     LoadingDialogUtil.cancelLoading();
                                     User user=new User();
-                                    //user信息更改
+                                    //user信息更
                                     user.setUserName(response.getPropertyMap().get("IDName"));
+                                    user.setUserEmail(response.getPropertyMap().get("userName"));
                                     user.setUserAddress(response.getPropertyMap().get("location"));
                                     Log.d("GE",response.getPropertyMap().get("gender")+" ");
                                     user.setUserGender(response.getPropertyMap().get("gender").equals("female")?1:0);

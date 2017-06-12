@@ -30,16 +30,16 @@
             <LinearLayout
                 android:layout_centerVertical="true"
                 android:layout_width="66dp"
-                android:layout_height="66dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="7dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/white_border_super_weight"
+                android:background="@color/white"
                 >
                 <ImageView
                     android:id="@+id/TestView"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     />
             </LinearLayout>

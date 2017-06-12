@@ -15,7 +15,7 @@
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_input"
+                android:textSize="@dimen/font_smallest"
                 android:textColor="@color/font_standard"
                 android:layout_gravity="center_vertical"
                 android:text="联系人"
