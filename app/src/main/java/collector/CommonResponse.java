@@ -13,31 +13,15 @@ import java.util.Iterator;
  */
 
 public class CommonResponse {
-    /**
-     * 交易状态代码
-     */
+
     private String resCode = "";
 
-    /**
-     * 交易失败说明
-     */
     private String resMsg = "";
 
-    /**
-     * 简单信息
-     */
     private HashMap<String, String> propertyMap;
 
-    /**
-     * 列表类信息
-     */
     private ArrayList<HashMap<String, String>> mapList;
 
-    /**
-     * 通用报文返回构造函数
-     *
-     * @param responseString Json格式的返回字符串
-     */
     public CommonResponse(String responseString) {
 
         // 日志输出原始应答报文
@@ -71,12 +55,6 @@ public class CommonResponse {
 
     }
 
-    /**
-     * 简单信息部分的解析到{@link CommonResponse#propertyMap}
-     *
-     * @param property  信息部分
-     * @param targetMap 解析后保存目标
-     */
     private void parseProperty(JSONObject property, HashMap<String, String> targetMap) {
         Iterator<?> it = property.keys();
         while (it.hasNext()) {
@@ -86,11 +64,6 @@ public class CommonResponse {
         }
     }
 
-    /**
-     * 解析列表部分信息到{@link CommonResponse#mapList}
-     *
-     * @param list 列表信息部分
-     */
     private void parseList(JSONArray list) {
         int i = 0;
         while (i < list.length()) {

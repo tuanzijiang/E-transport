@@ -16,16 +16,4 @@ public class Constant {
     public static final String REQUEST_ORDER_URL = "http://118.89.191.184:8080/ETServer/ETHome/RequestOrder";
 
     public static String avatarPath = null;
-
-    /*
-     * Activity跳转用RequestCode
-     */
-    public static int REQUEST_CODE_ = 0;
-
-    /*
-     * Activity跳转用ResponseCode
-     */
-    public static int RESPONSE_CODE_SUCCESS = 100;
-    public static int RESPONSE_CODE_FAIL = 101;
-    public static int RESPONSE_CODE_NO_RESULT = 102;
 }

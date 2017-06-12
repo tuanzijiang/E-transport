@@ -42,7 +42,6 @@ public class BaseActivity extends AppCompatActivity {
 
             if(msg.what == Constant.HANDLER_HTTP_SEND_FAIL) {
                 Log.d("SEND_FAIL",msg.obj.toString());
-
                 LoadingDialogUtil.cancelLoading();
                 Toast.makeText(BaseActivity.this, "请求发送失败，请重试", Toast.LENGTH_SHORT).show();
             } else if (msg.what == Constant.HANDLER_HTTP_RECEIVE_FAIL) {

@@ -175,7 +175,7 @@ public class PasswordLoginActivity extends BaseActivity implements View.OnClickL
                 byteIcon[i] += 256;
             }
         }
-//建立一个文件对象
+
         File out = new File(getExternalFilesDir("avatar").getPath()+"/avatar.jpg");
         Constant.avatarPath = getExternalFilesDir("avatar").getPath()+"/avatar.jpg";
         if(out==null){
