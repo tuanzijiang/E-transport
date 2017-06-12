@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 
 public class AppCompatActivityCollector {
+
     public static List<AppCompatActivity> appCompatActivities=new ArrayList<AppCompatActivity>();
     public static void addActivity(AppCompatActivity appCompatActivity){
         appCompatActivities.add(appCompatActivity);
