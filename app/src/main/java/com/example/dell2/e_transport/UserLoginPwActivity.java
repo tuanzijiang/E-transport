@@ -103,7 +103,7 @@ public class UserLoginPwActivity extends BaseActivity implements View.OnClickLis
         request.setRequestCode("password");
 
         request.addRequestParam("param", pw);
-
+        Log.e("request", String.valueOf(request));
         Log.d("PW",pw);
         User user = app.getUser();
         String userName = user.getUserEmail();
