@@ -1,6 +1,7 @@
 package com.example.dell2.e_transport;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -149,7 +150,11 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
                 }
                 boolean canTakePhoto = mPhotoFile != null && captureImage.resolveActivity(getPackageManager()) != null;
                 if (canTakePhoto) {
-                    Uri uri = Uri.fromFile(mPhotoFile);
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    ContentValues contentValues = new ContentValues(1);
+                    contentValues.put(MediaStore.Images.Media.DATA, mPhotoFile.getAbsolutePath());
+                    Uri uri = this.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+                    //Uri uri = Uri.fromFile(mPhotoFile);
                     captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                     startActivityForResult(captureImage, REQUEST_PHOTO);
                 }
@@ -186,7 +191,7 @@ public class UserAvatarActivity extends BaseActivity implements View.OnClickList
      * 设置头像加载
      */
     public void initInfo() {
-        avatar.setImageBitmap(PictureUtils.getBitmap(Constant.avatarPath, 1000, 1000));
+        avatar.setImageBitmap(PictureUtils.getBitmap(getExternalFilesDir("avatar").getPath() + "/avatar.jpg", 1000, 1000));
     }
 
     private void setAvatar(String avatar) {

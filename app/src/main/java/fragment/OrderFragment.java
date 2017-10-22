@@ -118,7 +118,12 @@ public class OrderFragment extends Fragment {
                     myOrder.setSendAddress(mymap.get("sendAddress"));
                     myOrder.setSendUserName(mymap.get("sendUserName"));
                     myOrder.setSendUserTel(mymap.get("sendUserTel"));
-
+                    myOrder.setLaunchMan(mymap.get("LaunchMan"));
+                    myOrder.setLaunchManTel(mymap.get("LaunchManTel"));
+                    myOrder.setLaunchManGender(mymap.get("LaunchManGender").equals("female")?0:1);
+                    myOrder.setPostMan(mymap.get("PostMan"));
+                    myOrder.setPostManTel(mymap.get("PostManTel"));
+                    myOrder.setPostManGender(mymap.get("PostManGender").equals("female")?0:1);
                     if(mymap.get("longitude")!=null&&!mymap.get("longitude").equals("null")) {
                         Log.d("lo",mymap.get("longitude"));
                         myOrder.setLongitude(Float.parseFloat(mymap.get("longitude")));

@@ -35,8 +35,12 @@ public class MyOrder implements Serializable{
     private int orderSend;
     private float price;
     private String time;
-    private User postMan;
-    private User launchMan;
+    private String postMan;
+    private String launchMan;
+    private String postManTel;
+    private String launchManTel;
+    private int postManGender;
+    private int launchManGender;
     private String sendUserName;
     private String sendUserTel;
     private String receiveUserName;
@@ -58,8 +62,6 @@ public class MyOrder implements Serializable{
         orderState=0;
         price=(float)20.5;
         time="14:30-15:30";
-        postMan=new User();
-        launchMan=new User();
         goodsKind="图书";
         coverKind="在线支付";
         orderTime="2016-5-13 19:30";
@@ -69,6 +71,12 @@ public class MyOrder implements Serializable{
         sendUserTel="123456";
         receiveUserName="章琪";
         receiverUserTel="456798";
+        launchMan="";
+        launchManGender=0;
+        launchManTel="";
+        postMan="";
+        postManGender=0;
+        postManTel="";
         /*测试用的数据*/
     }
     public MyOrder(String orderId,String sendAddress,String receiveAddress,int orderState,int orderSend,float price){
@@ -84,7 +92,7 @@ public class MyOrder implements Serializable{
     public void setSendUserTel(String sendUserTel){this.sendUserTel=sendUserTel;}
     public void setReceiveUserName(String receiveUserName){this.receiveUserName=receiveUserName;}
     public void setReceiverUserTel(String receiverUserTel){this.receiverUserTel=receiverUserTel;}
-    public void setLaunchMan(User launchMan){
+    public void setLaunchMan(String launchMan){
         this.launchMan=launchMan;
     }
     public void setGoodsPic(String goodsPic){
@@ -105,7 +113,11 @@ public class MyOrder implements Serializable{
     public void setGoodsKind(String goodsKind){
         this.goodsKind=goodsKind;
     }
-    public void setPostMan(User postMan){ this.postMan=postMan;}
+    public void setPostMan(String postMan){ this.postMan=postMan;}
+    public void setLaunchManTel(String launchManTel){
+        this.launchManTel=launchManTel;
+    }
+    public void setPostManTel(String postManTel){ this.postManTel=postManTel;}
     public void setOrderId(String orderId){
         this.orderId=orderId;
     }
@@ -124,10 +136,10 @@ public class MyOrder implements Serializable{
         String result="";
         switch (this.orderSend){
             case 0:
-                result="已接到的订单";
+                result="已接到的订单:";
                 break;
             case 1:
-                result="已发出的订单";
+                result="已发出的订单:";
                 break;
             default:
                 result="";
@@ -159,18 +171,7 @@ public class MyOrder implements Serializable{
     }
     public int getKindImageString(){
         int result;
-        String random=String.valueOf(Math.round(Math.random()));
-        switch (random){
-            case "0":
-                result= R.drawable.cloth;
-                break;
-            case "1":
-                result= R.drawable.gift;
-                break;
-            default:
-                result=R.drawable.cloth;
-                break;
-        }
+        result= R.drawable.cloth;
         return result;
     }
     public String getorderID(){
@@ -182,7 +183,7 @@ public class MyOrder implements Serializable{
     public String getReceiveAddress(){
         return receiveAddress;
     }
-    public User getPostMan(){ return postMan;}
+
     public String getTime(){ return time;}
     public String getOrderId(){
         return orderId;
@@ -195,8 +196,15 @@ public class MyOrder implements Serializable{
     public String getGoodsPic(){ return goodsPic;}
     public int getOrderState(){ return orderState;}
     public int getOrderSend(){ return orderSend;}
-    public User getLaunchMan(){
+    public String getLaunchMan(){
         return launchMan;
+    }
+    public String getPostMan(){ return postMan;}
+    public String getPostManTel(){
+        return postManTel;
+    }
+    public String getLaunchManTel(){
+        return launchManTel;
     }
     public String getSendUserName(){ return sendUserName;}
     public String getSendUserTel(){ return sendUserTel;}
@@ -217,5 +225,21 @@ public class MyOrder implements Serializable{
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+
+    public int getPostManGender() {
+        return postManGender;
+    }
+
+    public void setPostManGender(int postManGender) {
+        this.postManGender = postManGender;
+    }
+
+    public int getLaunchManGender() {
+        return launchManGender;
+    }
+
+    public void setLaunchManGender(int launchManGender) {
+        this.launchManGender = launchManGender;
     }
 }

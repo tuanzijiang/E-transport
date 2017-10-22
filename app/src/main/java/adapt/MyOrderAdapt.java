@@ -44,7 +44,7 @@ public class MyOrderAdapt extends ArrayAdapter<MyOrder> {
         sendAddress.setText(myOrder.getSendAddress());
         receiveAddress.setText(myOrder.getReceiveAddress());
         price.setText(myOrder.getPriceString());
-        orderSend.setText(myOrder.getOrderSendString());
+        orderSend.setText(myOrder.getOrderSendString()+ myOrder.getOrderStateString());
         return view;
     }
 }

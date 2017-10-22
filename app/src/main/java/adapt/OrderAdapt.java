@@ -39,13 +39,13 @@ public class OrderAdapt extends ArrayAdapter<MyOrder> {
         TextView sendAddress=(TextView)view.findViewById(R.id.sendAddress);
         TextView receiveAddress=(TextView)view.findViewById(R.id.receiveAddress);
         TextView price=(TextView)view.findViewById(R.id.price);
-        TextView orderSend=(TextView)view.findViewById(R.id.orderSend);
+        //TextView orderSend=(TextView)view.findViewById(R.id.orderSend);
         TextView sendName=(TextView)view.findViewById(R.id.launch_userName);
         kindImage.setImageResource(myOrder.getKindImageString());
         sendAddress.setText(myOrder.getSendAddress());
         receiveAddress.setText(myOrder.getReceiveAddress());
         price.setText(myOrder.getPriceString());
-        orderSend.setText(myOrder.getOrderSendString());
+        //orderSend.setText(myOrder.getOrderSendString());
         sendName.setText(myOrder.getSendUserName().substring(0,1)+"先生");
         return view;
     }

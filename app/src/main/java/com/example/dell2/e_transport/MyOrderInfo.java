@@ -114,7 +114,8 @@ public class MyOrderInfo extends BaseActivity implements View.OnClickListener {
                 //call(myOrder.getLaunchMan().getUserTel());
                 break;
             case R.id.postman_button:
-                call(myOrder.getPostMan().getUserTel());
+                call(myOrder.getPostManTel());
+
                 break;
             default:
                 break;
@@ -139,16 +140,24 @@ public class MyOrderInfo extends BaseActivity implements View.OnClickListener {
         }
     }
     public void setLaunch(){
-        String str1=myOrder.getSendUserName().substring(0,1);
-        switch (0){
+        String str1=myOrder.getLaunchMan().substring(0,1);
+        switch (myOrder.getLaunchManGender()) {
             case 0:
-                str1+="先生";
+                if (str1.equals("0")) {
+                    str1 = "尚未被接单";
+                } else {
+                    str1 += "先生";
+                }
                 break;
             case 1:
-                str1+="女士";
+                if (str1.equals("0")) {
+                    str1 = "尚未被接单";
+                } else {
+                    str1+="女士";
+                }
                 break;
             default:
-                str1=myOrder.getLaunchMan().getUserName();
+                str1=myOrder.getLaunchMan();
                 break;
         }
         String str2="自己";
@@ -166,16 +175,24 @@ public class MyOrderInfo extends BaseActivity implements View.OnClickListener {
         }
     }
     public void setPost(){
-        String str1=myOrder.getReceiveUserName().substring(0,1);
-        switch (0){
+        String str1=myOrder.getPostMan().substring(0,1);
+        switch (myOrder.getPostManGender()){
             case 0:
-                str1+="小哥";
+                if (str1.equals("0")) {
+                    str1 = "尚未被接单";
+                } else {
+                    str1 += "小哥";
+                }
                 break;
             case 1:
-                str1+="小姐";
+                if (str1.equals("0")) {
+                    str1 = "尚未被接单";
+                } else {
+                    str1 += "小姐";
+                }
                 break;
             default:
-                str1=myOrder.getLaunchMan().getUserName();
+                str1=myOrder.getPostMan();
                 break;
         }
         String str2="自己";

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -61,6 +62,7 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
     private boolean isorder=false;
     private int orderAddressID = -1;
     private int recAddressID = -1;
+    private DecimalFormat dff   = new DecimalFormat("######0.00");
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -109,7 +111,7 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
                 if(!b){
                     pre_price_doc=Double.valueOf(pre_price.getText().toString());
                     price_doc=pre_price_doc*0.05+server_price_doc;
-                    price.setText("总费用"+String.valueOf(price_doc)+"元");
+                    price.setText("总费用"+dff.format(price_doc)+"元");
                 }
             }
         });
@@ -119,7 +121,7 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
                 if(!b){
                     server_price_doc=Double.valueOf(serve_price.getText().toString());
                     price_doc=pre_price_doc*0.05+server_price_doc;
-                    price.setText("总费用"+String.valueOf(price_doc)+"元");
+                    price.setText("总费用"+dff.format(price_doc)+"元");
                 }
             }
         });
@@ -214,7 +216,8 @@ public class Want2OrderActivity extends BaseActivity implements View.OnClickList
             pre_price_doc=0;
         }
         price_doc=pre_price_doc*0.05+server_price_doc;
-        price.setText("总费用"+String.valueOf(price_doc)+"元");
+
+        price.setText("总费用"+dff.format(price_doc)+"元");
         String order_sendAddress=sendAddress.getText().toString();
         String order_sendUserName=sendUserName.getText().toString();
         String order_sendUserTel=sendTel.getText().toString();

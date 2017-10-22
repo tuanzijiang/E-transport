@@ -123,7 +123,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
 
     /*内容初始化函数*/
     public void initContent() {
-        imageView.setImageBitmap(PictureUtils.getBitmap(Constant.avatarPath,66,66));
+        imageView.setImageBitmap(PictureUtils.getBitmap(getExternalFilesDir("avatar").getPath() + "/avatar.jpg",66,66));
         if (user.getUserName() != null && !user.getUserName().equals(""))
             userName.setText(user.getUserName());
         if (user.getUserGenderString() != null && !user.getUserGenderString().equals(""))
