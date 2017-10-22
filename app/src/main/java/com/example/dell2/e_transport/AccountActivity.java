@@ -230,7 +230,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                     request.setRequestCode("location");
                     try {
                         String strUTF8 = URLEncoder.encode(address, "UTF-8");
-                        Log.d("Ts", strUTF8);
+                        Log.e("Ts", strUTF8);
                         request.addRequestParam("param", strUTF8);
                     } catch (UnsupportedEncodingException e) {
                         //Log.d("TAG",e.getMessage());
@@ -244,7 +244,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
                     HttpPostTask myTask = sendHttpPostRequest(Constant.SETTING_URL, request, new ResponseHandler() {
                         @Override
                         public CommonResponse success(CommonResponse response) {
-                            Log.e("SETTING", "S");
+                            Log.e("SETTING", "Suuu");
                             LoadingDialogUtil.cancelLoading();
                             Toast.makeText(AccountActivity.this, "地址设置成功", Toast.LENGTH_SHORT).show();
                             userAddress.setText(address);
@@ -253,6 +253,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
 
                         @Override
                         public CommonResponse fail(String failCode, String failMsg) {
+                            Log.e("mSETTING", "fffffail");
                             LoadingDialogUtil.cancelLoading();
                             Toast.makeText(AccountActivity.this, "地址设置失败", Toast.LENGTH_SHORT).show();
                             return null;

@@ -58,7 +58,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="c02e28c0fa3ed126febdce3a35a15718">//开发者的key。华：4b5b3159266118940bd6f8a533f4e8d0
+            android:value="ce293a9081fd4aa75fba131d64777fa5">//开发者的key。华：ce293a9081fd4aa75fba131d64777fa5
             //wu:169f53a8338968a3328959ade7adcf4d
 
         </meta-data>

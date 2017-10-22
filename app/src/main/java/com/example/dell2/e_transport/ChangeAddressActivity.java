@@ -87,6 +87,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
 
         Intent intent=this.getIntent();
         String kinds=intent.getExtras().getString("kind");
+        Log.e("kinds", kinds );
         if(kinds!=null&&kinds.equals("add")){
             title_name.setText("新增地址");
             mode = 0;
@@ -214,7 +215,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
         HttpPostTask myTask = sendHttpPostRequest(Constant.ADDRESS_URL, request, new ResponseHandler() {
             @Override
             public CommonResponse success(CommonResponse response) {
-                //Log.e("SETTING","S");
+                Log.e("SETTING","S");
                 LoadingDialogUtil.cancelLoading();
                 Toast.makeText(ChangeAddressActivity.this,"设置成功",Toast.LENGTH_SHORT).show();
                 finish();
@@ -223,6 +224,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
 
             @Override
             public CommonResponse fail(String failCode, String failMsg) {
+                Log.e("ffffail","S");
                 LoadingDialogUtil.cancelLoading();
                 Toast.makeText(ChangeAddressActivity.this,"设置失败",Toast.LENGTH_SHORT).show();
                 return null;
