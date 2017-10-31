@@ -69,7 +69,6 @@ public class OrderInfo extends BaseActivity implements View.OnClickListener {
         goods_kind=(TextView)findViewById(R.id.goods_kind);
         goods_weight=(TextView)findViewById(R.id.goods_weight);
         goods_info=(TextView)findViewById(R.id.goods_info);
-        goods_pic=(ImageView)findViewById(R.id.goods_pic);
         sendName=(TextView)findViewById(R.id.sendName);
         button_verify=(LinearLayout)findViewById(R.id.button_verify);
         /*信息初始化*/

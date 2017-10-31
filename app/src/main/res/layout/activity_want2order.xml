@@ -207,24 +207,6 @@
                     <ImageView
                         android:layout_width="@dimen/line_standard_item_pic"
                         android:layout_height="@dimen/line_standard_item_pic"
-                        android:src="@drawable/pic"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="20dp"/>
-                    <EditText
-                        android:id="@+id/goods_pic"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="物品图片"
-                        android:background="@drawable/bottom_border_standard"
-                        android:textColorHint="@color/font_light"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/line_standard_item">
-                    <ImageView
-                        android:layout_width="@dimen/line_standard_item_pic"
-                        android:layout_height="@dimen/line_standard_item_pic"
                         android:src="@drawable/weight"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="20dp"
