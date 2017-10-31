@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.view.ViewPager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.dell2.e_transport.R;
 import com.example.dell2.e_transport.Want2OrderActivity;
@@ -19,6 +20,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import adapt.CarouselPagerAdapt;
+import application.E_Trans_Application;
 import handler.CarouselHandler;
 
 /**
@@ -103,11 +105,21 @@ public class HomePageFragment extends Fragment implements View.OnClickListener{
         Intent intent;
         switch (view.getId()){
             case R.id.want2order_button:
-                Want2OrderActivity.actionStart(this.getActivity());
+                if(((E_Trans_Application)getActivity().getApplication()).getLoginState()==0){
+                    Toast.makeText(getContext(),"请您登陆",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Want2OrderActivity.actionStart(this.getActivity());
+                }
                 break;
             case R.id.want2receive_button:
-                intent=new Intent(getActivity(), Want2ReceiveActivity.class);
-                startActivity(intent);
+                if(((E_Trans_Application)getActivity().getApplication()).getLoginState()==0){
+                    Toast.makeText(getContext(),"请您登陆",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    intent = new Intent(getActivity(), Want2ReceiveActivity.class);
+                    startActivity(intent);
+                }
                 break;
             default:
                 break;

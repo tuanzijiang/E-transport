@@ -219,8 +219,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                     orderFragment=new OrderFragment();
                     fragmentTransaction.add(R.id.content, orderFragment,ORDERTAG);
                 }
-                else
-                    fragmentTransaction.show(orderFragment);
+                else {
+                    if (((E_Trans_Application) getApplication()).getLoginState() == 0) {
+                        Toast.makeText(this, "请您登陆", Toast.LENGTH_SHORT).show();
+                    } else {
+                        fragmentTransaction.show(orderFragment);
+                    }
+                }
                 setButtonActive(1);
                 setTitleName(1);
                 break;

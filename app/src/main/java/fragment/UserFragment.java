@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.dell2.e_transport.MessageLoginActivity;
@@ -73,8 +74,13 @@ public class UserFragment extends Fragment implements View.OnClickListener{
                 }
                 break;
             case R.id.ll_location:
-                intent=new Intent(getActivity(), UsualLocationActivity.class);
-                startActivity(intent);
+                if(((E_Trans_Application)getActivity().getApplication()).getLoginState()==0){
+                    Toast.makeText(getContext(),"请您登陆",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    intent = new Intent(getActivity(), UsualLocationActivity.class);
+                    startActivity(intent);
+                }
                 break;
             default:
                 break;

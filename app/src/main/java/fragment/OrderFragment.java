@@ -46,6 +46,7 @@ public class OrderFragment extends Fragment {
     private SwipeRefreshLayout srl;
     private List<MyOrder> myOrderList=new ArrayList<MyOrder>();
     private String name;
+    private E_Trans_Application app;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
         View view=inflater.inflate(R.layout.order,container,false);
         return view;
