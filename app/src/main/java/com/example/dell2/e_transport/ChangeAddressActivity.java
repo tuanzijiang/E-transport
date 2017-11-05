@@ -87,7 +87,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
 
         Intent intent=this.getIntent();
         String kinds=intent.getExtras().getString("kind");
-        Log.e("kinds", kinds );
+        //Log.e("kinds", kinds );
         if(kinds!=null&&kinds.equals("add")){
             title_name.setText("新增地址");
             mode = 0;
@@ -131,6 +131,7 @@ public class ChangeAddressActivity extends BaseActivity implements View.OnClickL
                 break;
             case R.id.button_verify:
                 addAddress();
+                finish();
                 break;
             case R.id.address:
                 intent=new Intent(ChangeAddressActivity.this,UserAreaAvtivity.class);
